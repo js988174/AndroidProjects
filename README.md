@@ -113,7 +113,7 @@
 
    - 람다
 
-       - fun main(args : Array<String>) {
+         fun main(args : Array<String>) {
 
           f1(a1 = {
             println("f1이 전달한 함수가 호출되었습니다")
@@ -126,11 +126,24 @@
             });
          }
 
+         f3(a1 = {x:Int, y:Int ->
+              x+y
+          })
+          f3(a1 = {x:Int, y:Int ->
+              x-y
+            });
+         }
+
          fun f1(a1 : () -> Unit) {
            a1()
          }
 
          fun f2(a1 : (Int, Int) -> Unit) {
            a1(100, 200)
+         }
+
+         fun f3(a1 : (Int, Int) -> Int) {
+          var a2 = a1(100, 200)
+          println("a2 : ${a2}")
          }
          
