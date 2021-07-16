@@ -388,5 +388,117 @@
                         300
                     }
                 }
+      - while문
+
+             fun main(args : Array<String>) {
+
+              var a1 = 1..10
+
+              for(item in a1) {
+                  println("a1 : ${item}")
+              }
+              println("---------------------------")
+
+              for((idx, item) in a1.withIndex()) {
+                  println("${idx} : ${item}")
+              }
+
+              println("-----------------------------")
+
+              var a2 = 0
+
+              while (a2 < 10) {
+                  println("a2 : ${a2}")
+                  a2++;
+              }
+
+              var a3 = 10;
+
+              do {
+                  println("a3 : ${a3}")
+                  a3++;
+              } while (a3 < 10)
+            }
+
+    - main
+
+          fun main(args : Array<String>) {
+            f1(5)
+            f1(10)
+
+            var a1 = 0
+
+            while (a1 < 10) {
+                a1++
+                if (a1 > 5) {
+                    break
+                }
+                println("a1 : ${a1}")
+            }
+
+            println("--------------------------")
+            a1 = 0
+
+            while (a1 < 10) {
+                a1++
+                if (a1 % 2 == 0) {
+                    continue
+                }
+                println("a1 : ${a1}")
+            }
+            }
+
+          fun f1(a1 : Int) {
+
+                if(a1 == 10) {
+                    return
+                }
+            println("이 부분이 수행이 될까요?")
+            }
+
+
+
+    - 객체지향 프로그래밍(OOP)
+
+        fun main(args : Array<String>) {
+
+            var t1 = TestClass1()
+            println("t1 : ${t1}")
+
+            var t2 = TestClass2()
+            var t3 = TestClass2()
+            println("t2.a1 : " + t2.a1)
+            println("t2.a2 : " + t2.a2)
+
+            println("t3.a1 : " + t3.a1)
+            println("t3.a2 : " + t3.a2)
+
+            t2.a1 = 100
+            t2.a2 = 200
+
+            println("t2.a1 : " + t2.a1)
+            println("t2.a2 : " + t2.a2)
+
+            println("t3.a1 : " + t3.a1)
+            println("t3.a2 : " + t3.a2)
+
+            var t4 = TestClass3()
+            t4.f1()
+            }
+
+        class TestClass1 {
+
+        }
+
+        class TestClass2 {
+            var a1 = 0
+            var a2 = 0
+        }
+
+        class TestClass3 {
+            fun f1 () {
+                println("f1 메서드가 호출되었습니다")
+            }
+        }
 
 
