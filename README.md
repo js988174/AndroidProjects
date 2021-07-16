@@ -18,7 +18,7 @@
 
   - DataType
 
-     - println("정수 : ${100}")
+       println("정수 : ${100}")
        println("정수 (Long) : ${100L} ")
        println("실수 : ${55.55}")
        println("실수 (Float): ${55.55f}")
@@ -29,7 +29,7 @@
      
   - 변수
 
-     - var a1 = 100;
+       var a1 = 100;
        println("a1 : ${a1}")
        // a1 = 55.55
        var a2 = "안녕하세요"
@@ -52,7 +52,7 @@
 
    - 함수
 
-     - fun main(args : Array<String>) {
+       fun main(args : Array<String>) {
        f1()
        f2(100, 55.55)
        f3(100, 55.55)
