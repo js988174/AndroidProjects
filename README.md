@@ -259,8 +259,9 @@
           println("a14 : ${a14}") // true
     
     - if문
-    
-         fun main(args : Array<String>){
+
+         fun main(args : Array<String>) {
+
           var a1 = 100
 
           if (a1 > 50) {
@@ -293,6 +294,7 @@
               println("a1은 20, 50, 100이 아닙니다")
           }
             }
+
     - when문
           
           fun main(args : Array<String>) {
