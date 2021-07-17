@@ -596,3 +596,86 @@
      - Property
 
         - var(variable), val(value)는 보조 생성자에는 붙일 수 없다.
+
+        - get set 호출
+
+                    fun main() {
+
+                val obj1 = TestClass1(100,200)
+                println("obj1.a1 : ${obj1.a1}")
+                println("obj1.a2 : ${obj1.a2}")
+
+                obj1.a1 = 1000
+                println("obj1.a1: ${obj1.a1}")
+
+                println("----------------------------")
+
+                val obj2 = TestClass2()
+
+                obj2.v1 = 100
+                // obj2.v2 = 200
+                println("obj2.v1 : ${obj2.v1}")
+                println("obj2.v2 : ${obj2.v2}")
+
+                obj2.v3 = 5000
+                println("obj2.v3 : ${obj2.v3}")
+            }
+
+            class TestClass1 constructor(var a1:Int, val a2:Int)
+
+
+            class TestClass2 {
+                var v1:Int = 0
+                val v2:Int = 0
+                var v3:Int = 100
+                // get() = field
+                get() {
+                    println("get 호출")
+                    return field
+                }
+                set(value) {
+                    println("set 호출")
+                    field = value
+                }
+            }
+
+     - 지연초기화
+
+        - lateinit : var로 선언된 변수의 초기화를 뒤로 미룰 수 있다.
+          lazy : val로 선언된 변수의 값을 초기화 한다는 의미
+          val => lateinit으로 지연 초기화 불가능
+          var => lateinit으로 지연 초기화 가능
+          주의할 점 : lateinit은 변수의 값을 사용하기 전에 반드시 초기화가
+                      이러어져야 한다.
+
+
+          fun main() {
+                val obj1 = TestClass1()
+                println("obj1.a1 : ${obj1.a1}")
+                println("obj1.a2 : ${obj1.a2}")
+                //println("obj1.a3 : ${obj1.a3}")
+
+                obj1.testMethod1()
+            }
+
+            class TestClass1 {
+                var a1: Int = 100
+                var a2: Int
+                lateinit var a3:String
+
+                  val a4: String by lazy {
+                        println("a4 init")
+                        "문자열2"
+                    }
+
+                init {
+                    a2 = 200
+                }
+
+                fun testMethod1() {
+                    if(::a3.isInitialized == false) {
+                        a3 = "문자열"
+                    }
+                    println("a3 : $a3")
+                }
+            }
