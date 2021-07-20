@@ -679,3 +679,26 @@
                     println("a3 : $a3")
                 }
             }
+    
+     - Companion
+
+          - companion 멤버는 객체 생성 없이 클래스의 이름을 통해 접근해 사용한다.
+        
+     - Data Class 
+
+          - Data Class 는 개발 편리성을 위해 equals, hashCode, copy, toString, componentN을 
+            자동으로 구현해준다. 
+            ex) data class Person(var name: String, var age:Int, var gende: String)
+
+     - 제네릭 
+         -> 객체를 생성할 때 타입을 결정하는 개념을 Generic이라고 부른다.
+
+       - 가변성
+
+           - 불변성 : 제네릭이 설정된 객체의 주소 값을 같은 타입의 제네릭이 설정된 변수에만 담을 수 있다.
+             공변성 : 제네릭이 설정된 객체의 주소 값을 부모 클래스 타입의 제네릭이 설정된
+                     변수에도 담을 수 있다. (out)
+             반 공변성 : 제네릭이 설정된 객체의 주소 값을 자식 클래스  타입의 제네릭이 설정된 변수에도
+                       담을 수 있다. (in)
+
+        
