@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636855994136",
+    "project_id": "mago-project",
+    "storage_bucket": "mago-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636855994136:android:8bcfd1a5485d5d38ac806d",
+        "android_client_info": {
+          "package_name": "com.rud.mango_contents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636855994136-l5ebq1kfac12lcucr498g9rup5q94o3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcOjFaeY-mOw0vFi0Xrc79cXop4JEL15E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636855994136-l5ebq1kfac12lcucr498g9rup5q94o3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
