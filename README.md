@@ -773,5 +773,43 @@
                중에 파악한다.
 
 
-        -   
-             
+        - 익명 함수
+
+          - fun main() {
+
+              val testFunction2 = fun() {
+                  println("testFunction2 입니다")
+              }
+          }
+
+            fun testFunction1() {
+                println(I"testFuction1 입니다")
+            }
+
+
+        - 인라인 함수
+
+          - 함수 호출 방식은 전체 코드양이 줄어들어 메모리를 적게 쓰지만
+            다시 돌아와야 하기 때문에 작업량이 늘어난다.
+
+            - fun main() {
+                    testFunc1()
+                    testFunc1()
+
+                    testFunc2()
+                    testFunc2()
+                }
+
+                fun testFunc1() {
+                    println("------------------")
+                    println("testFun1")
+                    print("--------------------")
+                }
+
+                inline fun testFunc2() {
+                    println("-------------------")
+                    println("testcFunc2")
+                    println("-------------------")
+                }
+
+                            
