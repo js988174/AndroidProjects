@@ -76,3 +76,28 @@
           - while : for문이 특정 범위라면 while문은 특정 조건이 만족할떄까지 반복하기 위한 구조 
 
           - while do : 최초 값이 조건식을 만족하지 않았을 경우 실행 코드가 달라지는 것입니다.
+
+
+        - 스코프 함수
+
+          - this로 사용 되는 함수 : run, apply , with 
+           -> 호출 되는 대상이 null 일경우 with 보다는 apply나 run을 사용하느것이 효율적이다
+              이유는 with가 확장 함수가 아니기 때문이다.
+          - it으로 사용되는 함수 : let, also
+
+        - 디자인 요소
+          - 말줄입 표시하기 : elipsize 
+          - 전광판처럼 텍스트 만들기 : 'auto', focusablen TouchMode true로 설정하기
+                                   -> .. 화면    전광판..면         전광판화..
+          - 클릭하면 사라지는 미리보기 : hint
+          - 키보드 모양 설정 : InputType
+          - 이미지 크기 설정 : scaleType
+          - 이미지 영역에 색채우기 : tint
+          - binding 사용법 : 1 ) build.gradle에 buildFeatures { viewBinding true} 추가 해주기
+                             2 ) main에 val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
+          - radio 는 1개만 선택 가능 checkbox는 여러개 선택가능 
+          - 프로그래스바 : 진행 상태를 나타내는 위젯 1. 시간이 일정하지 않은 작업  2. 시간이 일정할때 % 형식
+          - 레이팅바 : 현재 별점이 텍스트뷰에 표시되도록 하겠습니다.
+
+       - 리소스
+          - 이미지 폴더를 hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi 최소 5개 해상도로 만들어서 사용
