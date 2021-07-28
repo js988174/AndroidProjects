@@ -85,6 +85,9 @@
               이유는 with가 확장 함수가 아니기 때문이다.
           - it으로 사용되는 함수 : let, also
 
+
+## 화면 구성
+
         - 디자인 요소
           - 말줄입 표시하기 : elipsize 
           - 전광판처럼 텍스트 만들기 : 'auto', focusablen TouchMode true로 설정하기
