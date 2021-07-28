@@ -101,3 +101,25 @@
 
        - 리소스
           - 이미지 폴더를 hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi 최소 5개 해상도로 만들어서 사용
+
+       - 액티비티 
+            - onCreate() : 액티비티 생성
+            - onStart() : 화면에 보이기 시작함
+            - onResume() : 실제 액티비티 실행
+            - onPause() : 화면의 일부가 다른 액티비에 가려짐
+            - onStop() : 다른 액티비티가 실행되면서 완전히 가려짐
+            - onDestroy() : 종료됩니다.
+
+       - 백스택 
+            : 액티비티 또는 화면 컴포넌트를 담는 안드로이드의 저장 공간
+
+            - 플래그 
+                - FLAG_ACTIVITY_CLEAR_TOP : 액티비티 A를 호출하면 스택에 있던 B/C를 삭제하여 A를 화면에 출력
+                - FLAG_ACTIVITY_NEW_TASK : 새로운 테스크를 생성하여 안에 액티비티를 추가할 때 사용합니다.
+                - FLAG_ACTIVITY__MULTIPLE_TASK : 호출되는 액티비티를 메인으로 하는 새로운 태스크 생성
+                _ FLAG_ACTIVITY_SINGLE_TOP : 호출되는 액티비티가 TOP에 있으면 다시 생성하지 않고 존재하던 액티비 사용
+
+      - 프래그먼트
+
+           - 액티비티 조건마다 화면 구성을 다르게 할 수 있는것
+            
