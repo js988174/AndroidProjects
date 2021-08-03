@@ -207,3 +207,16 @@
 
           - 포어 그라운드 서비스 : 사용자에게 알림을 통해 현재 작업이 진행 중이라는 것을 알려줘야 할 때 사용
 
+ ## 구글 지도 API
+
+        - Target: 목표 지점은 지도 중심이며 위도 및 경도 좌표로 지정
+        - Zoom: 레벨에 따라 지도의 배율이 결정
+                1.0 세계, 5.0 대륙, 10.0 도시, 15.0 거리, 20.0 건물
+        - Bearing: 북쪽을 기준으로 시계 반향 단위로 측정
+        - Tilt: 카메라의 기울기는 지도의 중앙 위치와 지구 표면 사이의 원호에서 카메라 위치 지정
+
+
+        - 카메라 이동 
+            - CameraPosition.Builder -> cameraUpdateFactory.newCameraPosition() -> mMap.moveCamera
+
+       
