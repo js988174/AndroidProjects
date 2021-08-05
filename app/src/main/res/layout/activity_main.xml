@@ -1,59 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:layout_height="220dp"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp">
-
-        <ImageView
-            android:id="@+id/rvImageArea"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:layout_height="120dp"/>
-
-    </androidx.cardview.widget.CardView>
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/rvTextArea"
-        android:text="text"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="수정합니다. 08/05 18:12\n수정합니다. 손현승. 2021.08.06 08:53"
+        android:text="수정합니다. 08/05 18:12\n수정합니다. 12121212. 2021.08.06 08:53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:text="Test"
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
+
 
 </LinearLayout>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Button" />
 
-</LinearLayout>
