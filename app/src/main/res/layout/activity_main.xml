@@ -6,7 +6,6 @@
     android:layout_height="220dp"
     android:orientation="vertical">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -15,6 +14,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="추가 수정합니다. 2021.08.06 09:06"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
 
 
 </LinearLayout>
