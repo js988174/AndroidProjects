@@ -12,6 +12,8 @@
         <activity android:name=".auth.JoinActivity"></activity>
         <activity android:name=".auth.LoginActivity" />
         <activity android:name=".auth.IntroActivity" />
+        <activity android:name=".board.BoardActivity" />
+        <activity android:name=".board.BoardWriteActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

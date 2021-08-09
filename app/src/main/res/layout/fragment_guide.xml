@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:background="@color/mainPink"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout4">
 
             <LinearLayout
@@ -24,13 +25,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <LinearLayout
-                android:background="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@color/mainGray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,6 +49,7 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:background="@color/mainSkyBlue"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
@@ -69,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/mainPink"
                 android:src="@drawable/baseline_developer_board_black_24" />
 
             <ImageView
