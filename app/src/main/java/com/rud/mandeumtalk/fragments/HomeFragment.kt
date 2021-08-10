@@ -21,36 +21,44 @@ class HomeFragment : Fragment() {
 
 	}
 
-	override fun onCreateView(
-		inflater: LayoutInflater, container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View? {
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-		binding.homeTap.setOnClickListener {
+		binding.homeIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_homeFragment_self)
+		}
+		binding.homeText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_homeFragment_self)
 		}
 
-		binding.portTap.setOnClickListener {
+		binding.portfolioIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_homeFragment_to_portfolioFragment)
+		}
+		binding.portfolioText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_homeFragment_to_portfolioFragment)
 		}
 
-		binding.guideTap.setOnClickListener {
+		binding.boardIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_homeFragment_to_guideFragment)
+		}
+		binding.boardText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_homeFragment_to_guideFragment)
 		}
 
-		binding.boardTap.setOnClickListener {
+		binding.contactUsIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_homeFragment_to_boardFragment)
+		}
+		binding.contactUsText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_homeFragment_to_boardFragment)
 		}
 
-		binding.accountTap.setOnClickListener {
+		binding.accountIcon.setOnClickListener {
 			it.findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
 		}
-
+		binding.accountText.setOnClickListener {
+			it.findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
+		}
 		return binding.root
 	}
-
-	}
-
-
+}

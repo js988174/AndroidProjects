@@ -14,7 +14,7 @@ import com.rud.mandeumtalk.databinding.FragmentPortfolioBinding
 import java.util.zip.Inflater
 
 
-class portfolioFragment : Fragment() {
+class PortfolioFragment : Fragment() {
 
 	private lateinit var binding : FragmentPortfolioBinding
 
@@ -23,34 +23,44 @@ class portfolioFragment : Fragment() {
 
 	}
 
-	override fun onCreateView(
-		inflater: LayoutInflater, container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View? {
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
 
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
 
-		binding.homeTap.setOnClickListener {
+		binding.homeIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
+		}
+		binding.homeText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
 		}
 
-		binding.portTap.setOnClickListener {
+		binding.portfolioIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_portfolioFragment_self)
+		}
+		binding.portfolioText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_portfolioFragment_self)
 		}
 
-		binding.guideTap.setOnClickListener {
+		binding.boardIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
+		}
+		binding.boardText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
 		}
 
-		binding.boardTap.setOnClickListener {
+		binding.contactUsIcon.setOnClickListener {
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_boardFragment)
+		}
+		binding.contactUsText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_portfolioFragment_to_boardFragment)
 		}
 
-		binding.accountTap.setOnClickListener {
+		binding.accountIcon.setOnClickListener {
 			it.findNavController().navigate(R.id.action_portfolioFragment_to_accountFragment)
 		}
-
+		binding.accountText.setOnClickListener {
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_accountFragment)
+		}
 		return binding.root
 	}
-
 }
