@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
 						Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
 
-				} else {
+					} else {
 
 						Toast.makeText(this, "로그인 실패", Toast.LENGTH_LONG).show()
 

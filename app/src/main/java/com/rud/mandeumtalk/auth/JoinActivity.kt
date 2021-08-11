@@ -1,16 +1,20 @@
 package com.rud.mandeumtalk.auth
 
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rud.mandeumtalk.MainActivity
 import com.rud.mandeumtalk.R
 import com.rud.mandeumtalk.databinding.ActivityJoinBinding
+
 
 class JoinActivity : AppCompatActivity() {
 
@@ -24,6 +28,7 @@ class JoinActivity : AppCompatActivity() {
 
 		auth = Firebase.auth
 
+
 		binding = DataBindingUtil.setContentView(this, R.layout.activity_join)
 
 		binding.joinBtn.setOnClickListener {
@@ -33,6 +38,7 @@ class JoinActivity : AppCompatActivity() {
 			val email = binding.emailArea.text.toString()
 			val password1 = binding.passwordArea1.text.toString()
 			val password2 = binding.passwordArea2.text.toString()
+			val emailLink = intent.data.toString()
 
 			if(email.isEmpty()) {
 				Toast.makeText(this, "이메일을 입력해주세요", Toast.LENGTH_LONG).show()
@@ -61,10 +67,12 @@ class JoinActivity : AppCompatActivity() {
 				isGoToJoin = false
 			}
 
+
 			if(isGoToJoin) {
 
 				auth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener(this) { task ->
 					if (task.isSuccessful) {
+
 						Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
 
 						val intent = Intent(this, MainActivity::class.java)

@@ -66,7 +66,7 @@ class BoardFragment : Fragment() {
 			startActivity(intent)
 		}
 
-		/*
+
 		binding.homeIcon.setOnClickListener {
 			it.findNavController().navigate(R.id.action_guideFragment_to_homeFragment)
 		}
@@ -102,7 +102,7 @@ class BoardFragment : Fragment() {
 			it.findNavController().navigate(R.id.action_guideFragment_to_accountFragment)
 		}
 
-		 */
+
 
 		return binding.root
 	}
