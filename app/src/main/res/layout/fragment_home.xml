@@ -11,15 +11,172 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <ImageView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/boardRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/homewebpage"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/boardWriteButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:fontFamily="@font/nanumgothicbold"
+                android:id="@+id/boardWriteButton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_background_mainskyblue"
+                android:text="글쓰기"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/mainIvory"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:background="@color/mainSkyBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/mainIvory"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/homeIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/homemainpink" />
+
+                <ImageView
+                    android:id="@+id/portfolioIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/portfoliomainpink" />
+
+                <ImageView
+                    android:id="@+id/boardIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/boardmainskyblue" />
+
+                <ImageView
+                    android:id="@+id/contactUsIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/contactusmainpink" />
+
+                <ImageView
+                    android:id="@+id/accountIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/accountmainpink" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/mainIvory"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/homeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanumgothicbold"
+                    android:gravity="center"
+                    android:text="회사소개"
+                    android:textColor="@color/mainPink"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/portfolioText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanumgothicbold"
+                    android:gravity="center"
+                    android:text="포트폴리오"
+                    android:textColor="@color/mainPink"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/boardText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanumgothicbold"
+                    android:gravity="center"
+                    android:text="게시판"
+                    android:textColor="@color/mainSkyBlue"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/contactUsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanumgothicbold"
+                    android:gravity="center"
+                    android:text="문의"
+                    android:textColor="@color/mainPink"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/accountText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanumgothicbold"
+                    android:gravity="center"
+                    android:text="개인 설정"
+                    android:textColor="@color/mainPink"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!--
             <LinearLayout
                 android:id="@+id/linearLayout7"
                 android:layout_width="match_parent"
@@ -163,6 +320,7 @@
                     android:textColor="@color/mainPink"
                     android:textSize="15sp" />
             </LinearLayout>
+            -->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

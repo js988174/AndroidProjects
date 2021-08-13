@@ -26,6 +26,8 @@ class BoardFragment : Fragment() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+
+
 	}
 
 	override fun onCreateView(
@@ -33,6 +35,7 @@ class BoardFragment : Fragment() {
 
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board, container, false)
 
+		/*
 		/////////// Start of Recycler View Area ///////////
 		val layoutManager = LinearLayoutManager (activity, LinearLayoutManager.VERTICAL, false)
 
@@ -58,20 +61,24 @@ class BoardFragment : Fragment() {
 
 			}
 		}
+		 */
+
 		/////////// End of Recycler View Area ///////////
 
 		// Board Write Button
+		/*
 		binding.boardWriteButton.setOnClickListener {
 			val intent = Intent (activity, BoardWriteActivity::class.java)
 			startActivity(intent)
 		}
+		 */
 
 
 		binding.homeIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_guideFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_boardFragment_self)
 		}
 		binding.homeText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_guideFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_boardFragment_self)
 		}
 
 		binding.portfolioIcon.setOnClickListener {
@@ -82,10 +89,10 @@ class BoardFragment : Fragment() {
 		}
 
 		binding.boardIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_guideFragment_self)
+			it.findNavController().navigate(R.id.action_guideFragment_to_homeFragment)
 		}
 		binding.boardText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_guideFragment_self)
+			it.findNavController().navigate(R.id.action_guideFragment_to_homeFragment)
 		}
 
 		binding.contactUsIcon.setOnClickListener {

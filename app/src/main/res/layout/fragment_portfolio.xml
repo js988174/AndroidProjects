@@ -113,7 +113,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/nanumgothicbold"
                     android:gravity="center"
-                    android:text="홈"
+                    android:text="회사소개"
                     android:textColor="@color/mainPink"
                     android:textSize="15sp" />
 

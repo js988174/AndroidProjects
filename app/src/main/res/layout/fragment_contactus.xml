@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <WebView
+            android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/contactuswebpage"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -114,7 +115,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nanumgothicbold"
                 android:gravity="center"
-                android:text="홈"
+                android:text="회사소개"
                 android:textColor="@color/mainPink"
                 android:textSize="15sp" />
 
@@ -162,6 +163,7 @@
                 android:textColor="@color/mainPink"
                 android:textSize="15sp" />
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
 </layout>

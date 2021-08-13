@@ -28,10 +28,10 @@ class PortfolioFragment : Fragment() {
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
 
 		binding.homeIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
 		}
 		binding.homeText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
 		}
 
 		binding.portfolioIcon.setOnClickListener {
@@ -42,10 +42,10 @@ class PortfolioFragment : Fragment() {
 		}
 
 		binding.boardIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
 		}
 		binding.boardText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_portfolioFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_portfolioFragment_to_homeFragment)
 		}
 
 		binding.contactUsIcon.setOnClickListener {

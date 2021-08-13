@@ -27,24 +27,24 @@ class AccountFragment : Fragment() {
 		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false)
 
 		binding.homeIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
 		}
 		binding.homeText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_homeFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
 		}
 
 		binding.portfolioIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_portfolioFragment)
 		}
 		binding.portfolioText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_portfolioFragment)
 		}
 
 		binding.boardIcon.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_homeFragment)
 		}
 		binding.boardText.setOnClickListener {
-			it.findNavController().navigate(R.id.action_accountFragment_to_guideFragment)
+			it.findNavController().navigate(R.id.action_accountFragment_to_homeFragment)
 		}
 
 		binding.contactUsIcon.setOnClickListener {

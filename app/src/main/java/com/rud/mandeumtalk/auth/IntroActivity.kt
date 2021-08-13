@@ -3,6 +3,7 @@ package com.rud.mandeumtalk.auth
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -88,6 +89,8 @@ class IntroActivity : AppCompatActivity() {
 					}
 					else -> { // Unknown
 						Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+						Log.d("token", token.toString())
+						Log.d("OAuthToken", OAuthToken.toString())
 					}
 				}
 			}
