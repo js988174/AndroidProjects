@@ -77,7 +77,7 @@ class HomeFragment : Fragment() {
 				val title = view?.findViewById<TextView>(R.id.input1)?.text
 				val contents = view?.findViewById<TextView>(R.id.input2)?.text
 
-				Toast.makeText(activity, "Item Click $position\nTitle : $title\nContents : $contents", Toast.LENGTH_SHORT).show()
+				Toast.makeText(activity, "Item Click $position\nTitle : $title\nContents : $contents\nWriter : $", Toast.LENGTH_SHORT).show()
 
 			}
 		}

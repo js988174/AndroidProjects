@@ -51,7 +51,7 @@
         <EditText
             android:id="@+id/contentsArea"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Contents"
@@ -61,7 +61,7 @@
             android:id="@+id/imageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:srcCompat="@drawable/image1" />
+            app:srcCompat="@drawable/image" />
 
     </LinearLayout>
 

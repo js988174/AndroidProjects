@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MandeumTalk"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".contentsList.ContentsShowActivity"
+            android:exported="true" />
+        <activity
+            android:name=".contentsList.ContentsListActivity"
+            android:exported="true" />
         <activity android:name=".auth.JoinActivity" />
         <activity android:name=".auth.LoginActivity" />
         <activity android:name=".auth.IntroActivity" />

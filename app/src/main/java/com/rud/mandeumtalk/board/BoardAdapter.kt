@@ -1,6 +1,7 @@
 package com.rud.mandeumtalk.board
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class BoardAdapter (val items : ArrayList<BoardModel>) : RecyclerView.Adapter<Bo
         fun setItem (item : BoardModel) {
             itemView.findViewById<TextView>(R.id.input1).text = item.title
             itemView.findViewById<TextView>(R.id.input2).text = item.contents
+            itemView.findViewById<TextView>(R.id.input3).text = item.writer
+            itemView.findViewById<TextView>(R.id.input4).text = item.dateTime
         }
     }
 }
