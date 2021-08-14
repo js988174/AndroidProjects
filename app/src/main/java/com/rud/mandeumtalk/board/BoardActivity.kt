@@ -27,25 +27,6 @@ class BoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board)
 
-        /*
-        findViewById<Button>(R.id.testLoginBtn).setOnClickListener {
-            Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<Button>(R.id.testJoinBtn).setOnClickListener {
-
-            auth.createUserWithEmailAndPassword("abc2@abc2.com", "12341234")
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "no", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-        }
-         */
-
         findViewById<Button>(R.id.writeButton).setOnClickListener {
             val intent = Intent(this, BoardWriteActivity::class.java)
             startActivity(intent)
@@ -53,9 +34,6 @@ class BoardActivity : AppCompatActivity() {
         getData()
     }
     fun getData() {
-
-//        val database = Firebase.database
-//        val myRef = database.getReference("Board")
 
         val myRef = Firebase.database.getReference("Board")
 

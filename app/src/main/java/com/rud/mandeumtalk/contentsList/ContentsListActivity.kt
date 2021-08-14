@@ -130,7 +130,12 @@ class ContentsListActivity : AppCompatActivity() {
 
         rv.adapter = rvAdapter
 
-        rv.layoutManager = GridLayoutManager(this, 2)
+        if (category == "Education") {
+            rv.layoutManager = GridLayoutManager(this, 2)
+        }
+        if (category == "Cooking") {
+            rv.layoutManager = GridLayoutManager(this, 3)
+        }
 
         rvAdapter.itemClick = object : ContentsRVAdapter.ItemClick {
 

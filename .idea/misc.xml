@@ -4,17 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38229166666666664" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_facebook.xml" value="0.38229166666666664" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_google.xml" value="0.38229166666666664" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_kakao.xml" value="0.38229166666666664" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_mainpink.xml" value="0.38229166666666664" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_mainskyblue.xml" value="0.38229166666666664" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/button_background_naver.xml" value="0.38229166666666664" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/drawable/content_rv_item.xml" value="0.38229166666666664" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_board.xml" value="0.36614583333333334" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_board_view.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_board_write.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_contact_us.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_contents_list.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_contents_show.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_join.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_main.xml" value="0.3605128205128205" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_portfolio_show.xml" value="0.2734375" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/activity_splash.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/board_item.xml" value="0.5" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/content_rv_item.xml" value="0.36614583333333334" />
@@ -24,6 +31,7 @@
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/fragment_guide.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/fragment_portfolio.xml" value="0.36614583333333334" />
+        <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/layout/portfolio_rv_item.xml" value="0.37864583333333335" />
         <entry key="..\:/02WorkSpaces/AndroidStudioProjects/MandeumTalk/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20625" />
       </map>
     </option>

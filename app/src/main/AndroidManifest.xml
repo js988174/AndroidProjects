@@ -18,6 +18,9 @@
         android:theme="@style/Theme.MandeumTalk"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".board.BoardViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".contentsList.ContentsShowActivity"
             android:exported="true" />
         <activity

@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rud.mandeumtalk.auth.IntroActivity
+import com.rud.mandeumtalk.auth.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -29,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
 			Log.d("Splash Activity", "null")
 
 			Handler().postDelayed({
-				startActivity(Intent(this, IntroActivity::class.java))
+				startActivity(Intent(this, LoginActivity::class.java))
 				finish()
 			},2500)
 
@@ -37,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
 			Log.d("Splash Activity", "not null")
 
 			Handler().postDelayed({
-				startActivity(Intent(this, IntroActivity::class.java))
+				startActivity(Intent(this, MainActivity::class.java))
 				finish()
 			},2500)
 		}

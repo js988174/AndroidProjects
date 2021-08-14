@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="mainGray">#EAEAEA</color>
+    <color name="facebookBlue">#3b5998</color>
+    <color name="kakaoYellow">#ffe812</color>
+    <color name="kakaoBrown">#441904</color>
+    <color name="googleRed">#DB4437</color>
+    <color name="naverGreen">#2db400</color>
     <color name="darkGray">#A9A9A9</color>
     <color name="mainIvory">#FFF4EB</color>
     <color name="mainPink">#FBC0BC</color>

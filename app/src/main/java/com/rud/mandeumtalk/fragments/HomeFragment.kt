@@ -18,10 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.rud.mandeumtalk.R
-import com.rud.mandeumtalk.board.BoardAdapter
-import com.rud.mandeumtalk.board.BoardModel
-import com.rud.mandeumtalk.board.BoardWriteActivity
-import com.rud.mandeumtalk.board.OnBoardItemClickListener
+import com.rud.mandeumtalk.board.*
 import com.rud.mandeumtalk.databinding.FragmentHomeBinding
 
 
@@ -61,6 +58,7 @@ class HomeFragment : Fragment() {
 
 			}
 		}
+		// ??????
 		myRef.addValueEventListener(postListener)
 
 		binding.boardRecyclerView.adapter = adapter
@@ -69,21 +67,26 @@ class HomeFragment : Fragment() {
 
 		binding.boardRecyclerView.layoutManager = layoutManager
 
-
 		adapter.listener = object : OnBoardItemClickListener {
 
 			override fun onItemClick(holder: BoardAdapter.ViewHolder?, view: View?, position: Int) {
 
 				val title = view?.findViewById<TextView>(R.id.input1)?.text
-				val contents = view?.findViewById<TextView>(R.id.input2)?.text
+				val content = view?.findViewById<TextView>(R.id.input2)?.text
+				val writer = view?.findViewById<TextView>(R.id.input3)?.text
+				val dateTime = view?.findViewById<TextView>(R.id.input4)?.text
 
-				Toast.makeText(activity, "Item Click $position\nTitle : $title\nContents : $contents\nWriter : $", Toast.LENGTH_SHORT).show()
+				val intent = Intent(activity, BoardViewActivity::class.java)
+				intent.putExtra("Board Title", title)
+				intent.putExtra("Board Content", content)
+				intent.putExtra("Board writer", writer)
+				intent.putExtra("Board dateTime", dateTime)
+				startActivity(intent)
 
+				Toast.makeText(activity, "Item Click $position\nTitle : $title\nContents : $content\nWriter : $writer\nDate & Time : $dateTime", Toast.LENGTH_SHORT).show()
 			}
 		}
-		/////////// End of Recycler View Area ///////////
 
-		// Board Write Button
 		binding.boardWriteButton.setOnClickListener {
 			val intent = Intent (activity, BoardWriteActivity::class.java)
 			startActivity(intent)

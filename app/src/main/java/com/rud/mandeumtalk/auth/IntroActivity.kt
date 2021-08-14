@@ -3,7 +3,7 @@ package com.rud.mandeumtalk.auth
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +32,9 @@ class IntroActivity : AppCompatActivity() {
 	private lateinit var auth: FirebaseAuth
 
 	private lateinit var binding : ActivityIntroBinding
+
+	// onBackPressed()
+	private var isDouble = false
 
 	// googleLogin 관리
 	var googleSignInClient: GoogleSignInClient? = null
@@ -89,8 +92,6 @@ class IntroActivity : AppCompatActivity() {
 					}
 					else -> { // Unknown
 						Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
-						Log.d("token", token.toString())
-						Log.d("OAuthToken", OAuthToken.toString())
 					}
 				}
 			}
@@ -124,15 +125,16 @@ class IntroActivity : AppCompatActivity() {
 		binding.joinBtn.setOnClickListener {
 			val intent = Intent(this, JoinActivity::class.java)
 			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+			intent.putExtra("Activity", "Intro")
 			startActivity(intent)
 		}
 
-		// Board
-		binding.goBoard.setOnClickListener {
-			val intent = Intent(this, BoardActivity::class.java)
-			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-			startActivity(intent)
-		}
+//		// Board - 기능 미사용 삭제 (현승_2021.08.14)
+//		binding.goBoard.setOnClickListener {
+//			val intent = Intent(this, BoardActivity::class.java)
+//			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//			startActivity(intent)
+//		}
 
 		// 구글 로그인
 		binding.googleBtn.setOnClickListener {
@@ -156,6 +158,16 @@ class IntroActivity : AppCompatActivity() {
 					}
 
 				}
+		}
+
+		// Naver Login Button
+		binding.naverLoginButton.setOnClickListener {
+			Toast.makeText(this, "Naver Login is not Ready", Toast.LENGTH_SHORT).show()
+		}
+
+		// Facebook Login Button
+		binding.facebookLoginButton.setOnClickListener {
+			Toast.makeText(this, "Facebook Login is not Ready", Toast.LENGTH_SHORT).show()
 		}
 	}
 
@@ -196,7 +208,17 @@ class IntroActivity : AppCompatActivity() {
 			}
 	}
 
+	override fun onBackPressed(){
 
+		if(isDouble == true) {
+			finish()
+		}
+
+		isDouble = true
+		Toast.makeText(this, "Are your sure Exit?", Toast.LENGTH_LONG).show()
+
+		Handler().postDelayed(Runnable {isDouble = false}, 2000)
+	}
 
 //	override fun onStart() {
 //		super.onStart()
