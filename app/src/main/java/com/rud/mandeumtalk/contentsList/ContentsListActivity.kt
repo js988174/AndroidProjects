@@ -3,21 +3,35 @@ package com.rud.mandeumtalk.contentsList
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.rud.mandeumtalk.OnBackPress
 import com.rud.mandeumtalk.R
+import com.rud.mandeumtalk.databinding.FragmentBoardBinding
 
 class ContentsListActivity : AppCompatActivity() {
 
+    private lateinit var auth : FirebaseAuth
+
     lateinit var myRef : DatabaseReference
+
+    val bookmarkIdList = mutableListOf<String>()
+
+    lateinit var rvAdapter : ContentsRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -25,8 +39,9 @@ class ContentsListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contents_list)
 
         val items = ArrayList<ContentModel>()
+        val itemKeyList = ArrayList<String>()
 
-        val rvAdapter = ContentsRVAdapter(baseContext, items)
+        rvAdapter = ContentsRVAdapter(baseContext, items, itemKeyList, bookmarkIdList)
 
         val database = Firebase.database
 
@@ -34,7 +49,7 @@ class ContentsListActivity : AppCompatActivity() {
 
         if (category == "Education") {
 
-            findViewById<TextView>(R.id.categoryTitle).text = "Education List"
+            findViewById<TextView>(R.id.categoryTitle).text = "교육"
 
             myRef = database.getReference("Education")
 
@@ -42,7 +57,7 @@ class ContentsListActivity : AppCompatActivity() {
 //                ContentModel("Kotlin 이란", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FsfgLP%2FbtqvtO99vUD%2FZO6qbJ3d5pFq1JmHDRPIL1%2Fimg.png", "https://philosopher-chan.tistory.com/22?category=781381")
 //            )
 //            myRef.push().setValue(
-//                ContentModel("Kotlin lateinit and lazy", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FuJAOt%2FbtqwfkmXlyA%2Fu3dH8OlbrzgVXkXo4QyhMk%2Fimg.png", "https://philosopher-chan.tistory.com/56?category=781381")
+//                ContentModel("Kotlin lateinit and lazy", "https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/lateinit-vs-lazy-banner-be4c56c8a12720f6.png", "https://philosopher-chan.tistory.com/56?category=781381")
 //            )
 //            myRef.push().setValue(
 //                ContentModel("kotlin 물음표(?) 와 느낌표(!!)에 대해서", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbok4uM%2FbtqwdicLj47%2FnX4nm2H4sKhK4wZ9bUftG1%2Fimg.png", "https://philosopher-chan.tistory.com/58?category=781381")
@@ -54,12 +69,24 @@ class ContentsListActivity : AppCompatActivity() {
 //                ContentModel("인터페이스(interface)", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcbEPS4%2Fbtqw7Qx54mM%2FyJb19jx2fvheV1q7jRAKF0%2Fimg.png", "https://philosopher-chan.tistory.com/132?category=781381")
 //            )
 //            myRef.push().setValue(
-//                ContentModel("lambda 람다식이란", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcLDSth%2Fbtqxt7NWDIy%2FyNlpf8K0J0HfsYI1VppYsK%2Fimg.png", "https://philosopher-chan.tistory.com/173?category=781381")
+//                ContentModel("lambda 람다식이란", "https://www.coderefer.com/blog/wp-content/uploads/sites/7/2019/08/lambda-functions-in-kotlin.jpg", "https://philosopher-chan.tistory.com/173?category=781381")
+//            )
+//            myRef.push().setValue(
+//                ContentModel("Android setImage", "https://media.vlpt.us/images/jojo_devstory/post/3ce2d37e-66fe-4288-929b-6b30d2a78264/Jetpack_logo%20(2).png", "https://philosopher-chan.tistory.com/328?category=785198")
+//            )
+//            myRef.push().setValue(
+//                ContentModel("Android BackButton Event", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fce1mgB%2FbtqzrWJuDNz%2FimEtuLPKVwIkGNXssql9ik%2Fimg.jpg", "https://philosopher-chan.tistory.com/316?category=785198")
+//            )
+//            myRef.push().setValue(
+//                ContentModel("startActivity에서 기존 activity제거", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdKiBuI%2FbtqznufIMGi%2FMcPiJMUUEp4RhK7ct5d4A0%2Fimg.png", "https://philosopher-chan.tistory.com/315?category=785198")
+//            )
+//            myRef.push().setValue(
+//                ContentModel("Kotlin 전역변수\n", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdgSNkF%2FbtqzhhVa2nM%2FZbzs6U48GxfG7nlg0II68K%2Fimg.jpg", "https://philosopher-chan.tistory.com/310?category=785198")
 //            )
         }
         if (category == "Cooking") {
 
-            findViewById<TextView>(R.id.categoryTitle).text = "Cooking List"
+            findViewById<TextView>(R.id.categoryTitle).text = "요리"
 
             myRef = database.getReference("Cooking")
 
@@ -114,6 +141,7 @@ class ContentsListActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 for (dataModel in dataSnapshot.children) {
+                    itemKeyList.add(dataModel.key.toString())
                     val item = dataModel.getValue(ContentModel::class.java)
                     items.add(item!!)
                 }
@@ -131,7 +159,7 @@ class ContentsListActivity : AppCompatActivity() {
         rv.adapter = rvAdapter
 
         if (category == "Education") {
-            rv.layoutManager = GridLayoutManager(this, 2)
+            rv.layoutManager = GridLayoutManager(this, 3)
         }
         if (category == "Cooking") {
             rv.layoutManager = GridLayoutManager(this, 3)
@@ -143,8 +171,40 @@ class ContentsListActivity : AppCompatActivity() {
 
                 val intent = Intent (this@ContentsListActivity, ContentsShowActivity::class.java)
                 intent.putExtra("url", items[position].webUrl)
+                if (category == "Education") {
+                    intent.putExtra("category", "Education")
+                }
+                if (category == "Cooking") {
+                    intent.putExtra("category", "Cooking")
+                }
                 startActivity(intent)
             }
         }
+        getBookmarkData()
+    }
+
+    private fun getBookmarkData() {
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                bookmarkIdList.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    Log.d("dataSnapshot.key", dataSnapshot.children.toString())
+
+                    bookmarkIdList.add(dataModel.key.toString())
+                }
+                rvAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        }
+        val database = Firebase.database
+        val bookmarkRef = database.getReference("Bookmark_List")
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid.toString()
+        bookmarkRef.child(uid).addValueEventListener(postListener)
     }
 }

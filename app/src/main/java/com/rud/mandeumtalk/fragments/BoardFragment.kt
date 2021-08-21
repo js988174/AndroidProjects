@@ -56,23 +56,25 @@ class BoardFragment : Fragment() {
 			startActivity(intent)
 		}
 
+		val notReady : String = "아직 준비되지 않았습니다."
+
 		binding.forestIcon.setOnClickListener {
-			Toast.makeText(context, "Forest Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 		binding.forestText.setOnClickListener {
-			Toast.makeText(context, "Forest Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 		binding.campingIcon.setOnClickListener {
-			Toast.makeText(context, "Camping Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 		binding.campingText.setOnClickListener {
-			Toast.makeText(context, "Camping Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 		binding.caravanIcon.setOnClickListener {
-			Toast.makeText(context, "Caravan Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 		binding.caravanText.setOnClickListener {
-			Toast.makeText(context, "Caravan Tap is not Ready", Toast.LENGTH_SHORT).show()
+			Toast.makeText(context, notReady, Toast.LENGTH_SHORT).show()
 		}
 
 
@@ -110,8 +112,6 @@ class BoardFragment : Fragment() {
 		binding.accountText.setOnClickListener {
 			it.findNavController().navigate(R.id.action_guideFragment_to_accountFragment)
 		}
-
-
 
 		return binding.root
 	}

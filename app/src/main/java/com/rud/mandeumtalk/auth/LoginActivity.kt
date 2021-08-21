@@ -48,22 +48,29 @@ class LoginActivity : AppCompatActivity() {
 			val email = binding.emailArea.text.toString()
 			val password = binding.passwordArea.text.toString()
 
-			auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-				if (task.isSuccessful) {
+			Log.d("email - hyeonseung", email)
+			Log.d("password - hyeonseung", password)
 
-					val intent = Intent(this, MainActivity::class.java)
-					intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-					startActivity(intent)
+			if (email == "" && password == "") {
+				Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+			} else if (email == "" && password != "") {
+				Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+			} else if (email != "" && password == "") {
+				Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+			} else {
+				auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+					if (task.isSuccessful) {
 
-					Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
+						val intent = Intent(this, MainActivity::class.java)
+						intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+						startActivity(intent)
 
-				} else {
+					} else {
 
-					Toast.makeText(this, "로그인 실패", Toast.LENGTH_LONG).show()
-
+						Toast.makeText(this, "이메일과 비밀번호를 확인해주세요.", Toast.LENGTH_LONG).show()
+					}
 				}
 			}
-
 		}
 
 		// 비회원 가입

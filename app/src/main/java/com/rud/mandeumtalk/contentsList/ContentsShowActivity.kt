@@ -11,5 +11,6 @@ class ContentsShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contents_show)
 
         findViewById<WebView>(R.id.webView).loadUrl(intent.getStringExtra("url").toString())
+
     }
 }

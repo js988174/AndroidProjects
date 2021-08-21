@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "362569052885-b2j2e54tk1tdomnpakkdosrnbnc5askm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rud.mandeumtalk",
+            "certificate_hash": "ad039be8e983b014f56e9281204c701d5f5061f9"
+          }
+        },
+        {
           "client_id": "362569052885-87or16iq8eahvc92r7500n9ek1lmp79e.apps.googleusercontent.com",
           "client_type": 3
         }

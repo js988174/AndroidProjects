@@ -1,12 +1,15 @@
 package com.rud.mandeumtalk.board
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.rud.mandeumtalk.R
 
 class BoardAdapter (val items : ArrayList<BoardModel>) : RecyclerView.Adapter<BoardAdapter.ViewHolder>(){
@@ -32,6 +35,8 @@ class BoardAdapter (val items : ArrayList<BoardModel>) : RecyclerView.Adapter<Bo
         init {
             itemView.setOnClickListener {
                 listener?.onItemClick(this, itemView, adapterPosition)
+                Log.e("listenerlistener", listener.toString())
+
             }
         }
         fun setItem (item : BoardModel) {
@@ -39,6 +44,20 @@ class BoardAdapter (val items : ArrayList<BoardModel>) : RecyclerView.Adapter<Bo
             itemView.findViewById<TextView>(R.id.input2).text = item.contents
             itemView.findViewById<TextView>(R.id.input3).text = item.writer
             itemView.findViewById<TextView>(R.id.input4).text = item.dateTime
+            itemView.findViewById<TextView>(R.id.input5).text = item.writerUid
+            val key = item.key
+            Log.e("keykey", key)
+
+            val storageReference = Firebase.storage.reference.child(key + ".png")
+            val imageViewFromFB = itemView.findViewById<ImageView>(R.id.imageView3)
+
+            storageReference.downloadUrl.addOnCompleteListener({ task ->
+                if (task.isSuccessful) {
+                    Glide.with(itemView).load(task.result).into(imageViewFromFB)
+                } else {
+                    Log.e("taskfail", key)
+                }
+            })
         }
     }
 }

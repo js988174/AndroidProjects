@@ -22,7 +22,6 @@ import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.rud.mandeumtalk.MainActivity
 import com.rud.mandeumtalk.R
-import com.rud.mandeumtalk.board.BoardActivity
 import com.rud.mandeumtalk.databinding.ActivityIntroBinding
 import kotlinx.android.synthetic.main.activity_intro.*
 
