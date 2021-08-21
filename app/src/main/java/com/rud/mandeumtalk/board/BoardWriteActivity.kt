@@ -6,10 +6,12 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -56,6 +58,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }
             val dateTime : String
             = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREAN).format(Calendar.getInstance().time)
+            val writeDateTime : String = "작성한 날짜 : $dateTime"
 //            val dateTime : String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).toString()
             val writerUid : String = auth.currentUser?.uid.toString()
 
@@ -74,7 +77,7 @@ class BoardWriteActivity : AppCompatActivity() {
                 val key = myRef.push().key.toString()
                 Log.e("keyyyy", key)
 
-                myRef.child(key).setValue(BoardModel(title, contents, currentUserUid, dateTime, writerUid, key))
+                myRef.child(key).setValue(BoardModel(title, contents, currentUserUid, writeDateTime, writerUid, key))
 
                 if (isImageUpload == true) {
                     imageUpload(key)
@@ -97,6 +100,7 @@ class BoardWriteActivity : AppCompatActivity() {
             val currentUserUid = auth.currentUser?.email.toString()
             val dateTime : String
                     = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREAN).format(Calendar.getInstance().time)
+            val writeDateTime : String = "작성한 날짜 : $dateTime"
             val writerUid : String = auth.currentUser?.uid.toString()
 
             for (i in 1..10) {
@@ -106,7 +110,7 @@ class BoardWriteActivity : AppCompatActivity() {
                 myRef.child(key).setValue(BoardModel("$i 앱개발 프로젝트 제목 $i",
                                     "앱개발 프로젝트 입니다.\n$i 번 게시물 입니다.\n해당 게시물은 개발자의 이스터 에그 입니다.\n반갑습니다. 만듦입니다.",
                                             currentUserUid,
-                                            dateTime,
+                                            writeDateTime,
                                             writerUid,
                                             key))
 
@@ -114,6 +118,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }
             Toast.makeText(this, "개발자의 이스터 에그가 발동되었습니다.\n해당 계정으로 10개의 게시물이 생성됩니다.", Toast.LENGTH_LONG).show()
             val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
@@ -147,7 +152,15 @@ class BoardWriteActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == 100) {
+            findViewById<ImageView>(R.id.uploadImage).isVisible = true
             findViewById<ImageView>(R.id.uploadImage).setImageURI(data?.data)
         }
+    }
+
+    override fun onBackPressed(){
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }

@@ -84,7 +84,7 @@ class JoinActivity : AppCompatActivity() {
 						Toast.makeText(this, "Thank You for Join Us", Toast.LENGTH_LONG).show()
 
 						val intent = Intent(this, MainActivity::class.java)
-						intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+						intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
 						startActivity(intent)
 
 
@@ -96,38 +96,12 @@ class JoinActivity : AppCompatActivity() {
 			}
 
 		}
-
 		val activity : String = intent.getStringExtra("Activity").toString()
-		Log.e("Activity (Hyeonseung)", activity)
-
-//		if (activity == "Login") {
-//
-//
-//			val onBackPress = object : OnBackPress {
-//
-//				override fun onBackPressed() {
-//					Toast.makeText(this@JoinActivity, "안되는가", Toast.LENGTH_SHORT).show()
-//					val intent = Intent(this@JoinActivity, LoginActivity::class.java)
-//					startActivity(intent)
-//				}
-//			}
-//		}
-//		if (activity == "Intro") {
-//			val onBackPress = object : OnBackPress {
-//
-//				override fun onBackPressed() {
-//					Toast.makeText(this@JoinActivity, "안되는가", Toast.LENGTH_SHORT).show()
-//					val intent = Intent(this@JoinActivity, IntroActivity::class.java)
-//					startActivity(intent)
-//				}
-//			}
-//		}
 	}
 
 	override fun onBackPressed() {
 
 		val activity = intent.getStringExtra("Activity").toString()
-		Log.d("Hyeonseung_activity", "$activity")
 
 		if(activity == "Login") {
 			val intent = Intent(this, LoginActivity::class.java)
@@ -138,15 +112,4 @@ class JoinActivity : AppCompatActivity() {
 			startActivity(intent)
 		}
 	}
-
-//		Log.e("Hyeonseung - activity : ", "$activity")
-//
-//		if (activity == "Login") {
-//			val intent = Intent(this, LoginActivity::class.java)
-//			startActivity(intent)
-//		}
-//		if (activity == "Intro") {
-//			val intent = Intent(this, IntroActivity::class.java)
-//			startActivity(intent)
-//		}
 }

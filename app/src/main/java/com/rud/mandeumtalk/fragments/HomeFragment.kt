@@ -93,12 +93,12 @@ class HomeFragment : Fragment() {
 
 				var intent = Intent()
 
-				if (currentUserUid == writerUid) {
-					intent = Intent(activity, WriterBoardViewActivity::class.java)
-				}
-				if (currentUserUid != writerUid) {
+//				if (currentUserUid == writerUid) {
+//					intent = Intent(activity, WriterBoardViewActivity::class.java)
+//				}
+//				if (currentUserUid != writerUid) {
 					intent = Intent(activity, BoardViewActivity::class.java)
-				}
+//				}
 
 				intent.putExtra("Board Title", title)
 				intent.putExtra("Board Content", content)

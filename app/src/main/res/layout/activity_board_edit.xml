@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".board.BoardWriteActivity">
+    tools:context=".board.BoardEditActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -36,32 +35,32 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="게시물 작성"
+                android:text="게시물 수정"
                 android:textColor="@color/mainPink"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="5dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/imageplus"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/writeUploadButton"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:src="@drawable/imageplus"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/editUploadButton"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <TextView
-                android:id="@+id/writeUploadButton"
+                android:id="@+id/editUploadButton"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:paddingTop="5dp"
-                android:text="등록"
+                android:text="수정"
                 android:textColor="@color/mainSkyBlue"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -150,4 +149,5 @@
                 android:src="@drawable/together" />
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
