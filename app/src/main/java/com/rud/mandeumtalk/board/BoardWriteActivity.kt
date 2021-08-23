@@ -97,7 +97,10 @@ class BoardWriteActivity : AppCompatActivity() {
             val database = Firebase.database
             val myRef = database.getReference("Board")
 
-            val currentUserUid = auth.currentUser?.email.toString()
+            var currentUserEmail = auth.currentUser?.email.toString()
+            if (currentUserEmail == null || currentUserEmail == "null" || currentUserEmail == "") {
+                currentUserEmail = "비회원 게시물"
+            }
             val dateTime : String
                     = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREAN).format(Calendar.getInstance().time)
             val writeDateTime : String = "작성한 날짜 : $dateTime"
@@ -109,7 +112,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
                 myRef.child(key).setValue(BoardModel("$i 앱개발 프로젝트 제목 $i",
                                     "앱개발 프로젝트 입니다.\n$i 번 게시물 입니다.\n해당 게시물은 개발자의 이스터 에그 입니다.\n반갑습니다. 만듦입니다.",
-                                            currentUserUid,
+                                            currentUserEmail,
                                             writeDateTime,
                                             writerUid,
                                             key))

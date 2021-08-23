@@ -56,7 +56,7 @@ class BoardEditActivity : AppCompatActivity() {
 //                        "\n$key", Toast.LENGTH_LONG).show()
 
                 findViewById<EditText>(R.id.titleArea).setText(dataModel?.title)
-                findViewById<EditText>(R.id.titleArea).setText(dataModel?.contents)
+                findViewById<EditText>(R.id.contentsArea).setText(dataModel?.contents)
                 writer = dataModel!!.writer
                 writerUid = dataModel!!.writerUid
 

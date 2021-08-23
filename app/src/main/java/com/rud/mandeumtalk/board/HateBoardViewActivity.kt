@@ -75,17 +75,19 @@ class HateBoardViewActivity : AppCompatActivity() {
             builder.setPositiveButton(str_buttonOK, DialogInterface.OnClickListener { dialog, which ->
 
                 Toast.makeText(this, "신고가 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                Firebase.database.getReference("Hate_List").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(key).removeValue()
 
-//                Firebase.database.getReference("Hate_List").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(key).setValue("Hate")
-
-//                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
 //                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                startActivity(intent)
-                finish()
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
+//                finish()
+
             })
             builder.setNegativeButton(str_buttonNO, DialogInterface.OnClickListener { dialog, which ->
 
                 Toast.makeText(this, "게시물 신고를 유지합니다.", Toast.LENGTH_SHORT).show()
+                finish()
             })
 
             alertDialog = builder.create()

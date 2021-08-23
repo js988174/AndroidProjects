@@ -108,7 +108,7 @@ class BoardViewActivity : AppCompatActivity() {
 //            builder.setCancelable(false) //외부 레이아웃 클릭시도 팝업창이 사라지지않게 설정
             builder.setPositiveButton(str_buttonOK, DialogInterface.OnClickListener { dialog, which ->
 
-                Toast.makeText(this, "신고가 접수되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "내가 신고한 게시물 목록에 추가되었습니다.", Toast.LENGTH_SHORT).show()
 
                 Firebase.database.getReference("Hate_List").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(key).setValue("Hate")
 
