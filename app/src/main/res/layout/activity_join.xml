@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Join.JoinActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:text="회원 가입"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/white_edittext"
+            android:layout_weight="1"
+            android:text="TextView" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/allCheckBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전체 동의" />
+
+    <CheckBox
+        android:id="@+id/firstCheckBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(필수) 이용약관" />
+
+        <CheckBox
+            android:id="@+id/secondCheckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(필수) 개인정보 수집 및 이용 동의" />
+
+
+        <CheckBox
+            android:id="@+id/thirdCheckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(필수) 선불카드 이용약관" />
+
+        <CheckBox
+            android:id="@+id/fourthCheckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(필수) 위치기반 서비스 이용약관" />
+
+
+        <CheckBox
+        android:id="@+id/fifthCheckBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(선택) 마케팅 수신 및 이용 동의" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>

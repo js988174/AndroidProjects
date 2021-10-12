@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Java/graalvm-ce-java11-21.0.0.2/caches/transforms-2/files-2.1/6552419aa7900daffdb2b1ff32816920/jetified-ImageSlideshow-0.1.0/res/drawable/default_selected_dot.xml" value="0.35185185185185186" />
+        <entry key="..\:/Java/graalvm-ce-java11-21.0.0.2/caches/transforms-2/files-2.1/6552419aa7900daffdb2b1ff32816920/jetified-ImageSlideshow-0.1.0/res/drawable/default_unselected_dot.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/default_unselected_dot.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_reorder_black_24dp.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/menu_selector_color.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/default_selected_dot.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/ic_pager_item_1.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/kakao_button.xml" value="0.3764102564102564" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/main_rectangle.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/main_shape.xml" value="0.2359375" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/red_edittext.xml" value="0.37037037037037035" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable/white_edittext.xml" value="0.37037037037037035" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/font/font.xml" value="0.3963541666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_auth.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_detail.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_find.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_image.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_image2.xml" value="0.1828125" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join2.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join3.xml" value="0.25" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_main.xml" value="0.3515625" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_main2.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_notification.xml" value="0.190625" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_port.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_reply.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_setting.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_sms_auth.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_weather.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/banner_list_item.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/content_image.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/event_menu_item.xml" value="0.67" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/event_menu_item2.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_alarm.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_order.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_profile.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_1.xml" value="0.2046875" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_1p.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_2.xml" value="0.2046875" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_3.xml" value="0.2046875" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/holder_terms.xml" value="0.2046875" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/item_page.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/menu_child.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/menu_parent.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/row.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/row_item.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/menu/bottom_main_nav.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/menu/bottom_navigation_item.xml" value="0.20104166666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
