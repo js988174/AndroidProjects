@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mandeum.dessert39">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,6 +10,11 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
 
     <application
         android:name=".Login.kakao.GlobalApplication"
@@ -21,28 +26,61 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dessert39"
         android:usesCleartextTraffic="true">
+        <provider
+            android:authorities="com.mandeum.dessert39.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
         <activity
-            android:name=".retrofit2.ImageActivity"
+            android:name=".Join.JoinWebViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join2_4Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join2_3Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join2_2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join2_1Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join5Activity"
             android:exported="true"
-            android:label="@string/title_activity_image"
+            android:label="@string/title_activity_join5"
             android:theme="@style/Theme.Dessert39.NoActionBar" />
         <activity
-            android:name=".retrofit2.WeatherActivity"
+            android:name=".Join.Join4Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Join.Join2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Find.Password.FindPw3Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Find.Password.FindPw2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Find.Password.FindPw1Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Find.Id.Find3Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Find.Id.Find2Activity"
             android:exported="true" />
         <activity
             android:name=".Join.Join3Activity"
             android:exported="true" />
         <activity
             android:name=".Notification.SettingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Notification.DetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Notification.ReplyActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Notification.NotificationActivity"
             android:exported="true" />
         <activity
             android:name=".Main.HomeActivity"
@@ -52,12 +90,16 @@
             android:exported="true" />
         <activity
             android:name=".Login.LoginActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Sms.FindActivity"
+            android:name=".Find.Id.Find1Activity"
             android:exported="true" />
         <activity
             android:name=".Intro.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,17 +116,9 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="kakao{a58f25b539a64355cfd9e75cfbd6b217}" />
+                    android:scheme="kakao{2b54b9d295e0e233ac3c2ea41dd6128d}" />
             </intent-filter>
         </activity>
-
-        <receiver
-            android:name=".Sms.FindActivity$MySMSReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

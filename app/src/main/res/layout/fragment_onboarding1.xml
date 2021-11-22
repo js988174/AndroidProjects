@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intro.Onboarding.Onboarding1Fragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/TextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:text="APP PAYMENT"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/Textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/tmoneybold"
+        android:text="디저트39 "
+        android:textColor="@color/check_NoColor"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+
+    <TextView
+        android:id="@+id/Textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tmoneybold"
+        android:text="앱"
+        android:textSize="24dp"
+        android:textColor="@color/black2"
+        app:layout_constraintStart_toEndOf="@+id/Textview2"
+        app:layout_constraintTop_toTopOf="@+id/Textview2" />
+
+    <TextView
+        android:id="@+id/Textview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tmoneybold"
+        android:text="에서"
+        android:textColor="@color/black2"
+        android:textSize="24dp"
+        app:layout_constraintStart_toEndOf="@+id/Textview3"
+        app:layout_constraintTop_toTopOf="@+id/Textview3" />
+
+    <TextView
+        android:id="@+id/Textview5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:fontFamily="@font/tmoneybold"
+        android:text="결제와 주문"
+        android:textColor="@color/black2"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Textview2" />
+
+    <TextView
+        android:id="@+id/Textview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tmoneybold"
+        android:text="을 한 번에!"
+        android:textColor="@color/check_NoColor"
+        android:textSize="24dp"
+        app:layout_constraintStart_toEndOf="@+id/Textview5"
+        app:layout_constraintTop_toBottomOf="@+id/Textview2" />
+
+    <ImageView
+        android:layout_width="344dp"
+        android:layout_height="325dp"
+        android:layout_marginTop="92dp"
+        android:src="@drawable/intro_banner1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Textview4" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.mandeum.dessert39.Intro
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mandeum.dessert39.Main.Home.Slide.HomeSliderRecyclerAdapter
 import com.mandeum.dessert39.R
 
 class IntroSlideAdapter(private var pageList: ArrayList<IntroPageItem>) : RecyclerView.Adapter<IntroSlideViewHolder>() {

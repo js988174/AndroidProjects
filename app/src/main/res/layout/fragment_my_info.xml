@@ -1,0 +1,1681 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Main.My39.Info.MyInfoFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="내 정보"
+            android:fontFamily="@font/pretendardsemi"
+            android:textColor="@color/black2"
+            android:textSize="24dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/findImage"
+            android:layout_width="70dp"
+            android:layout_height="50dp">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:src="@drawable/left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/background_radius_gray14"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="33dp"
+                    android:layout_height="39dp"
+                    android:src="@drawable/person_default"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/image_btn"
+                android:layout_width="73dp"
+                android:layout_height="28dp"
+                android:background="@drawable/background_radius_gray6"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendmedium"
+                    android:text="이미지 변경"
+                    android:textColor="@color/black4"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_bold"
+                android:text="회원정보"
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_layout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_id_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/join_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+                <TextView
+                    android:id="@+id/idText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="아이디"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/joinIdArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="아이디를 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_id_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_id_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/idText" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_pw_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_id_layout">
+
+                <TextView
+                    android:id="@+id/pwText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="비밀번호"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pwText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pwText"
+                    app:layout_constraintStart_toEndOf="@+id/pwText"
+                    app:layout_constraintTop_toTopOf="@+id/pwText" />
+
+                <TextView
+                    android:id="@+id/pwText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendmedium"
+                    android:hint="영문+숫자 조합 8자 이상"
+                    android:textColor="@color/colorGray4"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pwText2"
+                    app:layout_constraintStart_toEndOf="@+id/pwText2"
+                    app:layout_constraintTop_toTopOf="@+id/pwText2" />
+
+                <EditText
+                    android:id="@+id/joinPwArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="비밀번호를 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_pw_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_pw_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/pwText" />
+
+
+                <ImageView
+                    android:id="@+id/clearPw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="14dp"
+                    android:src="@drawable/clear_default"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:id="@+id/clearPw2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="14dp"
+                    android:src="@drawable/clear"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_pw2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_pw_layout">
+
+                <TextView
+                    android:id="@+id/pw2Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="비밀번호 확인"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pw2Text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pw2Text"
+                    app:layout_constraintStart_toEndOf="@+id/pw2Text"
+                    app:layout_constraintTop_toTopOf="@+id/pw2Text" />
+
+                <TextView
+                    android:id="@+id/pw2Text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendmedium"
+                    android:text=""
+                    android:textColor="@color/colorGray4"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pw2Text2"
+                    app:layout_constraintStart_toEndOf="@+id/pw2Text2"
+                    app:layout_constraintTop_toTopOf="@+id/pw2Text2" />
+
+                <EditText
+                    android:id="@+id/joinPw2Area"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="비밀번호를 한번 더 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_pw2_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_pw2_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/pw2Text" />
+
+
+                <ImageView
+                    android:id="@+id/clear2Pw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="14dp"
+                    android:src="@drawable/clear_default"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:id="@+id/clear2Pw2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="14dp"
+                    android:src="@drawable/clear"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_pw2_layout">
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="이메일"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/emailText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailText"
+                    app:layout_constraintStart_toEndOf="@+id/emailText"
+                    app:layout_constraintTop_toTopOf="@+id/emailText" />
+
+
+                <EditText
+                    android:id="@+id/joinEmailArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="이메일을 입력해주세요."
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_email_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_email_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_nickname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_email_layout">
+
+                <TextView
+                    android:id="@+id/nicknameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="닉네임"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/joinNicknameArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="닉네임을 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_nickname_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_nickname_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/nicknameText" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/join_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_nickname_layout">
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="이름"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/joinNameArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="홍길동"
+                    android:background="@android:color/transparent"
+                    android:inputType="text"
+                    android:fontFamily="@font/pretendard_light"
+                    android:privateImeOptions="defaultInputmode=korean"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/join_name_layout"
+                    app:layout_constraintStart_toStartOf="@+id/join_name_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/birth_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/join_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_name_layout">
+
+                <TextView
+                    android:id="@+id/birthText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="생년월일"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/birthArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="phone"
+                    android:text="01012345678"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/birth_layout"
+                    app:layout_constraintStart_toStartOf="@+id/birth_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/birthText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/phone_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/birth_layout">
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="휴대폰 번호"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/phoneArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:text="010-1111-1111"
+                    android:textColor="@color/black4"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/pretendard_light"
+                    app:layout_constraintBottom_toBottomOf="@+id/phone_layout"
+                    app:layout_constraintStart_toStartOf="@+id/phone_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneText" />
+
+                <ImageView
+                    android:id="@+id/clearId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="7dp"
+                    android:src="@drawable/clear_default"
+                    app:layout_constraintBottom_toBottomOf="@+id/checkBtnId"
+                    app:layout_constraintEnd_toStartOf="@+id/checkBtnId"
+                    app:layout_constraintTop_toTopOf="@+id/checkBtnId" />
+
+                <ImageView
+                    android:id="@+id/clearId2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="7dp"
+                    android:src="@drawable/clear"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/checkBtnId"
+                    app:layout_constraintEnd_toStartOf="@+id/checkBtnId"
+                    app:layout_constraintTop_toTopOf="@+id/checkBtnId" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/checkBtnId"
+                    android:layout_width="60dp"
+                    android:layout_height="27dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="11dp"
+                    android:background="@drawable/background_radius_gray2"
+                    android:fontFamily="@font/pretendardm"
+                    android:outlineProvider="none"
+                    android:text="본인인증"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="38dp"
+                android:background="@color/colorGray"
+                app:layout_constraintTop_toBottomOf="@+id/phone_layout"/>
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_bold"
+                android:text="약관설정"
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view1"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="17dp"
+                android:text="마케팅 수신 동의 - SMS/이메일/전화"
+                android:textColor="@color/black5"
+                android:fontFamily="@font/lexenddeca_regular"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="약관 보기"
+                android:fontFamily="@font/pretendardregular"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorGray12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="43dp"
+                android:layout_height="1dp"
+                android:background="@color/colorGray12"
+                app:layout_constraintEnd_toEndOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/setting_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:checked="true"
+                android:layout_marginRight="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray"
+                app:layout_constraintTop_toBottomOf="@+id/view2"/>
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="회원님의 취향 정보"
+                android:textColor="@color/black4"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <TextView
+                android:id="@+id/textview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/pretendardregular"
+                android:text="회원님의 평소 카페 방문 시, 어떤 종류의 제품을 좋아하시는지
+                \n선택해 주시면 메뉴 선택시추천을 도와드릴께요:)"
+                android:textColor="@color/colorGray5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="카테고리 선택"
+                android:textColor="@color/black4"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text=" [중복 선택 가능]"
+                android:textColor="@color/black2"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/coffee_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="커피"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/tea_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView25" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tea_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="티"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/d_cafe_btn"
+                app:layout_constraintStart_toEndOf="@+id/coffee_btn"
+                app:layout_constraintTop_toBottomOf="@id/textView25" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/d_cafe_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="디카페인"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/tea_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView25" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/smoodi_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스무디"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/aid_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coffee_btn" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/aid_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="에이드"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/shake_btn"
+                app:layout_constraintStart_toEndOf="@+id/smoodi_btn"
+                app:layout_constraintTop_toBottomOf="@id/coffee_btn" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/shake_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="쉐이크"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/aid_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coffee_btn" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/milkTea_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="밀크티"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/ice_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/smoodi_btn" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ice_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="빙수"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/dessert_btn"
+                app:layout_constraintStart_toEndOf="@+id/milkTea_btn"
+                app:layout_constraintTop_toBottomOf="@id/smoodi_btn" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dessert_btn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="디저트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/ice_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/smoodi_btn" />
+
+
+
+            <TextView
+                android:id="@+id/like_Juice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="선호하는 음료 키워드"
+                android:textColor="@color/black4"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/milkTea_btn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text=" [최대 3개 중복 선택 가능]"
+                android:textColor="@color/black2"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/like_Juice"
+                app:layout_constraintStart_toEndOf="@+id/like_Juice"
+                app:layout_constraintTop_toTopOf="@+id/like_Juice" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice1"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="달달한"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_Juice" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice2"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="상큼한"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice3"
+                app:layout_constraintStart_toEndOf="@+id/juice1"
+                app:layout_constraintTop_toBottomOf="@id/like_Juice" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice3"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="청량한"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/juice2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_Juice" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice4"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="고소한"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/juice1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice5"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="신메뉴"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice6"
+                app:layout_constraintStart_toEndOf="@+id/juice4"
+                app:layout_constraintTop_toBottomOf="@id/juice1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice6"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="인기메뉴"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/juice5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/juice4" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice7"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="대용량"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/juice4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice8"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="과일"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/juice9"
+                app:layout_constraintStart_toEndOf="@+id/juice7"
+                app:layout_constraintTop_toBottomOf="@id/juice4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/juice9"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="건강"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/juice5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/juice1" />
+
+
+
+            <TextView
+                android:id="@+id/like_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="선호하는 카페 브랜드"
+                android:textColor="@color/black4"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/juice7" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text=" [최대 3개 중복 선택 가능]"
+                android:textColor="@color/black2"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/like_cafe"
+                app:layout_constraintStart_toEndOf="@+id/like_cafe"
+                app:layout_constraintTop_toTopOf="@+id/like_cafe" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand1"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스타벅스"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_cafe" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand2"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="투썸플레이스"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand3"
+                app:layout_constraintStart_toEndOf="@+id/brand1"
+                app:layout_constraintTop_toBottomOf="@id/like_cafe" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand3"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="메가커피"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/brand2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_cafe" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand4"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="이디야"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/brand1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand5"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="빽다방"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand6"
+                app:layout_constraintStart_toEndOf="@+id/brand4"
+                app:layout_constraintTop_toBottomOf="@id/brand1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand6"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="폴바셋"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/brand5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/brand1" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand7"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="할리스"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/brand4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand8"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="빽다방"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/brand9"
+                app:layout_constraintStart_toEndOf="@+id/brand7"
+                app:layout_constraintTop_toBottomOf="@id/brand4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brand9"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="없음"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/brand8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/brand4" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/brand_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/brand7" >
+
+            <TextView
+                android:id="@+id/like_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="폴바셋"
+                android:textColor="@color/check_NoColor"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/like_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text=" 에서 즐겨먹는 음료"
+                android:textColor="@color/black4"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@id/like_brand"
+                app:layout_constraintTop_toTopOf="@+id/like_brand" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text=" [최대 3개 중복 선택 가능]"
+                android:textColor="@color/black2"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/like_bar"
+                app:layout_constraintStart_toEndOf="@+id/like_bar"
+                app:layout_constraintTop_toTopOf="@+id/like_bar" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="아메리카노"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_bar" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite2"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="카페 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite3"
+                app:layout_constraintStart_toEndOf="@+id/favorite1"
+                app:layout_constraintTop_toBottomOf="@id/like_bar" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite3"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="에스프레소"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_bar" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite4"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="시나몬 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite5"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="녹차 프라페"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite6"
+                app:layout_constraintStart_toEndOf="@+id/favorite4"
+                app:layout_constraintTop_toBottomOf="@id/favorite1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite6"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스트로베리 요거트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite7"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="시나몬 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite8"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="녹차 프라페"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite9"
+                app:layout_constraintStart_toEndOf="@+id/favorite7"
+                app:layout_constraintTop_toBottomOf="@id/favorite4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite9"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스트로베리 요거트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite4" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/brand_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/brand_layout1">
+
+
+            <TextView
+                android:id="@+id/like_brand2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="할리스"
+                android:textColor="@color/check_NoColor"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/like_bar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text=" 에서 즐겨먹는 음료"
+                android:textColor="@color/black4"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@id/like_brand2"
+                app:layout_constraintTop_toTopOf="@+id/like_brand2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text=" [최대 3개 중복 선택 가능]"
+                android:textColor="@color/black2"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/like_bar2"
+                app:layout_constraintStart_toEndOf="@+id/like_bar2"
+                app:layout_constraintTop_toTopOf="@+id/like_bar2" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_1"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="시나몬 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_bar2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_2"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="녹차 프라페"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_3"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_1"
+                app:layout_constraintTop_toBottomOf="@id/like_bar2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_3"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스트로베리 요거트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_bar2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_4"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="시나몬 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_5"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="녹차 프라페"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_6"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_4"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_6"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스트로베리 요거트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_1" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_7"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="시나몬 라떼"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_8"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="녹차 프라페"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite1_9"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_7"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/favorite1_9"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_radius_white_button2"
+                android:fontFamily="@font/pretendardregular"
+                android:stateListAnimator="@null"
+                android:text="스트로베리 요거트"
+                android:textColor="@drawable/selector_button_text"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@+id/favorite1_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite1_4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_maincolor"
+                android:fontFamily="@font/pretendardm"
+                android:outlineProvider="none"
+                android:text="저장"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/brand_layout2" />
+
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/saveBtn"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

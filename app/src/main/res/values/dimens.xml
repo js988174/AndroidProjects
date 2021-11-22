@@ -3,4 +3,7 @@
     <dimen name="pageMargin">25dp</dimen>
     <dimen name="pageWidth">50dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
+    <dimen name="size">12dp</dimen>
 </resources>

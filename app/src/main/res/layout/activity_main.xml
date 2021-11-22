@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,52 +7,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/white"
     tools:context=".Intro.MainActivity">
 
-    <FrameLayout
-        android:layout_gravity="center"
-        android:layout_width="350dp"
-        android:layout_height="350dp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.viewpager2.widget.ViewPager2
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_gravity="center">
+
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/my_intro_view_pager"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/indicator"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"/>
-
-        <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
-            android:id="@+id/dots_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:dotsColor="#F1F1F1"
-            app:dotsCornerRadius="8dp"
-            app:dotsSize="16dp"
-            app:dotsSpacing="4dp"
-            app:dotsWidthFactor="2.5"
-            app:selectedDotColor="#FFC107"
-            app:progressMode="true"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="130dp"/>
+            android:layout_gravity="center" />
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="350dp"
+    <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="로그인"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:dotsColor="@color/check_NoColor"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="10dp"
+        app:dotsSpacing="4dp"
+        app:dotsWidthFactor="2.5"
+        app:progressMode="true"
+        app:selectedDotColor="@color/check_NoColor" />
 
-    <Button
-        android:id="@+id/joinBtn"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="회원가입" />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/design_bottom_sheet_order"
+        app:behavior_hideable="true"
+        tools:context=".Main.Order.dialog.OrderFindShopFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/order_background"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/name_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="길동"
+                android:textColor="@color/black2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="님과 가장 가까운 매장"
+                android:textColor="@color/black2"
+                app:layout_constraintBottom_toBottomOf="@+id/user"
+                app:layout_constraintStart_toEndOf="@+id/user"
+                app:layout_constraintTop_toTopOf="@+id/user" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_002"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 위치에서 가까운 디저트39 매장입니다."
+            android:textColor="@color/black5"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_002">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/location_no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@drawable/background_radius_gray10">
+
+                <ImageView
+                    android:id="@+id/imageView35"
+                    android:layout_width="31dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/location_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:gravity="center"
+                    android:text="근처에 가까운 매장이 없습니다.\n다른 매장을 선택해 주새요 :)"
+                    android:textColor="@color/black2"
+                    android:textSize="14dp"
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView35" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/location_re"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/location_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_btn"
+            android:layout_width="114dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/background_radius_shop"
+            android:fontFamily="@font/pretendardsemi"
+            android:text="취소"
+            android:textColor="@color/black2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/find_shop"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/find_shop"
+            android:layout_width="158dp"
+            android:layout_height="42dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/background_radius_shop"
+            app:layout_constraintStart_toEndOf="@+id/cancel_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="다른 매장 선택"
+                android:textColor="@color/black2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/bottomsheet_dialog2"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout8"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bottom_home"
+        app:layout_constraintBottom_toBottomOf="@+id/view_1"
+        app:layout_constraintEnd_toEndOf="@+id/view_1"
+        app:layout_constraintStart_toStartOf="@+id/view_1"
+        app:layout_constraintTop_toTopOf="@+id/view_1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

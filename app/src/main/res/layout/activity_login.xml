@@ -1,160 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".Login.LoginActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="60dp"
-            android:text="로그인"
-            android:textStyle="bold"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="230dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp">
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager_banner"
-        android:layout_gravity="center"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:layout_marginBottom="20dp"/>
-    </FrameLayout>
+        android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/textID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:text="아이디" />
-
-        <EditText
-            android:id="@+id/emailArea"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="아이디를 입력해주세요"
-            android:singleLine="true"
-            android:background="@drawable/white_edittext"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+            </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textPw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:text="비밀 번호" />
-
-        <EditText
-            android:id="@+id/passwordArea"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:hint="비밀번호를 입력해주세요"
-            android:singleLine="true"
-            android:background="@drawable/white_edittext"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:enabled="false"
-        android:text="로그인" />
-
-    <TextView
-            android:id="@+id/findBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="아이디/비밀번호 찾기" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <Button
-        android:id="@+id/joinBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:text="회원가입하기" />
-
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id="@+id/naverBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="네이버로 시작하기" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="56dp"
+                android:fontFamily="@font/pretendardm"
+                android:text="오늘도 디저트39와\n함께해요 :)"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.kakao.usermgmt.LoginButton
-        android:id="@+id/kakaoBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="카카오로 시작하기" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/id_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintTop_toBottomOf="@+id/textView17">
 
-        <Button
-            android:id="@+id/IdBtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:text="회원가입하기" />
+                <TextView
+                    android:id="@+id/textArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="아이디"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/idArea2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="아이디를 입력해 주세요."
+                    android:inputType="text"
+                    android:privateImeOptions="defaultInputmode=english"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/id_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/clear"
+                    app:layout_constraintStart_toStartOf="@+id/id_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/textArea" />
 
-</LinearLayout>
+                <ImageView
+                    android:id="@+id/clear"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/clear"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/idArea2"
+                    app:layout_constraintEnd_toEndOf="@+id/id_layout"
+                    app:layout_constraintTop_toTopOf="@+id/idArea2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pw_layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintTop_toBottomOf="@+id/id_layout">
+
+                <TextView
+                    android:id="@+id/passwordArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="비밀번호"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="@+id/pw_layout"
+                    app:layout_constraintTop_toTopOf="@+id/pw_layout" />
+
+                <EditText
+                    android:id="@+id/passwordArea2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@android:color/transparent"
+                    android:hint="비밀번호를 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pw_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/watch_default"
+                    app:layout_constraintStart_toStartOf="@+id/pw_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordArea" />
+
+                <ImageView
+                    android:id="@+id/watch_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/watch_default"
+                    app:layout_constraintBottom_toBottomOf="@+id/passwordArea2"
+                    app:layout_constraintEnd_toEndOf="@+id/pw_layout"
+                    app:layout_constraintTop_toTopOf="@+id/passwordArea2" />
+
+
+                <ImageView
+                    android:id="@+id/watch_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/watch_color2"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/passwordArea2"
+                    app:layout_constraintEnd_toEndOf="@+id/pw_layout"
+                    app:layout_constraintTop_toTopOf="@+id/passwordArea2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <android.widget.Button
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_default"
+                android:clickable="false"
+                android:fontFamily="@font/pretendardm"
+                android:gravity="center"
+                android:outlineProvider="none"
+                android:text="로그인"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/pw_layout" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/findText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginBtn">
+
+                <TextView
+                    android:id="@+id/findId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/pretendardm"
+                    android:text="아이디찾기"
+                    android:textColor="@color/light_black"
+                    android:textSize="12dp"
+                    app:layout_constraintLeft_toLeftOf="@id/findText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/pretendardm"
+                    android:text=" |  "
+                    android:textColor="@color/light_black"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toStartOf="@+id/findPw"
+                    app:layout_constraintStart_toEndOf="@+id/findId" />
+
+                <TextView
+                    android:id="@+id/findPw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/pretendardm"
+                    android:text="비밀번호찾기"
+                    android:textColor="@color/light_black"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/findText" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/joinBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="@drawable/background_radius_maincolor"
+                android:fontFamily="@font/pretendardm"
+                android:outlineProvider="none"
+                android:text="회원가입"
+                android:textColor="@color/colorWhite"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/kakaoBtn" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/kakaoBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:backgroundTint="#FEE500"
+                android:elevation="0dp"
+                android:fontFamily="@font/pretendardm"
+                android:gravity="center"
+                android:outlineProvider="none"
+                android:text="카카오 로그인"
+                android:textColor="@color/black"
+                app:icon="@drawable/kakao"
+                app:iconPadding="10dp"
+                app:iconSize="13dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                app:iconTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/naverBtn" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/naverBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#03CF5D"
+                android:fontFamily="@font/pretendardm"
+                android:gravity="center"
+                android:outlineProvider="none"
+                android:text="네이버 로그인"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:icon="@drawable/naver"
+                app:iconPadding="10dp"
+                app:iconSize="13dp"
+                app:iconTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
