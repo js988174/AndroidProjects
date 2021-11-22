@@ -9,7 +9,7 @@ class OrderMenuDetailModel : ViewModel() {
 
     private var mutableLiveDataDessert: MutableLiveData<OrderMenuModel>?=null
 
-   
+   val name = String()
 
     private val _text = MutableLiveData<String>().apply {
 
