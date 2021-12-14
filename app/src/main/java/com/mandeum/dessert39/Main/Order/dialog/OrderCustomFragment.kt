@@ -12,7 +12,8 @@ import com.mandeum.dessert39.databinding.FragmentOrderCustomBinding
 
 class OrderCustomFragment : BottomSheetDialogFragment() {
 
-    lateinit var binding: FragmentOrderCustomBinding
+    private var _binding: FragmentOrderCustomBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class OrderCustomFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        binding = FragmentOrderCustomBinding.inflate(layoutInflater)
+        _binding = FragmentOrderCustomBinding.inflate(layoutInflater)
 
         binding.close.setOnClickListener {
             dialog?.dismiss()
@@ -33,5 +34,9 @@ class OrderCustomFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

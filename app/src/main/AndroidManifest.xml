@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mandeum.dessert39">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mandeum.dessert39"
+    tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher,MissingLeanbackSupport">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,6 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dessert39"
         android:usesCleartextTraffic="true">
+
         <provider
             android:authorities="com.mandeum.dessert39.fileprovider"
             android:name="androidx.core.content.FileProvider"
@@ -35,71 +38,107 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
         <activity
             android:name=".Join.JoinWebViewActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join2_4Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join2_3Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join2_2Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join2_1Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join5Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/title_activity_join5"
             android:theme="@style/Theme.Dessert39.NoActionBar" />
         <activity
             android:name=".Join.Join4Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join2Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Find.Password.FindPw3Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Find.Password.FindPw2Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Find.Password.FindPw1Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Find.Id.Find3Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Find.Id.Find2Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.Join3Activity"
-            android:exported="true" />
-        <activity
-            android:name=".Notification.SettingActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Main.HomeActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Join.JoinActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Login.LoginActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Find.Id.Find1Activity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Intro.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -116,9 +155,12 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="kakao{2b54b9d295e0e233ac3c2ea41dd6128d}" />
+                    android:scheme="@string/kakao_native_app_key" />
             </intent-filter>
         </activity>
+
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="2b54b9d295e0e233ac3c2ea41dd6128d"/>
+
     </application>
 
 </manifest>

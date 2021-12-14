@@ -9,15 +9,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mandeum.dessert39.Main.Card.CardChargeFragmentArgs
+import com.mandeum.dessert39.Main.Order.OrderFragment
 import com.mandeum.dessert39.Main.Order.OrderFragmentDirections
 import com.mandeum.dessert39.Main.Order.dialog.OrderCustomFragment
 import com.mandeum.dessert39.R
@@ -27,7 +31,12 @@ import kotlinx.android.synthetic.main.fragment_order_menu_detail.*
 
 class OrderMenuDetailFragment : Fragment() {
 
-    lateinit var binding : FragmentOrderMenuDetailBinding
+    companion object {
+        private var _binding: FragmentOrderMenuDetailBinding? = null
+        private val binding get() = _binding!!
+        private lateinit var callback: OnBackPressedCallback
+    }
+
 
     var hotSelected : Boolean = false
     var iceSelected : Boolean = false
@@ -38,6 +47,8 @@ class OrderMenuDetailFragment : Fragment() {
     var tumbler : Boolean = false
     var disCup : Boolean = false
     var favoriteSelect : Boolean = false
+//    private var dessert_price:TextView?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +59,9 @@ class OrderMenuDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrderMenuDetailBinding.inflate(layoutInflater)
+        _binding = FragmentOrderMenuDetailBinding.inflate(layoutInflater)
+
+
 
         val dessertImage : ImageView = binding.dessertImage
         val kname : TextView = binding.kName
@@ -94,19 +107,30 @@ class OrderMenuDetailFragment : Fragment() {
 //            }.apply()
 //        }
 
-        binding.favorite1.setOnClickListener {
-            if (favoriteSelect) {
-                binding.favorite1.setImageResource(R.drawable.star)
-                favoriteSelect = true
-            } else if (!favoriteSelect) {
-                binding.favorite1.setImageResource(R.drawable.star_gray)
-                favoriteSelect = false
-            }
+
+
+        binding.favorite1.setOnCheckedChangeListener { checkBox, isChecked ->
+
+                if (isChecked) {
+
+                } else {
+
+                }
+//            if (favoriteSelect) {
+//                binding.favorite1.setImageResource(R.drawable.star)
+//                favoriteSelect = true
+//            } else if (!favoriteSelect) {
+//                binding.favorite1.setImageResource(R.drawable.star_gray)
+//                favoriteSelect = false
+//            }
         }
 
         binding.findImage.setOnClickListener {
+            requireActivity().onBackPressed()
+            /*
             val action = OrderMenuDetailFragmentDirections.actionOrderMenuDetailFragmentToOrderFragment()
             findNavController().navigate(action)
+             */
         }
 
         binding.infoBtn.setOnClickListener {
@@ -386,5 +410,9 @@ class OrderMenuDetailFragment : Fragment() {
         return  select
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

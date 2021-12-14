@@ -43,7 +43,8 @@ import java.util.*
 
 class CardChargeFragment : Fragment(), View.OnClickListener {
 
-    lateinit var binding: FragmentCardChargeBinding
+    private var _binding: FragmentCardChargeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var card: CardListModel
     private lateinit var findUserCard : String
 
@@ -74,7 +75,7 @@ class CardChargeFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentCardChargeBinding.inflate(layoutInflater)
+        _binding = FragmentCardChargeBinding.inflate(layoutInflater)
 
         val cardImage : ImageView = binding.memberCard
         val args: CardChargeFragmentArgs by navArgs()
@@ -167,11 +168,10 @@ class CardChargeFragment : Fragment(), View.OnClickListener {
         }
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_cardChargeFragment_to_cardChoiceFragment)
+            requireActivity().onBackPressed()
         }
 
 
-        // button 조건식
 
         binding.autoCharge.setOnClickListener {
                     if (!normalChargeSelected) {
@@ -891,5 +891,11 @@ class CardChargeFragment : Fragment(), View.OnClickListener {
                 }
             }
         }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -19,6 +20,7 @@ import com.mandeum.dessert39.Main.Card.animation.expand
 import com.mandeum.dessert39.Main.Ord.CartModel
 import com.mandeum.dessert39.Main.Order.OrderFragmentDirections
 import com.mandeum.dessert39.Main.Order.dialog.CouponAdapter
+import com.mandeum.dessert39.Main.Order.dialog.CouponFragment
 import com.mandeum.dessert39.Main.Order.dialog.CouponModel
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentOrderCartBinding
@@ -26,11 +28,13 @@ import kotlinx.android.synthetic.main.card_custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_card_charge.*
 import kotlinx.android.synthetic.main.fragment_order2.*
 import kotlinx.android.synthetic.main.fragment_order_cart.*
+import kotlinx.android.synthetic.main.order_cart_item.*
 
 
 class OrderCartFragment : Fragment(),View.OnClickListener {
 
-    lateinit var binding : FragmentOrderCartBinding
+    private var _binding : FragmentOrderCartBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +45,7 @@ class OrderCartFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrderCartBinding.inflate(layoutInflater)
+        _binding = FragmentOrderCartBinding.inflate(layoutInflater)
 
         val cartModel: ArrayList<CartModel> = ArrayList()
         val rvAdapter : CartAdapter = CartAdapter(cartModel, requireContext())
@@ -50,9 +54,21 @@ class OrderCartFragment : Fragment(),View.OnClickListener {
         rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
 
+        binding.findImage.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         cartModel.add(CartModel("https://ifh.cc/g/RwgS7v.png", "달고나"
         ,"ICED","GRANDE","개인컵","6.700","샷추가+1",
         "물적게","얼음 많이","500","텀블러할인5%","500","2","25.300"))
+
+//        var totalPrice = ShoppingCart.getCart()
+//            .fold(0.toDouble()) { acc, cartItem -> acc + cartItem.quantity.times(cartItem.product.price!!.toDouble()) }
+//
+//        count_price.text = "$${totalPrice}"
+
+
+
 
         binding.checkBtn.setOnClickListener {
                 val dialog = Dialog(requireContext())
@@ -61,7 +77,7 @@ class OrderCartFragment : Fragment(),View.OnClickListener {
                     dialog.dismiss()
                 }
                 dialog.findViewById<Button>(R.id.order_ok).setOnClickListener {
-                    val action = OrderCartFragmentDirections.actionOrderCartFragmentToOrder2Fragment()
+                    val action = OrderCartFragmentDirections.actionOrderCartFragmentToPaymentFragment()
                     findNavController().navigate(action)
                     dialog.dismiss()
                 }
@@ -111,4 +127,10 @@ class OrderCartFragment : Fragment(),View.OnClickListener {
 
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

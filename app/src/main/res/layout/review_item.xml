@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout28"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="26dp"
+        android:paddingBottom="26dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendmedium"
+            android:text="아메리카노 아이스"
+            android:textColor="@color/black2"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.daman.library.SimpleRatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:total_stars="5"
+        app:animation="alpha"
+        app:drawable_empty="@drawable/smile_white"
+        app:drawable_filled="@drawable/smile_black"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout28"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout28"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout28"/>
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray11"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout28" />
+
+<!--    <androidx.appcompat.widget.AppCompatRatingBar-->
+<!--        android:id="@+id/ratingbar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:numStars="5"-->
+<!--        android:stepSize="1"-->
+<!--        android:isIndicator="false"-->
+<!--        style="@style/custom_rating"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout28"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/constraintLayout28"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

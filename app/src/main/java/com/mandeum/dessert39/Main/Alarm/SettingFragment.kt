@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.fragment_setting.*
 
 class SettingFragment : Fragment() {
 
-    lateinit var binding : FragmentSettingBinding
+    private var _binding : FragmentSettingBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +28,10 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentSettingBinding.inflate(layoutInflater)
+        _binding = FragmentSettingBinding.inflate(layoutInflater)
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_settingFragment_to_alarmFragment)
+            requireActivity().onBackPressed()
         }
 
         binding.eventSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -61,5 +62,8 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -2,7 +2,6 @@ package com.mandeum.dessert39.Login
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -25,14 +24,11 @@ import com.mandeum.dessert39.Find.Password.FindPw1Activity
 import com.mandeum.dessert39.Join.JoinActivity
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.Intro.MainActivity.Companion.TAG
-import com.mandeum.dessert39.Login.ServerApi.LoginApi
-import com.mandeum.dessert39.Login.ServerApi.LoginApi.Companion.login
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Login.ServerApi.LoginModel
 import com.mandeum.dessert39.R
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
-import kotlinx.android.synthetic.main.activity_find2.*
-import kotlinx.android.synthetic.main.activity_find_pw2.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.loginBtn
 import java.util.*
@@ -163,6 +159,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         kakaoBtn.setOnClickListener() {
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(mContext)) {
+                UserApiClient.instance.loginWithKakaoTalk(mContext, callback = callback)
+            } else {
+                UserApiClient.instance.loginWithKakaoAccount(mContext, callback = callback)
+            }
             kakaoLogin()
         }
     }
@@ -190,6 +191,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     // 카카오 계정 로그인
+    @SuppressLint("LogNotTimber")
     private fun kakaoLogin() {
         UserApiClient.instance.loginWithKakaoAccount(mContext) { token, error ->
             if (error != null) {
@@ -197,6 +199,10 @@ class LoginActivity : AppCompatActivity() {
             }
             else if (token != null) {
                 Log.i(TAG, "로그인 성공 ${token.accessToken}")
+                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
             }
         }
     }
@@ -284,7 +290,7 @@ class LoginActivity : AppCompatActivity() {
 
 
             thread(start = true) {
-                val userInfo: LoginModel = LoginApi.login(userId, userPw, uuidByte)
+                val userInfo: LoginModel = ServerApi.login(userId, userPw, uuidByte)
                 val loginModel = LoginModel(userInfo.errCode,
                     userInfo.strToken, userInfo.isFirstLogin)
 

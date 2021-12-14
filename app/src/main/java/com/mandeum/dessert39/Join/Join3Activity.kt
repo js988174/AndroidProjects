@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.mandeum.dessert39.Find.Id.Find1Activity
 import com.mandeum.dessert39.Login.LoginActivity
+import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.R
 import kotlinx.android.synthetic.main.activity_find1.*
 import kotlinx.android.synthetic.main.activity_join3.*
@@ -26,8 +27,74 @@ class Join3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join3)
 
-        joinBackGround()
+//        joinBackGround()
         joinArea()
+
+        successBtn.setOnClickListener {
+            val intent = Intent(this, Join5Activity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
+        }
+
+        joinIdArea.onFocusChangeListener = View.OnFocusChangeListener { _, focus ->
+            if (focus) {
+                join_id_layout.setBackgroundResource(R.drawable.login_default)
+            } else {
+                if (joinIdArea.length() >= 1) {
+                    join_id_layout.setBackgroundResource(R.drawable.login_default)
+                } else if (joinIdArea.length() == 0) {
+                    join_id_layout.setBackgroundResource(R.drawable.login_black)
+                }
+            }
+        }
+
+        joinPwArea.onFocusChangeListener = View.OnFocusChangeListener { _, focus ->
+            if (focus) {
+                join_pw_layout.setBackgroundResource(R.drawable.login_default)
+            } else {
+                if (joinPwArea.length() >= 1) {
+                    join_pw_layout.setBackgroundResource(R.drawable.login_default)
+                } else if (joinPwArea.length() == 0) {
+                    join_pw_layout.setBackgroundResource(R.drawable.login_black)
+                }
+            }
+        }
+
+        joinPw2Area.onFocusChangeListener = View.OnFocusChangeListener { _, focus ->
+            if (focus) {
+                join_pw2_layout.setBackgroundResource(R.drawable.login_default)
+            } else {
+                if (joinPw2Area.length() >= 1) {
+                    join_pw2_layout.setBackgroundResource(R.drawable.login_default)
+                } else if (joinPw2Area.length() == 0) {
+                    join_pw2_layout.setBackgroundResource(R.drawable.login_black)
+                }
+            }
+        }
+
+        joinEmailArea.onFocusChangeListener = View.OnFocusChangeListener { _, focus ->
+            if (focus) {
+                join_email_layout.setBackgroundResource(R.drawable.login_default)
+            } else {
+                if (joinEmailArea.length() >= 1) {
+                    join_email_layout.setBackgroundResource(R.drawable.login_default)
+                } else if (joinEmailArea.length() == 0) {
+                    join_email_layout.setBackgroundResource(R.drawable.login_black)
+                }
+            }
+        }
+
+        joinNicknameArea.onFocusChangeListener = View.OnFocusChangeListener { _, focus ->
+            if (focus) {
+                join_nickname_layout.setBackgroundResource(R.drawable.login_default)
+            } else {
+                if (joinNicknameArea.length() >= 1) {
+                    join_nickname_layout.setBackgroundResource(R.drawable.login_default)
+                } else if (joinNicknameArea.length() == 0) {
+                    join_nickname_layout.setBackgroundResource(R.drawable.login_black)
+                }
+            }
+        }
 
 
         clearId2.setOnClickListener {
@@ -187,62 +254,62 @@ class Join3Activity : AppCompatActivity() {
 
     }
 
-    private fun joinBackGround() {
-        joinIdArea.onFocusChangeListener = View.OnFocusChangeListener {
-                _, p1 ->
-            if (p1) {
-                join_id_layout.setBackgroundResource(R.drawable.login_default)
-            } else if (joinIdArea.length() == 0) {
-                join_id_layout.setBackgroundResource(R.drawable.login_black)
-            } else if (joinIdArea.length() > 0) {
-                join_id_layout.setBackgroundResource(R.drawable.login_default)
-            }
-        }
-
-        joinPwArea.onFocusChangeListener = View.OnFocusChangeListener {
-                _, p1 ->
-            if (p1) {
-                join_pw_layout.setBackgroundResource(R.drawable.login_default)
-            } else if (joinIdArea.length() == 0) {
-                join_pw_layout.setBackgroundResource(R.drawable.login_black)
-            } else if (joinPwArea.length() > 0){
-                join_pw_layout.setBackgroundResource(R.drawable.login_default)
-            }
-        }
-
-        joinPw2Area.onFocusChangeListener = View.OnFocusChangeListener {
-                _, p1 ->
-            if (p1) {
-                join_pw2_layout.setBackgroundResource(R.drawable.login_default)
-            } else if (joinIdArea.length() == 0) {
-                join_pw2_layout.setBackgroundResource(R.drawable.login_black)
-            } else if (joinPw2Area.length() > 0){
-                join_pw2_layout.setBackgroundResource(R.drawable.login_default)
-            }
-        }
-
-        joinEmailArea.onFocusChangeListener = View.OnFocusChangeListener {
-                _, p1 ->
-            if (p1) {
-                join_email_layout.setBackgroundResource(R.drawable.login_default)
-            } else if (joinIdArea.length() == 0) {
-                join_email_layout.setBackgroundResource(R.drawable.login_black)
-            } else if (joinIdArea.length() > 0) {
-                join_email_layout.setBackgroundResource(R.drawable.login_default)
-            }
-        }
-
-        joinNicknameArea.onFocusChangeListener = View.OnFocusChangeListener {
-                _, p1 ->
-            if (p1) {
-                join_nickname_layout.setBackgroundResource(R.drawable.login_default)
-            } else if (joinIdArea.length() == 0) {
-                join_nickname_layout.setBackgroundResource(R.drawable.login_black)
-            } else if (joinIdArea.length() > 0) {
-                join_nickname_layout.setBackgroundResource(R.drawable.login_default)
-            }
-        }
-    }
+//    private fun joinBackGround() {
+//        joinIdArea.onFocusChangeListener = View.OnFocusChangeListener {
+//                _, p1 ->
+//            if (p1) {
+//                join_id_layout.setBackgroundResource(R.drawable.login_default)
+//            } else if (joinIdArea.length() == 0) {
+//                join_id_layout.setBackgroundResource(R.drawable.login_black)
+//            } else if (joinIdArea.length() > 0) {
+//                join_id_layout.setBackgroundResource(R.drawable.login_default)
+//            }
+//        }
+//
+//        joinPwArea.onFocusChangeListener = View.OnFocusChangeListener {
+//                _, p1 ->
+//            if (p1) {
+//                join_pw_layout.setBackgroundResource(R.drawable.login_default)
+//            } else if (joinIdArea.length() == 0) {
+//                join_pw_layout.setBackgroundResource(R.drawable.login_black)
+//            } else if (joinPwArea.length() > 0){
+//                join_pw_layout.setBackgroundResource(R.drawable.login_default)
+//            }
+//        }
+//
+//        joinPw2Area.onFocusChangeListener = View.OnFocusChangeListener {
+//                _, p1 ->
+//            if (p1) {
+//                join_pw2_layout.setBackgroundResource(R.drawable.login_default)
+//            } else if (joinIdArea.length() == 0) {
+//                join_pw2_layout.setBackgroundResource(R.drawable.login_black)
+//            } else if (joinPw2Area.length() > 0){
+//                join_pw2_layout.setBackgroundResource(R.drawable.login_default)
+//            }
+//        }
+//
+//        joinEmailArea.onFocusChangeListener = View.OnFocusChangeListener {
+//                _, p1 ->
+//            if (p1) {
+//                join_email_layout.setBackgroundResource(R.drawable.login_default)
+//            } else if (joinIdArea.length() == 0) {
+//                join_email_layout.setBackgroundResource(R.drawable.login_black)
+//            } else if (joinIdArea.length() > 0) {
+//                join_email_layout.setBackgroundResource(R.drawable.login_default)
+//            }
+//        }
+//
+//        joinNicknameArea.onFocusChangeListener = View.OnFocusChangeListener {
+//                _, p1 ->
+//            if (p1) {
+//                join_nickname_layout.setBackgroundResource(R.drawable.login_default)
+//            } else if (joinIdArea.length() == 0) {
+//                join_nickname_layout.setBackgroundResource(R.drawable.login_black)
+//            } else if (joinIdArea.length() > 0) {
+//                join_nickname_layout.setBackgroundResource(R.drawable.login_default)
+//            }
+//        }
+//    }
 
 
     override fun onBackPressed() {

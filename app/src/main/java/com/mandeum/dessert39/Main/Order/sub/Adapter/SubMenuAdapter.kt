@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,10 +38,10 @@ class  SubMenuAdapter (val context: Context, val subMenuItem: ArrayList<SubMenuM
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
+        var view = itemView.findViewById<View>(R.id.last_view)
+        var view2 = itemView.findViewById<View>(R.id.first_view)
 
-        private val layout = itemView.findViewById<ConstraintLayout>(R.id.sub_menu_layout)
-
-        fun bindItem(item: SubMenuModel, size: Int) {
+        fun bindItem(item: SubMenuModel, position: Int) {
             itemList.add(itemView)
             if (item.select) {
 
@@ -52,7 +53,7 @@ class  SubMenuAdapter (val context: Context, val subMenuItem: ArrayList<SubMenuM
                         menuList.add(i)
                     }
                 }
-                recyclerView.adapter = OrderMenuAdapter(menuList)
+                recyclerView.adapter = OrderMenuAdapter(menuList, context)
                 recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
 
@@ -64,7 +65,7 @@ class  SubMenuAdapter (val context: Context, val subMenuItem: ArrayList<SubMenuM
             itemView.findViewById<TextView>(R.id.sub_menu).text = item.name
             itemView.findViewById<ConstraintLayout>(R.id.sub_menu_layout).setOnClickListener {
                 menuList.clear()
-                for (i: Int in 0 until size) {
+                for (i: Int in 0 until position) {
                     itemList[i].findViewById<ConstraintLayout>(R.id.sub_menu_layout)
                         .setBackgroundResource(R.drawable.background_radius_gray13)
 
@@ -77,10 +78,23 @@ class  SubMenuAdapter (val context: Context, val subMenuItem: ArrayList<SubMenuM
                         menuList.add(i)
                     }
                 }
-                recyclerView.adapter = OrderMenuAdapter(menuList)
+                recyclerView.adapter = OrderMenuAdapter(menuList, context)
                 recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
+
+//             if (subMenuItem.size > 0 && position == subMenuItem.size -1) {
+//                view.isGone = false
+//                view2.isGone = true
+//            } else if (position == 0) {
+//                view2.isGone = false
+//                view.isGone = true
+//            }
+
+
         }
+
+
+
 
     }
 

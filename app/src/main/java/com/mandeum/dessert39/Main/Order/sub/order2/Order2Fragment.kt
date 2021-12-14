@@ -8,16 +8,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mandeum.dessert39.Main.Card.animation.collapse
 import com.mandeum.dessert39.Main.Card.animation.expand
 import com.mandeum.dessert39.R
@@ -28,7 +34,8 @@ import kotlinx.android.synthetic.main.fragment_order2.*
 
 class Order2Fragment : Fragment() {
 
-    private lateinit var binding: FragmentOrder2Binding
+    private var _binding: FragmentOrder2Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +46,7 @@ class Order2Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrder2Binding.inflate(layoutInflater)
+        _binding = FragmentOrder2Binding.inflate(layoutInflater)
 
 
         binding.findImage.setOnClickListener {
@@ -49,5 +56,10 @@ class Order2Fragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
+

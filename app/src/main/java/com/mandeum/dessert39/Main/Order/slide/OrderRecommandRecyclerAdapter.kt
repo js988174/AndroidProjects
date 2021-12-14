@@ -32,17 +32,12 @@ class OrderRecommandRecyclerAdapter(private val recommandItem: ArrayList<OrderRe
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        private val bg = itemView.findViewById<ImageView>(R.id.order_bg_image)
         private val title = itemView.findViewById<TextView>(R.id.dessert_name)
         private val subImage = itemView.findViewById<ImageView>(R.id.subImage)
         private val imageView = itemView.findViewById<ImageView>(R.id.dessert_image)
         fun bindItem(item: OrderRecommandItem) {
 
             title.text = item.eventName
-
-            Glide.with(itemView)
-                .load(item.bgImage)
-                .into(bg)
 
             Glide.with(itemView)
                 .load(item.imageSrc2)

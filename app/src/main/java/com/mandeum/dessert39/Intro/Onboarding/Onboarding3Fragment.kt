@@ -32,6 +32,7 @@ class Onboarding3Fragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             activity?.overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
+
         }
 
         // 회원가입 버튼

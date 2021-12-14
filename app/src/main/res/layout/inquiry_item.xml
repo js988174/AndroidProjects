@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:background="@color/colorGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/box_bg"
+            android:layout_width="61dp"
+            android:layout_height="22dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="답변대기"
+            android:textColor="@color/black2"
+            android:textSize="12dp"
+            android:background="@drawable/background_radius_concat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+        <TextView
+            android:id="@+id/kinds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendmedium"
+            android:text="[결제]"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/black2"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/box_bg"
+            app:layout_constraintStart_toEndOf="@+id/box_bg"
+            app:layout_constraintTop_toTopOf="@+id/box_bg" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="2021.10.10"
+            android:textColor="@color/colorGray8"
+            android:textSize="12dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/kinds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/kinds" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/pretendmedium"
+            android:text="안녕하세요 결제 관련해서 문의 드리려고 합니다."
+            android:textColor="@color/black2"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/box_bg"
+            app:layout_constraintTop_toBottomOf="@+id/box_bg" />
+
+        <ImageView
+            android:id="@+id/up"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/up"
+            android:layout_marginTop="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/gray_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray3"
+        app:layout_constraintTop_toBottomOf="@+id/parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_expand_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="20dp"
+        android:background="@color/colorGray"
+        app:layout_constraintTop_toBottomOf="@+id/gray_view">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendmedium"
+            android:text="안녕하세요 결제 관련해서 문의 드리려고 합니다."
+            android:textColor="@color/black2"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_expand"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_expand_content">
+
+        <ImageView
+            android:id="@+id/imageView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/enter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatButton2"
+            android:layout_width="44dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/background_radius_black_button"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="답변"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView48"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="2021.10.10"
+            android:textColor="@color/colorGray8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/content2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendmedium"
+            android:text="안녕하세요"
+            android:textColor="@color/black2"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/appCompatButton2"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatButton2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/layout_expand" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

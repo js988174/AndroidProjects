@@ -21,7 +21,7 @@ class PointAdapter (val context: Context, val pointModel : ArrayList<PointModel>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItems (pointModel[position])
+        holder.bindItems (pointModel[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -30,8 +30,9 @@ class PointAdapter (val context: Context, val pointModel : ArrayList<PointModel>
 
     inner class ViewHolder (itemView : View) : RecyclerView.ViewHolder (itemView) {
 
-        fun bindItems (item : PointModel) {
+        fun bindItems (item : PointModel, position: Int) {
 
+            Log.d("hshshs", "position = $position")
 
             val accumulatorLayout  = itemView.findViewById<ConstraintLayout>(R.id.accumulate_layout)
             val useLayout  = itemView.findViewById<ConstraintLayout>(R.id.use_layout)
@@ -43,6 +44,10 @@ class PointAdapter (val context: Context, val pointModel : ArrayList<PointModel>
             val kinds = itemView.findViewById<TextView>(R.id.accumlate_location)
             val date = itemView.findViewById<TextView>(R.id.date)
             val validator = itemView.findViewById<TextView>(R.id.validate_text)
+
+
+
+            val view = itemView.findViewById<View>(R.id.empty_view)
 
                 if (item.accumulate == "") {
                     accumulatorLayout.isGone = true
@@ -66,6 +71,11 @@ class PointAdapter (val context: Context, val pointModel : ArrayList<PointModel>
                 date.text = item.date
             }
 
+         if (pointModel.size == 0) {
+             view.isGone = true
+         } else if (pointModel.size > 0 && position == pointModel.size -1) {
+             view.isGone = false
+         }
 
 
 

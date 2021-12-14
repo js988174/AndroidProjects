@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentOrderMenuDetailBinding
@@ -19,7 +21,8 @@ import com.mandeum.dessert39.databinding.FragmentOrderMenuInfoBinding
 
 class OrderMenuInfoFragment : Fragment() {
 
-    lateinit var binding : FragmentOrderMenuInfoBinding
+    private var _binding : FragmentOrderMenuInfoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +33,20 @@ class OrderMenuInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrderMenuInfoBinding.inflate(layoutInflater)
+        _binding = FragmentOrderMenuInfoBinding.inflate(layoutInflater)
 
+//        val dessertImage : ImageView = binding.dessertImage
+//
+//        val args: OrderMenuInfoFragmentArgs by navArgs()
+//
+//        val imageView = args.imageView1
 
+//        binding.apply {
+//            Glide.with(requireContext()).load(imageView).into(dessertImage)
+//        }
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_orderMenuInfoFragment_to_orderMenuDetailFragment)
+            requireActivity().onBackPressed()
         }
 
         val count : TextView = binding.basketNumber
@@ -84,4 +95,8 @@ class OrderMenuInfoFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

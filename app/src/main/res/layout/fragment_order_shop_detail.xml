@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         app:behavior_hideable="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".Main.Order.dialog.OrderShopDetailFragment">
 
 
@@ -204,7 +204,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_004"
+            android:id="@+id/btn_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
@@ -215,14 +215,14 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cancel_btn"
-                android:layout_width="114dp"
-                android:layout_height="42dp"
+                android:layout_width="108dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/background_radius_maincolor4"
-                app:layout_constraintBottom_toBottomOf="@+id/layout_004"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_layout"
                 app:layout_constraintEnd_toStartOf="@+id/select_shop_btn"
-                app:layout_constraintStart_toStartOf="@+id/layout_004"
-                app:layout_constraintTop_toTopOf="@+id/layout_004">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_layout">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -244,10 +244,10 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/background_radius_maincolor4_1"
-                app:layout_constraintBottom_toBottomOf="@+id/layout_004"
-                app:layout_constraintEnd_toEndOf="@+id/layout_004"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_layout"
+                app:layout_constraintEnd_toEndOf="@+id/btn_layout"
                 app:layout_constraintStart_toEndOf="@+id/cancel_btn"
-                app:layout_constraintTop_toTopOf="@+id/layout_004">
+                app:layout_constraintTop_toTopOf="@+id/btn_layout">
 
                 <TextView
                     android:layout_width="wrap_content"

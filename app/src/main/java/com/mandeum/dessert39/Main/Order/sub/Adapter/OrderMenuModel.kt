@@ -1,6 +1,8 @@
 package com.mandeum.dessert39.Main.Order.sub.Adapter
 
-data class OrderMenuModel (
+data class
+OrderMenuModel (
+    var id: Int,
     val category: String,
     val image: String,
     val Kname: String,

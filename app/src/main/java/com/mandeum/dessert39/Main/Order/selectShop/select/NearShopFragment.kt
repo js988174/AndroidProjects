@@ -17,7 +17,8 @@ import com.mandeum.dessert39.databinding.FragmentOrderSelectShopBinding
 
 class NearShopFragment : Fragment() {
 
-    private lateinit var binding: FragmentNearShopBinding
+    private var _binding: FragmentNearShopBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class NearShopFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentNearShopBinding.inflate(layoutInflater)
+        _binding = FragmentNearShopBinding.inflate(layoutInflater)
 
         val selectShopModel: ArrayList<SelectShopModel> = ArrayList()
 
@@ -61,5 +62,9 @@ class NearShopFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

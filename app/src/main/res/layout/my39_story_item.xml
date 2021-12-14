@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_radius_story_gray"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/shop_image"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="청라호수공원점"
+            android:textColor="@color/black2"
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@+id/shop_image"
+            app:layout_constraintTop_toTopOf="@+id/shop_image" />
+
+
+        <TextView
+            android:id="@+id/shop_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendardregular"
+            android:text="2021.10.10"
+            android:textColor="@color/colorGray8"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@+id/shop_name"
+            app:layout_constraintTop_toBottomOf="@+id/shop_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/background_radius_story2"
+        app:layout_constraintTop_toBottomOf="@+id/top_layout">
+
+        <TextView
+            android:id="@+id/shop_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="안녕하세요 디저트39 청라호수공원점입니다.
+날씨가 많이 쌀쌀해졌네요. 안녕하세요 디저트39 청라호수공원점입니다.
+안녕하세요 청라호수공원점입니다.날씨가 많이 쌀쌀해 졌네요. 안녕
+안녕하세요 디저트39 청라호수공원점 내용입니다."
+            android:textColor="@color/colorGray8"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/shop_content_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/shop_content" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorGray"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_layout"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

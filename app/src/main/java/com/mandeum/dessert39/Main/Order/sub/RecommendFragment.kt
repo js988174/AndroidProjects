@@ -1,5 +1,6 @@
 package com.mandeum.dessert39.Main.Order.sub
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,12 +21,8 @@ import com.mandeum.dessert39.databinding.FragmentRecommendBinding
 
 class RecommendFragment : Fragment() {
 
-    lateinit var binding : FragmentRecommendBinding
-
-
-    val favoriteModel1 = ArrayList<OrderFavoriteItem>()
-    val favoriteModel2 = ArrayList<OrderFavoriteItem2>()
-    val favoriteModel3 = ArrayList<OrderFavoriteItem3>()
+        private var _binding: FragmentRecommendBinding? = null
+        private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +35,7 @@ class RecommendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRecommendBinding.inflate(layoutInflater)
+        _binding = FragmentRecommendBinding.inflate(layoutInflater)
 
         binding.couponLayout.setOnClickListener {
             val coupon =  CouponFragment()
@@ -46,17 +43,21 @@ class RecommendFragment : Fragment() {
             activity?.supportFragmentManager?.let { coupon.show(it, coupon.tag) }
         }
 
-        val pageList: ArrayList<OrderBannerItem> = ArrayList()
-        val eventItem: ArrayList<OrderEventItem> = ArrayList()
-        val recommandItem: ArrayList<OrderRecommandItem> = ArrayList()
-        val newItem : ArrayList<OrderNewItem> = ArrayList()
-        val shopItem : ArrayList<OrderShopItem> = ArrayList()
 
-        var rvAdapter: OrderBannerRecyclerAdapter = OrderBannerRecyclerAdapter(pageList)
-        var rvAdapter2: OrderEventRecyclerAdapter = OrderEventRecyclerAdapter(eventItem)
-        var rvAdapter3 : OrderRecommandRecyclerAdapter = OrderRecommandRecyclerAdapter(recommandItem)
-        var rvAdapter4 : OrderNewRecyclerAdapter = OrderNewRecyclerAdapter(newItem)
-        var rvAdapter5: OrderShopRecyclerAdapter = OrderShopRecyclerAdapter(shopItem)
+         val favoriteModel1 = ArrayList<OrderFavoriteItem>()
+         val favoriteModel2 = ArrayList<OrderFavoriteItem2>()
+         val favoriteModel3 = ArrayList<OrderFavoriteItem3>()
+         val pageList: ArrayList<OrderBannerItem> = ArrayList()
+         val eventItem: ArrayList<OrderEventItem> = ArrayList()
+         val recommandItem: ArrayList<OrderRecommandItem> = ArrayList()
+         val newItem: ArrayList<OrderNewItem> = ArrayList()
+         val shopItem: ArrayList<OrderShopItem> = ArrayList()
+
+        val rvAdapter = OrderBannerRecyclerAdapter(pageList)
+        val rvAdapter2 = OrderEventRecyclerAdapter(eventItem)
+        val rvAdapter3  = OrderRecommandRecyclerAdapter(recommandItem)
+        val rvAdapter4  = OrderNewRecyclerAdapter(newItem)
+        val rvAdapter5  = OrderShopRecyclerAdapter(shopItem)
 
         val rv : ViewPager2 = binding.viewPager1
 
@@ -78,30 +79,30 @@ class RecommendFragment : Fragment() {
         binding.dotsIndicator.setViewPager2(rv)
 
 
-        eventItem.add(OrderEventItem("https://ifh.cc/g/RwgS7v.png","https://ifh.cc/g/dBgxVz.png","딸기 순수 우유케익"))
-        eventItem.add(OrderEventItem("https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        eventItem.add(OrderEventItem("https://ifh.cc/g/RwgS7v.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("https://ifh.cc/g/RwgS7v.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","딸기"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","딸기 순수 우유케익"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","딸기"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
+        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
 
 
-        recommandItem.add(OrderRecommandItem("","https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
-        recommandItem.add(OrderRecommandItem("","https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        recommandItem.add(OrderRecommandItem("","https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        recommandItem.add(OrderRecommandItem("","https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        recommandItem.add(OrderRecommandItem("","https://ifh.cc/g/DlbrKZ.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
+        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
+        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
+        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","딸기"))
+        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
+        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
 
 
-        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "https://ifh.cc/g/DlbrKZ.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_green, "https://ifh.cc/g/DlbrKZ.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "https://ifh.cc/g/DlbrKZ.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_green, "https://ifh.cc/g/DlbrKZ.png", "그린티 엑스트라 카페"))
+        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
+        newItem.add(OrderNewItem(R.drawable.background_radius_green, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
+        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
+        newItem.add(OrderNewItem(R.drawable.background_radius_green, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
 
 
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, R.drawable.desert1, "망고 도코룔"))
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, R.drawable.desert1, "망고 도코룔"))
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, R.drawable.desert1, "망고 도코룔"))
+        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/64.png", "망고 도코룔"))
+        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/64.png", "망고 도코룔"))
+        shopItem.add(OrderShopItem(R.drawable.background_radius_orange,"http://dessert39.com/data/product/64.png", "망고 도코룔"))
 
         favoriteModel1.add(OrderFavoriteItem(R.drawable.tea1,"달고나 초코라떼 아이스","Dalgona Chocolate Latt Ice", "8.700"))
         binding.favoriteImage1.setImageResource(favoriteModel1[0].image)
@@ -127,5 +128,35 @@ class RecommendFragment : Fragment() {
     }
 
 
+//    override fun onPause() {
+//        stopLife()
+//        super.onPause()
+//    }
+//
+//    override fun onDestroy() {
+//        stopLife()
+//        super.onDestroy()
+//    }
+//
+//    override fun onDetach() {
+//        stopLife()
+//        super.onDetach()
+//    }
+//
+//    private fun stopLife() {
+//        pageList.clear()
+//        eventItem.clear()
+//        recommandItem.clear()
+//        shopItem.clear()
+//        newItem.clear()
+//    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
+
+

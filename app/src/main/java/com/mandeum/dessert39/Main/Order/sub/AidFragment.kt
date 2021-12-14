@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuAdapter
 import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuModel
 import com.mandeum.dessert39.databinding.FragmentAidBinding
-
+import kotlinx.android.synthetic.main.fragment_aid.*
 
 
 class AidFragment : Fragment() {
 
-
-    lateinit var binding : FragmentAidBinding
+       private var _binding: FragmentAidBinding? = null
+       private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,43 +29,51 @@ class AidFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentAidBinding.inflate(layoutInflater)
+        _binding = FragmentAidBinding.inflate(layoutInflater)
 
         val menuItem: ArrayList<OrderMenuModel> = ArrayList()
 
-        val rvAdapter : OrderMenuAdapter = OrderMenuAdapter(menuItem)
+        val rvAdapter : OrderMenuAdapter = OrderMenuAdapter(menuItem, requireContext())
         val rv : RecyclerView = binding.aidRecyclerView
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(1,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(2,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = true, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(3,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+            , "6.800", soldOut = false, favorites = false))
+
+        menuItem.add(OrderMenuModel(4,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+            , "6.800", soldOut = false, favorites = false))
+
+        menuItem.add(OrderMenuModel(5,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
+//            rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    super.onScrolled(recyclerView, dx, dy)
+//                    val lastVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+//                    val itemTotalCount = recyclerView.adapter?.itemCount?.minus(1)
+//
+//                    if (lastVisibleItemPosition != itemTotalCount) {
+//                        binding.emptyView.isGone = false
+//                    }
+//                }
+//            })
 
 
         return binding.root
     }
 
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

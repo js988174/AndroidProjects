@@ -21,7 +21,9 @@ import com.mandeum.dessert39.databinding.FragmentSettingBinding
 
 class OrderSelectShopFragment : Fragment() {
 
-    private lateinit var binding: FragmentOrderSelectShopBinding
+    private var _binding: FragmentOrderSelectShopBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class OrderSelectShopFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrderSelectShopBinding.inflate(layoutInflater)
+        _binding = FragmentOrderSelectShopBinding.inflate(layoutInflater)
 
         binding.orderIcon.setOnClickListener {
             it.findNavController().navigate(R.id.action_orderSelectShopFragment_to_orderFragment)
@@ -55,8 +57,9 @@ class OrderSelectShopFragment : Fragment() {
         }
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_orderSelectShopFragment_to_orderFragment)
+            requireActivity().onBackPressed()
         }
+
 
         val viewPager2 : ViewPager2 = binding.viewPager
 
@@ -144,5 +147,10 @@ class OrderSelectShopFragment : Fragment() {
             }
         })
                 return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

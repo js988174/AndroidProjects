@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.fragment_card.*
 
 class CardFragment : Fragment() {
 
-    private lateinit var binding : FragmentCardBinding
-    // no , yes , auto
+    private var _binding : FragmentCardBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class CardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCardBinding.inflate(layoutInflater)
+        _binding = FragmentCardBinding.inflate(layoutInflater)
         val findUserCard = ""
 
 //           if (findUserCard == "no") {
@@ -62,10 +62,9 @@ class CardFragment : Fragment() {
 //            }
 
 
-        binding.plusIcon.setOnClickListener {
-
+        binding.cardLayout.setOnClickListener {
             var direction = CardFragmentDirections.actionCardFragmentToCardChoiceFragment()
-            it.findNavController().navigate(R.id.action_cardFragment_to_cardChoiceFragment)
+            it.findNavController().navigate(direction)
         }
 
         // 카드 자동 충전 설정
@@ -105,5 +104,8 @@ class CardFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

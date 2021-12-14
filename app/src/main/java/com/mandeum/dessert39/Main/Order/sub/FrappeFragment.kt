@@ -14,7 +14,9 @@ import com.mandeum.dessert39.databinding.FragmentFrappeBinding
 
 class FrappeFragment : Fragment() {
 
-    lateinit var binding : FragmentFrappeBinding
+
+       private var _binding: FragmentFrappeBinding? = null
+       private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,40 +28,35 @@ class FrappeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentFrappeBinding.inflate(layoutInflater)
+        _binding = FragmentFrappeBinding.inflate(layoutInflater)
 
         val menuItem: ArrayList<OrderMenuModel> = ArrayList()
-        val rvAdapter : OrderMenuAdapter = OrderMenuAdapter(menuItem)
+        val rvAdapter : OrderMenuAdapter = OrderMenuAdapter(menuItem, requireContext())
         val rv : RecyclerView = binding.frappeRecyclerView
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(1,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(2,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = true, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(3,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(4,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-
-        menuItem.add(OrderMenuModel("","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

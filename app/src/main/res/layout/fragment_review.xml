@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:behavior_hideable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main.My39.History.ReviewFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/order_background"
+        app:layout_constraintTop_toTopOf="@+id/order_layout">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/close_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="48dp"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintTop_toTopOf="@+id/dialog_layout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/imageView44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/review_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView93"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="주문하신 메뉴는 어떠셨나요?"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView44"
+                    app:layout_constraintStart_toStartOf="@+id/imageView44"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView44" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout27"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/background_radius_maincolor"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView93"
+                    tools:layout_editor_absoluteX="20dp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/review_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout27"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/colorGray"
+                    app:layout_constraintTop_toBottomOf="@+id/review_recyclerView" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/review_shop"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/review_recyclerView" />
+
+
+                <TextView
+                    android:id="@+id/textView94"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="주문하신 매장은 어떠셨나요?"
+                    android:textColor="@color/black2"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout28"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/background_radius_maincolor"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView94"
+                    tools:layout_editor_absoluteX="20dp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="26dp"
+                    android:paddingBottom="26dp"
+                    app:layout_constraintTop_toBottomOf="@id/constraintLayout28"
+                    tools:layout_editor_absoluteX="0dp">
+
+
+                    <TextView
+                        android:id="@+id/kind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendmedium"
+                        android:text="친절도"
+                        android:textColor="@color/black2"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.daman.library.SimpleRatingBar
+                        android:id="@+id/kind_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:animation="alpha"
+                        app:drawable_empty="@drawable/smile_white"
+                        app:drawable_filled="@drawable/smile_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:total_stars="5"/>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray11"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="26dp"
+                    android:paddingBottom="26dp"
+                    app:layout_constraintTop_toBottomOf="@id/constraintLayout29"
+                    tools:layout_editor_absoluteX="0dp">
+
+
+                    <TextView
+                        android:id="@+id/menu_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendmedium"
+                        android:text="메뉴 제조 시간"
+                        android:textColor="@color/black2"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.daman.library.SimpleRatingBar
+                        android:id="@+id/time_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:animation="alpha"
+                        app:drawable_empty="@drawable/smile_white"
+                        app:drawable_filled="@drawable/smile_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:total_stars="5"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <View
+                    android:id="@+id/view9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray11"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout30" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="26dp"
+                    android:paddingBottom="26dp"
+                    app:layout_constraintTop_toBottomOf="@id/constraintLayout30"
+                    tools:layout_editor_absoluteX="0dp">
+
+
+                    <TextView
+                        android:id="@+id/hygiene"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendmedium"
+                        android:text="매장 위생"
+                        android:textColor="@color/black2"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.daman.library.SimpleRatingBar
+                        android:id="@+id/hygiene_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:animation="alpha"
+                        app:drawable_empty="@drawable/smile_white"
+                        app:drawable_filled="@drawable/smile_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:total_stars="5"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view10"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/colorGray11"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout31" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:text="간단한 매장의 후기를 적어주세요."
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black2"
+                    app:layout_constraintTop_toBottomOf="@+id/view10"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text=" (선택사항)"
+                    android:textColor="@color/black2"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                    app:layout_constraintStart_toEndOf="@+id/textView11"
+                    app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/background_radius_gray_review"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:privateImeOptions="defaultInputmode=korean"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/check_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="후기 작성완료"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/pretendardsemi"
+                    android:background="@drawable/background_radius_maincolor"
+                    app:layout_constraintTop_toBottomOf="@id/text_view"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:layout_constraintTop_toBottomOf="@+id/check_btn"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/order_layout"
+        android:layout_width="126dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bottomsheet_dialog2"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_layout"
+        app:layout_constraintStart_toStartOf="@+id/dialog_layout"
+        app:layout_constraintTop_toTopOf="@+id/dialog_layout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/review_write"
+            app:layout_constraintBottom_toBottomOf="@+id/order_layout"
+            app:layout_constraintEnd_toEndOf="@+id/order_layout"
+            app:layout_constraintStart_toStartOf="@+id/order_layout"
+            app:layout_constraintTop_toTopOf="@+id/order_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

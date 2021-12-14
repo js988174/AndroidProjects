@@ -12,7 +12,8 @@ import com.mandeum.dessert39.databinding.FragmentPolicyBinding
 
 class PolicyFragment : Fragment() {
 
-    lateinit var binding : FragmentPolicyBinding
+    private var _binding : FragmentPolicyBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +24,17 @@ class PolicyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentPolicyBinding.inflate(layoutInflater)
+        _binding = FragmentPolicyBinding.inflate(layoutInflater)
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_policyFragment_to_profileFragment)
+            requireActivity().onBackPressed()
         }
 
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -21,7 +21,9 @@ import com.mandeum.dessert39.databinding.FragmentOrderFindShopBinding
 
 class OrderFindShopFragment : BottomSheetDialogFragment() {
 
-    lateinit var binding : FragmentOrderFindShopBinding
+    private var _binding : FragmentOrderFindShopBinding? = null
+    private val binding get() = _binding!!
+
     lateinit var rvAdapter: FindShopAdapter
 
     private val findShopModel = ArrayList<FindShopModel>()
@@ -35,7 +37,7 @@ class OrderFindShopFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentOrderFindShopBinding.inflate(layoutInflater)
+        _binding = FragmentOrderFindShopBinding.inflate(layoutInflater)
 
 
 
@@ -54,7 +56,6 @@ class OrderFindShopFragment : BottomSheetDialogFragment() {
 
 
         binding.findShop.setOnClickListener {
-
             val action = OrderFragmentDirections.actionOrderFragmentToOrderSelectShopFragment()
             findNavController().navigate(action)
             dialog?.dismiss()
@@ -83,5 +84,10 @@ class OrderFindShopFragment : BottomSheetDialogFragment() {
         //this forces the sheet to appear at max height even on landscape
         val behavior = BottomSheetBehavior.from(requireView().parent as View)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

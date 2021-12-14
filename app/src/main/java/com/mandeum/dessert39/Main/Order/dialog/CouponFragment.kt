@@ -20,7 +20,8 @@ import com.mandeum.dessert39.databinding.FragmentCouponBinding
 
 class CouponFragment : BottomSheetDialogFragment() {
 
-    lateinit var binding : FragmentCouponBinding
+    private var _binding : FragmentCouponBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class CouponFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentCouponBinding.inflate(layoutInflater)
+        _binding = FragmentCouponBinding.inflate(layoutInflater)
 
         binding.close.setOnClickListener {
             dialog?.dismiss()
@@ -70,4 +71,8 @@ class CouponFragment : BottomSheetDialogFragment() {
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

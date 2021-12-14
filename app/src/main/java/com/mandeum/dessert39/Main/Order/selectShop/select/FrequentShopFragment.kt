@@ -14,7 +14,8 @@ import com.mandeum.dessert39.databinding.FragmentFrequentShopBinding
 
 class FrequentShopFragment : Fragment() {
 
-    private lateinit var binding: FragmentFrequentShopBinding
+    private var _binding: FragmentFrequentShopBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,7 @@ class FrequentShopFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentFrequentShopBinding.inflate(layoutInflater)
+        _binding = FragmentFrequentShopBinding.inflate(layoutInflater)
 
         val selectShopModel: ArrayList<SelectShopModel> = ArrayList()
 
@@ -37,6 +38,11 @@ class FrequentShopFragment : Fragment() {
 
         return binding.root
       }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     }
 
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".Find.Password.FindPw2Activity">
 
     <androidx.appcompat.widget.Toolbar
@@ -113,6 +114,7 @@
             android:layout_marginTop="11dp"
             android:layout_marginBottom="12dp"
             android:background="@android:color/transparent"
+            android:privateImeOptions="defaultInputmode=english"
             android:hint="새로운 비밀번호를 입력해 주세요."
             android:inputType="text"
             android:textColor="@color/colorGray2"
@@ -178,6 +180,7 @@
             android:layout_marginTop="11dp"
             android:layout_marginBottom="12dp"
             android:background="@android:color/transparent"
+            android:privateImeOptions="defaultInputmode=english"
             android:hint="새로운 비밀번호를 한 번 더 입력해 주세요."
             android:inputType="text"
             android:textColor="@color/colorGray2"

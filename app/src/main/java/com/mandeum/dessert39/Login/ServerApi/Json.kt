@@ -1,6 +1,7 @@
 package com.mandeum.dessert39.Login.ServerApi
 
 import com.mandeum.dessert39.Login.ServerApi.LoginModel
+import org.json.JSONArray
 import org.json.JSONObject
 
 class Json {
@@ -17,6 +18,33 @@ class Json {
 
             return data
         }
+
+
+        fun bannerJSONParse(json: String): BannerModel {
+
+            val jsonObject = JSONObject(json)
+            val errCode: String = jsonObject.optString("errCode", "")
+            val banners: String = jsonObject.optString("banners", "")
+            val bannersArray = JSONArray(banners)
+
+            val imgValue: String = JSONObject(bannersArray[0].toString()).optString("img", "")
+
+
+            return BannerModel(connection = true, errCode = errCode, banner = imgValue)
+        }
+
+//        fun orderBannerJSONParse(json: String): OrderBannerModel {
+//
+//            val jsonObject = JSONObject(json)
+//            val errCode: String = jsonObject.optString("errCode", "")
+//            val banners: String = jsonObject.optString("banners", "")
+//            val bannersArray = JSONArray(banners)
+//
+//            val imgValue: String = JSONObject(bannersArray[0].toString()).optString("img", "")
+//
+//
+//            return BannerModel(connection = true, errCode = errCode, banner = imgValue)
+//        }
     }
 
 }

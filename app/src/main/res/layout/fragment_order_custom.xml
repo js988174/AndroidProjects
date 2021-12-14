@@ -12,7 +12,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dialog_layout"
                 android:layout_width="match_parent"
-                android:layout_height="520dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/order_background"
                 app:layout_constraintTop_toTopOf="@+id/order_layout">

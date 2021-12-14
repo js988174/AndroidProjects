@@ -21,35 +21,35 @@ import android.content.ClipboardManager
 import android.content.Context
 
 import android.content.Context.CLIPBOARD_SERVICE
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 
 
+
 class OrderFragment : Fragment(R.layout.fragment_order) {
 
-    companion object {
-        private lateinit var binding: FragmentOrderBinding
+        private  var _binding: FragmentOrderBinding? = null
+        private val binding get() = _binding!!
+
         private lateinit var callback: OnBackPressedCallback
-    }
 
-
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        _binding = FragmentOrderBinding.inflate(layoutInflater)
 
-        binding = FragmentOrderBinding.inflate(layoutInflater)
+
+
+        binding.orderIcon.setOnClickListener {
+            val action = OrderFragmentDirections.actionOrderFragmentToOrderCartFragment()
+            findNavController().navigate(action)
+        }
 
         binding.navHome.setOnClickListener {
             it.findNavController().navigate(R.id.action_orderFragment_to_homeFragment)
@@ -79,7 +79,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         binding.changeBtn.setOnClickListener {
 
         }
-
 
 
         val findShop =  OrderFindShopFragment()
@@ -822,6 +821,8 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         return binding.root
     }
 
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {
@@ -838,4 +839,17 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         callback.remove()
     }
 
+
+    override fun onDestroyView() {
+
+        val viewPager2 = _binding?.viewPager
+
+        viewPager2?.let {
+            it.adapter = null
+        }
+
+        super.onDestroyView()
+        _binding = null
+
+    }
 }

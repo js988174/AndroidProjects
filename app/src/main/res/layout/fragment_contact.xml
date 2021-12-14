@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main.My39.Sound.ContactFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:background="@color/colorGray"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView47"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/contact_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/pretendmedium"
+                    android:gravity="center"
+                    android:text="문의하신 내용은 담당자 확인 후 평일 09:00 ~ 18:00 사이\n영업일 기준 2~3일 이내로 답변드리겠습니다."
+                    android:textColor="@color/black2"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView47"
+                    app:layout_constraintStart_toStartOf="@+id/imageView47"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView47" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView101"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="41dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="문의 유형 선택"
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/kinds_layout"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_radius_gray6"
+                app:layout_constraintTop_toBottomOf="@+id/textView101">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문의 유형을 선택하세요"
+                    android:fontFamily="@font/pretendardregular"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorGray8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/down"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView102"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="제목"
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kinds_layout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout34"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView102">
+
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/pretendardregular"
+                    android:hint="제목을 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray8"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/textView103"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pretendardsemi"
+                android:text="문의 내용"
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout34" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout35"
+                android:layout_width="match_parent"
+                android:layout_height="141dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView103">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/pretendardregular"
+                    android:hint="문의 내용을 입력해 주세요."
+                    android:inputType="text"
+                    android:textColor="@color/colorGray8"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black2"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout35" />
+
+            <TextView
+                android:id="@+id/textView104"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_bold"
+                android:text="[필수]"
+                android:textColor="@color/black2"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/radio_button"
+                app:layout_constraintStart_toEndOf="@+id/radio_button"
+                app:layout_constraintTop_toTopOf="@+id/radio_button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardsemi"
+                android:text=" 개인 정보 수집 및 이용에 동의합니다."
+                android:textColor="@color/black2"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView104"
+                app:layout_constraintStart_toEndOf="@+id/textView104"
+                app:layout_constraintTop_toTopOf="@+id/textView104" />
+
+            <TextView
+                android:id="@+id/textView105"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardregular"
+                android:text="필수 항목에 동의하셔야 문의가 가능합니다.\n수집된 정보는 고객 문의 답변을 위해서 사용됩니다."
+                android:textColor="@color/colorGray8"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@+id/radio_button"
+                app:layout_constraintTop_toBottomOf="@+id/radio_button" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/check_btn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="문의하기"
+                android:fontFamily="@font/pretendardsemi"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:outlineProvider="none"
+                android:background="@drawable/background_radius_maincolor"
+                app:layout_constraintTop_toBottomOf="@+id/textView105" />
+
+
+            <View
+                app:layout_constraintTop_toBottomOf="@+id/check_btn"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

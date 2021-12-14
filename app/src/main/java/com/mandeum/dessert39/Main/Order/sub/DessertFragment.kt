@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.fragment_dessert.*
 
 class DessertFragment : Fragment() {
 
-    lateinit var binding : FragmentDessertBinding
+       private var _binding: FragmentDessertBinding? = null
+       private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +31,10 @@ class DessertFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-       binding = FragmentDessertBinding.inflate(layoutInflater)
+       _binding = FragmentDessertBinding.inflate(layoutInflater)
 
         val menuItem: ArrayList<OrderMenuModel> = ArrayList()
-        val rvAdapter = OrderMenuAdapter(menuItem)
+        val rvAdapter = OrderMenuAdapter(menuItem, requireContext())
 
         val rv : RecyclerView = binding.dessertRecyclerView
 
@@ -48,6 +49,8 @@ class DessertFragment : Fragment() {
 
         subMenuItem.add(SubMenuModel("홀케이크", select = false))
 
+        subMenuItem.add(SubMenuModel("베이커리", select = false))
+
         subMenuItem.add(SubMenuModel("도쿄롤", select = false))
 
         subMenuItem.add(SubMenuModel("오믈렛", select = false))
@@ -55,25 +58,25 @@ class DessertFragment : Fragment() {
         subMenuItem.add(SubMenuModel("마카롱", select = false))
 
 
-        menuItem.add(OrderMenuModel("케이크","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(1,"케이크","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
         , "6.800", soldOut = false, favorites = false))
 
-        menuItem.add(OrderMenuModel("홀케이크","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(2,"홀케이크","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = true, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("도쿄롤","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(3,"도쿄롤","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("오믈렛","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(4,"오믈렛","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
-        menuItem.add(OrderMenuModel("마카롱","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(5,"마카롱","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
 
-        menuItem.add(OrderMenuModel("마카롱","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+        menuItem.add(OrderMenuModel(6,"마카롱","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
             , "6.800", soldOut = false, favorites = false))
 
 
@@ -86,5 +89,9 @@ class DessertFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

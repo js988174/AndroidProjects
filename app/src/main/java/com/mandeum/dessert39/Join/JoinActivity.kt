@@ -24,6 +24,11 @@ class JoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+        val check1 : Boolean = intent.getBooleanExtra("checkBox1", false)
+
+        if (check1) {
+            firstCheckBtn.isChecked = true
+        }
 
         allCheckBtn.setOnClickListener { onCheckChanged(allCheckBtn) }
         firstCheckBtn.setOnClickListener { onCheckChanged(firstCheckBtn) }
@@ -36,8 +41,11 @@ class JoinActivity : AppCompatActivity() {
 
         checkImage1.setOnClickListener {
             val intent = Intent(this, Join2Activity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
+            intent.putExtra("checkBox1", check1)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
+
         }
 
         checkImage2.setOnClickListener {

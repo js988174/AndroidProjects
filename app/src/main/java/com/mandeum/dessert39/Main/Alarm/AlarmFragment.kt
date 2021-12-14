@@ -15,9 +15,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +34,8 @@ import com.mandeum.dessert39.databinding.FragmentCardBinding
 
 class AlarmFragment : Fragment() {
 
-    lateinit var binding: FragmentAlarmBinding
+    private var _binding: FragmentAlarmBinding? = null
+    private val binding get() = _binding!!
     lateinit var rvAdapter: AlarmAdapter
 
     private val alarmData = ArrayList<AlarmData>()
@@ -45,9 +49,9 @@ class AlarmFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAlarmBinding.inflate(layoutInflater)
+        _binding = FragmentAlarmBinding.inflate(layoutInflater)
 
-        rvAdapter = AlarmAdapter(requireContext(), alarmData)
+        val rvAdapter = AlarmAdapter(requireContext(), alarmData)
         val rv: RecyclerView = binding.alarmRecyclerView
         rv.adapter = rvAdapter
 
@@ -139,6 +143,9 @@ class AlarmFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

@@ -14,7 +14,8 @@ import com.mandeum.dessert39.databinding.FragmentPointBinding
 
 class PointFragment : Fragment() {
 
-    lateinit var binding: FragmentPointBinding
+    private var _binding: FragmentPointBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +26,10 @@ class PointFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentPointBinding.inflate(layoutInflater)
+        _binding = FragmentPointBinding.inflate(layoutInflater)
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_pointFragment_to_profileFragment)
+            requireActivity().onBackPressed()
         }
 
         val pointModel: ArrayList<PointModel> = ArrayList()
@@ -49,5 +50,8 @@ class PointFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

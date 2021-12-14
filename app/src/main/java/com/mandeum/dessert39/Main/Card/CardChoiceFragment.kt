@@ -49,16 +49,17 @@ import java.util.*
 class CardChoiceFragment : Fragment() {
 
 
-
     private val PERM_STOREGE = 99
     private val PERM_CAMERA = 100
     val REQ_CAMERA = 101
     val REQ_STORAGE = 102
     val permissionsRequestCode = 103
     var realUri: Uri? = null
-
     private lateinit var findUserCard: String
-    lateinit var binding: FragmentCardChoiceBinding
+
+    private var _binding: FragmentCardChoiceBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var cameraImage: String
 
 
@@ -70,10 +71,10 @@ class CardChoiceFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        binding = FragmentCardChoiceBinding.inflate(layoutInflater)
+        _binding = FragmentCardChoiceBinding.inflate(layoutInflater)
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_cardChoiceFragment_to_cardFragment)
+            requireActivity().onBackPressed()
         }
 
 //        binding.plusIcon.setOnClickListener {
@@ -120,12 +121,30 @@ class CardChoiceFragment : Fragment() {
         listModel3.add(item6)
         listModel3.add(item1)
         listModel3.add(item2)
+        val listModel4: MutableList<CardListModel> = mutableListOf()
+        listModel4.add(item5)
+        listModel4.add(item6)
+        listModel4.add(item1)
+        listModel4.add(item2)
+        val listModel5: MutableList<CardListModel> = mutableListOf()
+        listModel5.add(item5)
+        listModel5.add(item6)
+        listModel5.add(item1)
+        listModel5.add(item2)
+        val listModel6: MutableList<CardListModel> = mutableListOf()
+        listModel6.add(item5)
+        listModel6.add(item6)
+        listModel6.add(item1)
+        listModel6.add(item2)
 
         val cardTypeModel = mutableListOf<CardTypeModel>()
 
         cardTypeModel.add(CardTypeModel("D39 Special", listModel))
         cardTypeModel.add(CardTypeModel("Basic Design", listModel2))
         cardTypeModel.add(CardTypeModel("Season Design", listModel3))
+        cardTypeModel.add(CardTypeModel("Season Design", listModel4))
+        cardTypeModel.add(CardTypeModel("Season Design", listModel5))
+        cardTypeModel.add(CardTypeModel("Season Design", listModel6))
 
 
         val rvAdapter1 = CardTypeAdapter(requireContext(), cardTypeModel)
@@ -488,5 +507,10 @@ class CardChoiceFragment : Fragment() {
                 startActivityForResult(gallery, REQ_STORAGE)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
     }

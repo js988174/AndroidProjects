@@ -20,6 +20,9 @@ import com.mandeum.dessert39.Main.Order.selectShop.select.SelectShopAdapter
 import com.mandeum.dessert39.Main.Order.selectShop.select.SelectShopModel
 import com.mandeum.dessert39.R
 import io.reactivex.internal.disposables.ArrayCompositeDisposable
+import kotlinx.android.synthetic.main.fragment_order_menu_detail.view.*
+import kotlinx.android.synthetic.main.order_cart_item.view.*
+import kotlinx.android.synthetic.main.order_menu_item.view.*
 
 class CartAdapter(private val cartModel : ArrayList<CartModel>, private val context : Context) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
@@ -76,6 +79,13 @@ class CartAdapter(private val cartModel : ArrayList<CartModel>, private val cont
             Glide.with(itemView)
                 .load(item.image)
                 .into(imageView)
+
+//            itemView.dessert_name.text = item.product.Kname
+//
+//            itemView.count_price.text = item.product.price
+//
+//            itemView.number1.text = item.quantity.toString()
+
 
 
             itemView.findViewById<ImageView>(R.id.close_btn).setOnClickListener {

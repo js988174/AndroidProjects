@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.navigation.findNavController
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentMyInfoBinding
@@ -12,7 +13,8 @@ import com.mandeum.dessert39.databinding.FragmentMyInfoBinding
 
 class MyInfoFragment : Fragment() {
 
-    lateinit var binding : FragmentMyInfoBinding
+    private var _binding : FragmentMyInfoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +25,12 @@ class MyInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentMyInfoBinding.inflate(layoutInflater)
+        _binding = FragmentMyInfoBinding.inflate(layoutInflater)
+
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         binding.findImage.setOnClickListener {
-            it.findNavController().navigate(R.id.action_myInfoFragment_to_profileFragment)
+            requireActivity().onBackPressed()
         }
 
         binding.settingSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -40,5 +44,8 @@ class MyInfoFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

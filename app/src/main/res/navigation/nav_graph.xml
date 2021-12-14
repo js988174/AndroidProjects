@@ -136,6 +136,72 @@
             app:exitAnim="@anim/slide_right_exit"
             app:popEnterAnim="@anim/slide_left_enter"
             app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_rewardFragment"
+            app:destination="@id/rewardFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_cardChargeFragment2"
+            app:destination="@id/cardChargeFragment2"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_customerQuestionFragment"
+            app:destination="@id/customerQuestionFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_my39ShopFragment"
+            app:destination="@id/my39ShopFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -161,7 +227,11 @@
             app:destination="@id/orderSelectShopFragment" />
         <action
             android:id="@+id/action_orderFragment_to_orderSelectShopFragment2"
-            app:destination="@id/orderSelectShopFragment" />
+            app:destination="@id/orderSelectShopFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
         <action
             android:id="@+id/action_orderFragment_to_orderMenuDetailFragment"
             app:destination="@id/orderMenuDetailFragment"
@@ -176,6 +246,9 @@
             app:exitAnim="@anim/slide_up_exit"
             app:popEnterAnim="@anim/slide_down_enter"
             app:popExitAnim="@anim/slide_down_exit" />
+        <action
+            android:id="@+id/action_orderFragment_to_orderCartFragment"
+            app:destination="@id/orderCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardChoiceFragment"
@@ -244,6 +317,13 @@
             app:popExitAnim="@anim/slide_right_exit"
             app:enterAnim="@anim/slide_left_enter"
             app:exitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_settingFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
     </fragment>
 
     <fragment
@@ -275,6 +355,11 @@
             app:exitAnim="@anim/slide_left_exit"
             app:popEnterAnim="@anim/slide_right_enter"
             app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_orderSelectShopFragment_to_orderFragment3"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit" />
     </fragment>
 
     <dialog
@@ -350,6 +435,9 @@
         <action
             android:id="@+id/action_orderMenuInfoFragment_to_orderCartFragment"
             app:destination="@id/orderCartFragment" />
+        <argument
+            android:name="imageView1"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/orderCartFragment"
@@ -363,35 +451,28 @@
             android:id="@+id/action_orderCartFragment_to_orderMenuInfoFragment"
             app:destination="@id/orderMenuInfoFragment" />
         <action
-            android:id="@+id/action_orderCartFragment_to_order2Fragment"
-            app:destination="@id/order2Fragment"
-            app:enterAnim="@anim/slide_right_enter"
-            app:exitAnim="@anim/slide_right_exit"
-            app:popEnterAnim="@anim/slide_left_enter"
-            app:popExitAnim="@anim/slide_left_exit" />
-        <action
             android:id="@+id/action_orderCartFragment_to_orderMenuDetailFragment2"
             app:destination="@id/orderMenuDetailFragment"
             app:enterAnim="@anim/slide_left_enter"
             app:exitAnim="@anim/slide_left_exit"
             app:popEnterAnim="@anim/slide_right_enter"
             app:popExitAnim="@anim/slide_right_exit" />
-    </fragment>
-    <fragment
-        android:id="@+id/order2Fragment"
-        android:name="com.mandeum.dessert39.Main.Order.sub.order2.Order2Fragment"
-        android:label="fragment_order2"
-        tools:layout="@layout/fragment_order2" >
         <action
-            android:id="@+id/action_order2Fragment_to_orderCartFragment"
-            app:destination="@id/orderCartFragment" />
-        <action
-            android:id="@+id/action_order2Fragment_to_alarmFragment"
-            app:destination="@id/alarmFragment"
+            android:id="@+id/action_orderCartFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
             app:enterAnim="@anim/slide_right_enter"
             app:exitAnim="@anim/slide_right_exit"
             app:popEnterAnim="@anim/slide_left_enter"
             app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_orderCartFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_orderCartFragment_to_order2Fragment"
+            app:destination="@id/order2Fragment" />
+        <action
+            android:id="@+id/action_orderCartFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -465,6 +546,375 @@
             app:popEnterAnim="@anim/slide_right_enter"
             app:popExitAnim="@anim/slide_right_exit" />
     </fragment>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.mandeum.dessert39.Main.My39.History.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <argument
+            android:name="start"
+            app:argType="string" />
+        <argument android:name="end" />
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_termSettingFragment"
+            app:destination="@id/termSettingFragment" />
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderHistoryDetailFragment"
+            app:destination="@id/orderHistoryDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/order2Fragment"
+        android:name="com.mandeum.dessert39.Main.Order.sub.order2.Order2Fragment"
+        android:label="fragment_order2"
+        tools:layout="@layout/fragment_order2" >
+        <action
+            android:id="@+id/action_order2Fragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rewardFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Reward.RewardFragment"
+        android:label="fragment_reward"
+        tools:layout="@layout/fragment_reward" >
+        <action
+            android:id="@+id/action_rewardFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/termSettingFragment"
+        android:name="com.mandeum.dessert39.Main.My39.History.TermSettingFragment"
+        android:label="fragment_term_setting"
+        tools:layout="@layout/fragment_term_setting" >
+        <action
+            android:id="@+id/action_termSettingFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderHistoryDetailFragment"
+        android:name="com.mandeum.dessert39.Main.My39.History.OrderHistoryDetailFragment"
+        android:label="fragment_order_history_detail"
+        tools:layout="@layout/fragment_order_history_detail" >
+        <action
+            android:id="@+id/action_orderHistoryDetailFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardChargeFragment2"
+        android:name="com.mandeum.dessert39.Main.My39.Card.CardChargeFragment"
+        android:label="fragment_card_charge2"
+        tools:layout="@layout/fragment_card_charge2" >
+        <action
+            android:id="@+id/action_cardChargeFragment2_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Receipt.ReceiptFragment"
+        android:label="fragment_receipt"
+        tools:layout="@layout/fragment_receipt" >
+        <action
+            android:id="@+id/action_receiptFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_receiptFragment_to_receiptDetailFragment"
+            app:destination="@id/receiptDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Board.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" >
+        <action
+            android:id="@+id/action_boardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_profileFragment2"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_boardFragment_to_boardDetailFragment"
+            app:destination="@id/boardDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Question.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_questionFragment_to_customerQuestionFragment"
+            app:destination="@id/customerQuestionFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_questionFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerQuestionFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Sound.CustomerQuestionFragment"
+        android:label="fragment_customer_question"
+        tools:layout="@layout/fragment_customer_question" >
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_customerQuestionFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/my39ShopFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Shop.My39ShopFragment"
+        android:label="fragment_my39_shop"
+        tools:layout="@layout/fragment_my39_shop" >
+        <action
+            android:id="@+id/action_my39ShopFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_my39ShopFragment_to_my39ShopDetailFragment"
+            app:destination="@id/my39ShopDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Event.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_eventFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/my39ShopDetailFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Shop.My39ShopDetailFragment"
+        android:label="fragment_my39_shop_detail"
+        tools:layout="@layout/fragment_my39_shop_detail" >
+        <action
+            android:id="@+id/action_my39ShopDetailFragment_to_my39ShopFragment"
+            app:destination="@id/my39ShopFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardDetailFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Board.BoardDetailFragment"
+        android:label="fragment_board_detail"
+        tools:layout="@layout/fragment_board_detail" >
+        <action
+            android:id="@+id/action_boardDetailFragment_to_boardFragment"
+            app:destination="@id/boardFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_boardDetailFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_boardDetailFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_boardDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_boardDetailFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <argument
+            android:name="title1"
+            app:argType="string" />
+        <argument android:name="title2"
+            app:argType="string" />
+        <argument
+            android:name="content"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Event.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" >
+        <action
+            android:id="@+id/action_eventDetailFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <argument
+            android:name="title1"
+            app:argType="string" />
+        <argument android:name="title2"
+            app:argType="string" />
+        <argument android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="endDate"
+            app:argType="string" />
+        <argument
+            android:name="content"
+            app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptDetailFragment"
+        android:name="com.mandeum.dessert39.Main.My39.Receipt.ReceiptDetailFragment"
+        android:label="fragment_receipt_detail"
+        tools:layout="@layout/fragment_receipt_detail" >
+        <action
+            android:id="@+id/action_receiptDetailFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.mandeum.dessert39.Main.Payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 
 
 </navigation>

@@ -10,6 +10,29 @@ data class CartModel(
 //    @PrimaryKey
 //    @NonNull
 //    @ColumnInfo(name = "dessertId")
+//    var desertId:String="",
+//
+//    @ColumnInfo(name = "dessertName")
+//    var dessertName: String?=null,
+//
+//    @ColumnInfo(name = "dessertPrice")
+//    var dessertPrice: Double=0.0,
+//
+//    @ColumnInfo(name = "dessertQuantity")
+//    var dessertQuantity: Int = 0,
+//
+//    @ColumnInfo(name ="totalPrice")
+//    var totalPrice : Double=0.0,
+//
+//    @ColumnInfo(name = "uid")
+//    var userPhone: String = ""
+//
+
+
+
+
+
+
     val image : String,
     val title : String,
     val temper : String,
