@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Bundle
 import android.os.PowerManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
@@ -27,7 +28,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 )
             wakeLock.acquire(3000)
             wakeLock.release()
-            remoteMessage.data["title"]?.let { sendNotification(remoteMessage.data["body"]!!, it) }
+            remoteMessage.data["title"]?.let { sendNotification(remoteMessage.data["body"]!!, it, remoteMessage) }
     }
 
     // Firebase Cloud Messaging Server 가 대기중인 메세지를 삭제 시 호출
@@ -62,8 +63,12 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 //        sendRegistrationToServer(token)
     }
 
-    private fun sendNotification(title: String?, body: String){
+    private fun sendNotification(title: String?, body: String, remoteMessage: RemoteMessage){
         val intent = Intent(this,MainActivity::class.java)
+        val link = remoteMessage.data["link"]
+        val bundle = Bundle()
+        bundle.putString("url", link);
+        intent.putExtras(bundle)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) // 액티비티 중복 생성 방지
         val pendingIntent = PendingIntent.getActivity(this, 0 , intent,
             PendingIntent.FLAG_ONE_SHOT) // 일회성
@@ -76,12 +81,17 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)
+            .setNumber(0)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+
+
 
         // 오레오 버전 예외처리
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId,
+
                 "Channel human readable title",
                 NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)

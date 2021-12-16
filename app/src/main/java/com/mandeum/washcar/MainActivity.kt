@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     var first : Boolean = false
     var loadingFinished : Boolean = true
-
+    private var token : String? = MyApplication.prefs.getString("token", "")
+    private var target_url : String? = "http://washcar.man-deum.com/"
 
     private lateinit var webView: WebView
     private lateinit var mProgressBar: ProgressBar
@@ -143,7 +144,16 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
 
         val url = "http://washcar.man-deum.com/"
-        webView.loadUrl(url)
+        val intent = intent
+        val bundle = intent.extras
+        if (bundle != null) {
+            if (bundle.getString("url") != null && !bundle.getString("url")
+                    .equals("", ignoreCase = true)
+            ) {
+                target_url = bundle.getString("url")
+            }
+        }
+        target_url?.let { webView.loadUrl(it) }
         webView.webViewClient = WebViewClientClass()
         webView.addJavascriptInterface(WebAppInterface(this), "android")
 
@@ -392,12 +402,21 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     }
 
-    override fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    override fun androidMyLatitude() {
+        Toast.makeText(this, "androidMyLatitude()\nlatitude = $lat\nlongitude = $lng", Toast.LENGTH_SHORT).show()
+        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
     }
 
+    override fun androidLogin() {
+        webView.loadUrl("javascript:get_my_device('android', '$token')")
+        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
+        Toast.makeText(this, "2", Toast.LENGTH_SHORT).show()
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        target_url = "http://washcar.man-deum.com/"
+    }
 }
 
 
