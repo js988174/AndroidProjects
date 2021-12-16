@@ -18,12 +18,21 @@ class WebAppInterface(private val mContext: Context) {
     }
 
     @JavascriptInterface
-    fun myLat(lat : String) {
-        Toast.makeText(mContext, ""+lat, Toast.LENGTH_SHORT).show()
+    fun myLat() {
+        handler.post(Runnable() {
+            callback?.androidMyLatitude()
+        })
+    }
 
+    @JavascriptInterface
+    fun login() {
+        handler.post(Runnable() {
+            callback?.androidLogin()
+        })
     }
 
     interface BridgeListener {
-        fun showToast(msg: String)
+        fun androidMyLatitude()
+        fun androidLogin()
     }
 }
