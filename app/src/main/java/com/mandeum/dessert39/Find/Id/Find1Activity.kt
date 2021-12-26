@@ -3,24 +3,42 @@ package com.mandeum.dessert39.Find.Id
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import com.mandeum.dessert39.Login.LoginActivity
+import com.mandeum.dessert39.Login.ServerApi.Model.FindIdModel
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.R
 import kotlinx.android.synthetic.main.activity_find1.*
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.DataOutputStream
+import java.io.InputStreamReader
+import java.io.UnsupportedEncodingException
+import java.lang.StringBuilder
+import java.net.HttpURLConnection
+import java.net.URL
+import java.security.InvalidKeyException
+import java.security.NoSuchAlgorithmException
+import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
+import kotlin.concurrent.thread
 
 
 class Find1Activity : AppCompatActivity() {
@@ -29,6 +47,7 @@ class Find1Activity : AppCompatActivity() {
     lateinit var alertDialog : android.app.AlertDialog
     lateinit var builder : android.app.AlertDialog.Builder
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find1)
@@ -52,36 +71,9 @@ class Find1Activity : AppCompatActivity() {
         }
 
         checkBtn.setOnClickListener {
-            checkBtn2.isEnabled = true
-        if (phoneArea1.length() == 0 && nameArea.length() == 0) {
-            Toast.makeText(this, "이름, 핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-            phone_layout2.isVisible = false
-        } else if (nameArea.length() == 0) {
-                Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_SHORT).show()
-                phone_layout2.isVisible = false
-            } else if (phoneArea1.length() == 0) {
-                Toast.makeText(this, "핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-                phone_layout2.isVisible = false
-            }  else if (nameArea.length() >= 1 && phoneArea1.length() >= 1) {
-                phone_layout2.isVisible = true
-                RequestAlter()
-                val countDown = object : CountDownTimer(10000 * 3, 1000) {
-                    override fun onTick(p0: Long) {
-                        // countDownInterval 마다 호출 (여기선 1000ms)
-                        tvTimer?.text = getString(R.string.formatted_time,
-                            TimeUnit.MILLISECONDS.toMinutes(p0) % 60,
-                            TimeUnit.MILLISECONDS.toSeconds(p0) % 60)
-                    }
-
-                    override fun onFinish() {
-                        // 타이머가 종료되면 호출
-                        timerAlter()
-                        checkBtn2.isEnabled = false
-                        checkBtn2.setBackgroundResource(R.drawable.background_radius_gray2)
-                    }
-                }.start()
-            }
+            findIdApi(nameArea , phoneArea1, nameArea.text.toString(), phoneArea1.text.toString())
         }
+
         checkBtn2.setOnClickListener {
             if (phoneArea2.length() == 5) {
                 val intent = Intent(this, Find2Activity::class.java)
@@ -122,6 +114,64 @@ class Find1Activity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
+    private fun findIdApi(nameArea: EditText, phoneArea1 : EditText, NAME : String, PHONE: String) {
+        checkBtn2.isEnabled = true
+        if (phoneArea1.length() == 0 && nameArea.length() == 0) {
+            Toast.makeText(this, "이름, 핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            phone_layout2.isVisible = false
+        } else if (nameArea.length() == 0) {
+            Toast.makeText(this, "이름을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            phone_layout2.isVisible = false
+        } else if (phoneArea1.length() == 0) {
+            Toast.makeText(this, "핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            phone_layout2.isVisible = false
+        } else if (nameArea.length() >= 1 && phoneArea1.length() >= 1) {
+
+
+        }
+
+
+        thread(start = true) {
+            val userInfo : FindIdModel = ServerApi.findId(NAME, PHONE)
+            val findModel = FindIdModel(userInfo.errCode)
+
+            if (findModel.errCode == "0000") {
+                this.runOnUiThread {
+                    checkBtn.setBackgroundResource(R.drawable.background_radius_black_button)
+                    checkBtn.isEnabled = true
+                    Toast.makeText(this, "회원정보 찾기 성공.", Toast.LENGTH_SHORT).show()
+                    phone_layout2.isVisible = true
+                    RequestAlter()
+                    val countDown = object : CountDownTimer(10000 * 3, 1000) {
+                        override fun onTick(p0: Long) {
+                            // countDownInterval 마다 호출 (여기선 1000ms)
+                            tvTimer?.text = getString(
+                                R.string.formatted_time,
+                                TimeUnit.MILLISECONDS.toMinutes(p0) % 60,
+                                TimeUnit.MILLISECONDS.toSeconds(p0) % 60
+                            )
+                        }
+
+                        override fun onFinish() {
+                            // 타이머가 종료되면 호출
+                            timerAlter()
+                            checkBtn2.isEnabled = false
+                            checkBtn2.setBackgroundResource(R.drawable.background_radius_gray2)
+                        }
+                    }.start()
+                }
+
+            } else if (findModel.errCode == "0003") {
+                this.runOnUiThread {
+                    phone_layout2.isVisible = false
+                    Toast.makeText(this, "회원정보를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+    }
+
 
     private fun timerAlter() {
         try{
@@ -264,4 +314,44 @@ class Find1Activity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_left_exit)
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @Throws(NoSuchAlgorithmException::class, InvalidKeyException::class)
+    fun makeSignature(
+        url: String,
+        timestamp: String,
+        method: String,
+        accessKey: String,
+        secretKey: String
+    ): String {
+        val space = " " // one space
+        val newLine = "\n" // new line
+        val message = StringBuilder()
+            .append(method)
+            .append(space)
+            .append(url)
+            .append(newLine)
+            .append(timestamp)
+            .append(newLine)
+            .append(accessKey)
+            .toString()
+        val signingKey: SecretKeySpec
+        var encodeBase64String: String
+        try {
+            signingKey = SecretKeySpec(secretKey.toByteArray(charset("UTF-8")), "HmacSHA256")
+            val mac: Mac = Mac.getInstance("HmacSHA256")
+            mac.init(signingKey)
+            val rawHmac: ByteArray = mac.doFinal(message.toByteArray(charset("UTF-8")))
+            encodeBase64String = Base64.getEncoder().encodeToString(rawHmac)
+        } catch (e: UnsupportedEncodingException) {
+            // TODO Auto-generated catch block
+            encodeBase64String = e.toString()
+        }
+        return encodeBase64String
+    }
+
+
+
+
+
 }

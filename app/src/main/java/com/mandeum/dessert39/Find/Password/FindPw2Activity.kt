@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.activity_find_pw2.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class FindPw2Activity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_pw2)

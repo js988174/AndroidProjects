@@ -70,14 +70,14 @@ class OrderMenuDetailFragment : Fragment() {
 
         val args: OrderMenuDetailFragmentArgs by navArgs()
 
-        val imageView = args.imageView
+//        val imageView = args.imageView
 
-        binding.apply {
-            Glide.with(requireContext()).load(imageView).into(dessertImage)
-            kname.text = args.title
-            ename.text = args.content
-            dessertPrice.text = args.price
-        }
+//        binding.apply {
+//            Glide.with(requireContext()).load(imageView).into(dessertImage)
+//            kname.text = args.title
+//            ename.text = args.content
+//            dessertPrice.text = args.price
+//        }
 
         binding.cartBtn.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.CustomAlertDialog)

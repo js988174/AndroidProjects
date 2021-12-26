@@ -50,8 +50,8 @@ class OrderEventRecyclerAdapter(private val eventItem: ArrayList<OrderEventItem>
                 .into(imageView)
 
             itemView.setOnClickListener {
-                val direction = OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.eventName, "","", item.imageSrc)
-                it.findNavController().navigate(direction)
+//                val direction = OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.eventName, "","", item.imageSrc)
+//                it.findNavController().navigate(direction)
 
             }
         }

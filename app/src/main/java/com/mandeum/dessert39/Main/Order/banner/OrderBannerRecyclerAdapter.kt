@@ -1,18 +1,15 @@
 package com.mandeum.dessert39.Main.Order.banner
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mandeum.dessert39.Main.Card.Slide.CardListAdapter
-import com.mandeum.dessert39.Main.Card.Slide.CardListModel
 import com.mandeum.dessert39.R
 import kotlinx.android.synthetic.main.card_type_item.view.*
 
-class OrderBannerRecyclerAdapter(private val pageList: ArrayList<OrderBannerItem>) : RecyclerView.Adapter<OrderBannerRecyclerAdapter.ViewHolder>() {
+class OrderBannerRecyclerAdapter(private val pageList: ArrayList<String>) : RecyclerView.Adapter<OrderBannerRecyclerAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -31,11 +28,9 @@ class OrderBannerRecyclerAdapter(private val pageList: ArrayList<OrderBannerItem
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bindItem(item: OrderBannerItem) {
-            val imageView = itemView.findViewById<ImageView>(R.id.order_banner_image)
-            Glide.with(itemView)
-                .load(item.imageBanner)
-                .into(imageView)
+        fun bindItem(item: String) {
+            val imageView = itemView.findViewById<ImageView>(R.id.image)
+            Glide.with(itemView).load(item).into(imageView)
 
         }
 

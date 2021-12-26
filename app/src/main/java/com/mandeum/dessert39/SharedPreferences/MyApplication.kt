@@ -2,15 +2,15 @@ package com.mandeum.dessert39.SharedPreferences
 
 import android.app.Application
 
-class Application: Application() {
+class MyApplication: Application() {
 
     companion object {
 
-        lateinit var mySharedPreferences: MySharedPreferences
+        lateinit var prefs: MySharedPreferences
     }
 
     override fun onCreate() {
-        mySharedPreferences = MySharedPreferences(applicationContext)
+        prefs = MySharedPreferences(applicationContext)
         super.onCreate()
     }
 

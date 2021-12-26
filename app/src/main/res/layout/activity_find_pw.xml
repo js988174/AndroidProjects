@@ -45,33 +45,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="268dp"
-        android:layout_height="49dp"
-        android:src="@drawable/certification"
-        app:layout_constraintBottom_toTopOf="@+id/certificationBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/certificationBtn"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/background_radius_maincolor"
-        android:fontFamily="@font/pretendardm"
-        android:outlineProvider="none"
-        android:text="본인인증하기"
-        android:textColor="@color/colorWhite"
-        android:textSize="15dp"
-        android:layout_marginBottom="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView14"-->
+<!--        android:layout_width="268dp"-->
+<!--        android:layout_height="49dp"-->
+<!--        android:src="@drawable/certification"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/certificationBtn"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/certificationBtn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="240dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:background="@drawable/background_radius_maincolor"-->
+<!--        android:fontFamily="@font/pretendardm"-->
+<!--        android:outlineProvider="none"-->
+<!--        android:text="본인인증하기"-->
+<!--        android:textColor="@color/colorWhite"-->
+<!--        android:textSize="15dp"-->
+<!--        android:layout_marginBottom="21dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

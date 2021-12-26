@@ -45,21 +45,21 @@ class SearchFragment : Fragment() {
             it.findNavController().navigate(R.id.action_searchFragment_to_orderFragment)
         }
 
-        val menuItem: ArrayList<OrderMenuModel> = ArrayList()
-
-        val rvAdapter : OrderSearchAdapter = OrderSearchAdapter(menuItem)
-        val rv : RecyclerView = binding.searchRecyclerView
-        rv.adapter = rvAdapter
-        rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
-        menuItem.add(OrderMenuModel(1,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-        menuItem.add(OrderMenuModel(2,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
-
-        menuItem.add(OrderMenuModel(3,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
-            , "6.800", soldOut = false, favorites = false))
+//        val menuItem: ArrayList<OrderMenuModel> = ArrayList()
+//
+//        val rvAdapter : OrderSearchAdapter = OrderSearchAdapter(menuItem)
+//        val rv : RecyclerView = binding.searchRecyclerView
+//        rv.adapter = rvAdapter
+//        rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//
+//        menuItem.add(OrderMenuModel(1,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+//            , "6.800", soldOut = false, favorites = false))
+//
+//        menuItem.add(OrderMenuModel(2,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+//            , "6.800", soldOut = false, favorites = false))
+//
+//        menuItem.add(OrderMenuModel(3,"","https://ifh.cc/g/RwgS7v.png","달고나 초코라떼 아이스", "Dalgona"
+//            , "6.800", soldOut = false, favorites = false))
 
 
 

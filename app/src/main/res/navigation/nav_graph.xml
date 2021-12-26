@@ -380,17 +380,9 @@
         android:label="fragment_order_menu_detail"
         tools:layout="@layout/fragment_order_menu_detail" >
         <argument
-            android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="content"
-            app:argType="string" />
-        <argument
-            android:name="price"
-            app:argType="string" />
-        <argument
-            android:name="imageView"
-            app:argType="string" />
+            android:name="no"
+            app:argType="integer"/>
+
         <action
             android:id="@+id/action_orderMenuDetailFragment_to_orderMenuInfoFragment"
             app:destination="@id/orderMenuInfoFragment"

@@ -3,9 +3,7 @@ package com.mandeum.dessert39.Main.Home
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,8 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.mandeum.dessert39.Intro.MainActivity
-import com.mandeum.dessert39.Login.ServerApi.BannerModel
+import com.mandeum.dessert39.Login.ServerApi.Model.BannerModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.Home.Slide.HomeSliderRecyclerAdapter
 import com.mandeum.dessert39.R
@@ -32,7 +29,6 @@ import com.mandeum.dessert39.Main.Home.expandable.popularityModel2
 import com.mandeum.dessert39.Main.Home.expandable.popularityModel3
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.databinding.FragmentHomeBinding
-import org.chromium.base.ThreadUtils.runOnUiThread
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList

@@ -1,14 +1,16 @@
 package com.mandeum.dessert39.Main.Order.sub
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.mandeum.dessert39.Main.Order.banner.OrderBannerItem
+import com.mandeum.dessert39.Login.ServerApi.Model.OrderBannerModel
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
+import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.Main.Order.banner.OrderBannerRecyclerAdapter
 import com.mandeum.dessert39.Main.Order.dialog.CouponFragment
 import com.mandeum.dessert39.Main.Order.favorite.OrderFavoriteItem
@@ -17,13 +19,14 @@ import com.mandeum.dessert39.Main.Order.favorite.OrderFavoriteItem3
 import com.mandeum.dessert39.Main.Order.slide.*
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentRecommendBinding
+import kotlin.concurrent.thread
 
 
 class RecommendFragment : Fragment() {
 
         private var _binding: FragmentRecommendBinding? = null
         private val binding get() = _binding!!
-
+        lateinit var thread : HomeActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,8 @@ class RecommendFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentRecommendBinding.inflate(layoutInflater)
 
+        thread = context as HomeActivity
+
         binding.couponLayout.setOnClickListener {
             val coupon =  CouponFragment()
             coupon.isCancelable = false
@@ -47,36 +52,55 @@ class RecommendFragment : Fragment() {
          val favoriteModel1 = ArrayList<OrderFavoriteItem>()
          val favoriteModel2 = ArrayList<OrderFavoriteItem2>()
          val favoriteModel3 = ArrayList<OrderFavoriteItem3>()
-         val pageList: ArrayList<OrderBannerItem> = ArrayList()
+
          val eventItem: ArrayList<OrderEventItem> = ArrayList()
          val recommandItem: ArrayList<OrderRecommandItem> = ArrayList()
          val newItem: ArrayList<OrderNewItem> = ArrayList()
          val shopItem: ArrayList<OrderShopItem> = ArrayList()
 
-        val rvAdapter = OrderBannerRecyclerAdapter(pageList)
+
         val rvAdapter2 = OrderEventRecyclerAdapter(eventItem)
         val rvAdapter3  = OrderRecommandRecyclerAdapter(recommandItem)
         val rvAdapter4  = OrderNewRecyclerAdapter(newItem)
         val rvAdapter5  = OrderShopRecyclerAdapter(shopItem)
 
-        val rv : ViewPager2 = binding.viewPager1
+
 
         val rv2: RecyclerView = binding.eventMenuRecyclerView
         val rv3: RecyclerView = binding.recommandRecyclerView
         val rv4: RecyclerView = binding.newMenuRecyclerView
         val rv5: RecyclerView = binding.recommandDessertRecyclerView
 
-        rv.adapter = rvAdapter
+
         rv2.adapter = rvAdapter2
         rv3.adapter = rvAdapter3
         rv4.adapter = rvAdapter4
         rv5.adapter = rvAdapter5
 
 
-        pageList.add(OrderBannerItem("https://ifh.cc/g/kdYD48.png"))
-        pageList.add(OrderBannerItem("https://ifh.cc/g/kdYD48.png"))
-        pageList.add(OrderBannerItem("https://ifh.cc/g/kdYD48.png"))
-        binding.dotsIndicator.setViewPager2(rv)
+        thread(start = true) {
+            val orderBanner: OrderBannerModel = ServerApi.orderBanner()
+
+            if (orderBanner.connection) {
+                if (orderBanner.errCode == "0000") {
+                    thread.runOnUiThread {
+                        val rv : ViewPager2 = binding.viewPager1
+                        rv.adapter = OrderBannerRecyclerAdapter(orderBanner.Arraylist)
+                        binding.dotsIndicator.setViewPager2(rv)
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "connection = ${orderBanner.connection}\n연결 실패",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+
+
 
 
         eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","딸기 순수 우유케익"))

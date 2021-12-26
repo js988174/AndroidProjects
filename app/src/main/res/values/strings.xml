@@ -10,9 +10,9 @@
     <!-- 얘는 그냥 네이티브 앱키 그대로 입력하면 된다 -->
     <string name="kakao_app_key">2b54b9d295e0e233ac3c2ea41dd6128d</string>
 
-    <string name="naver_client_id">rtWH6aFOEWi1MxvtL7Bq</string>
-    <string name="naver_client_secret">KIyQQGQ7nd</string>
-    <string name="naver_client_name">만듦</string>
+    <string name="naver_client_id">gonQ_zmB9NTtNfXpEIi_</string>
+    <string name="naver_client_secret">bToV9pVN9W</string>
+    <string name="naver_client_name">dessert39</string>
 
     <string name="special_char1">&amp;</string>
     <string name="imp_key">IAMPORT 관리자 페이지에 있는 imp_key</string>
@@ -33,6 +33,7 @@
     <string name="watch"><u>보기</u></string>
     <string name="title_activity_join5">Join5Activity</string>
     <string name="formatted_time">%02d:%02d</string>
+    <string name="firebase_notification_channel_id">channel_dessert39</string>
 
 
     <string-array name="coupon_spinner">

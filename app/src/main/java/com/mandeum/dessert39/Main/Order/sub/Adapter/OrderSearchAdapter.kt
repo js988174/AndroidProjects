@@ -45,26 +45,26 @@ class OrderSearchAdapter(private val menuItem: ArrayList<OrderMenuModel>) : Recy
 
             kname.text = item.Kname
             Ename.text = item.Ename
-            price.text = item.price
+            price.text = item.price.toString()
 
             Glide.with(itemView)
                 .load(item.image)
                 .into(imageView)
 
-            if (item.soldOut) {
-                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = true
-            } else if (!item.soldOut) {
-                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = false
-            }
-            if (item.favorites) {
-                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = true
-            } else if (!item.favorites) {
-                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = false
-            }
+//            if (item.soldOut) {
+//                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = true
+//            } else if (!item.soldOut) {
+//                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = false
+//            }
+//            if (item.favorites) {
+//                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = true
+//            } else if (!item.favorites) {
+//                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = false
+//            }
 
 
             itemView.setOnClickListener {
-                val direction2 = SearchFragmentDirections.actionSearchFragmentToOrderMenuDetailFragment(item.Kname, item.Ename,item.price, item.image)
+                val direction2 = SearchFragmentDirections.actionSearchFragmentToOrderMenuDetailFragment(item.id)
                 it.findNavController().navigate(direction2)
             }
 

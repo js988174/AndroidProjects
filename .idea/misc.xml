@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Java/graalvm-ce-java11-21.0.0.2/caches/transforms-2/files-2.1/6552419aa7900daffdb2b1ff32816920/jetified-ImageSlideshow-0.1.0/res/drawable/default_selected_dot.xml" value="0.35185185185185186" />
         <entry key="..\:/Java/graalvm-ce-java11-21.0.0.2/caches/transforms-2/files-2.1/6552419aa7900daffdb2b1ff32816920/jetified-ImageSlideshow-0.1.0/res/drawable/default_unselected_dot.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-hdpi/background_10.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-hdpi/background_radius_gray6.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-hdpi/switch_thumb_on.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-ldpi/background_radius_gray18.xml" value="0.38229166666666664" />
@@ -56,6 +57,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_home_black_24dp.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_live_tv_black_24dp.xml" value="0.28055555555555556" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_main_foreground.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_reorder_black_24dp.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/ic_tag_faces_black_24dp.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/drawable-v24/join_button_gray.xml" value="0.3453703703703704" />
@@ -156,7 +158,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join21.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join22.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join23.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join24.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join24.xml" value="0.22" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join3.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join4.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/activity_join5.xml" value="0.33" />
@@ -195,7 +197,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/content_image.xml" value="0.19739583333333333" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/content_join5.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/coupon_item.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_all_delete.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_all_delete.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_auto_charge.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_auto_charge_cancel.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_board_add.xml" value="0.33" />
@@ -222,7 +224,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_bottom_home_list_dialog_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_bottom_sheet_home.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge.xml" value="0.22" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_choice.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_coffee.xml" value="0.25" />

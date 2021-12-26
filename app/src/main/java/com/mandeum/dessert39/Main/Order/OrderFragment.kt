@@ -69,8 +69,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         }
 
         binding.copyBtn.setOnClickListener {
-            val clipboard: ClipboardManager =
-                requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clipboard: ClipboardManager = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", "Text to copy")
             clipboard.setPrimaryClip(clip)
             Toast.makeText(requireContext(), "주소를 복사했습니다.", Toast.LENGTH_SHORT).show()

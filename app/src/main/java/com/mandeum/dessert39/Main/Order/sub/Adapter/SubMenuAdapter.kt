@@ -4,19 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.mandeum.dessert39.Main.Card.Slide.CardListAdapter
-import com.mandeum.dessert39.Main.Card.Slide.CardListModel
 import com.mandeum.dessert39.R
 
-class  SubMenuAdapter (val context: Context, val subMenuItem: ArrayList<SubMenuModel>, val menuItem : ArrayList<OrderMenuModel>,val recyclerView: RecyclerView) : RecyclerView.Adapter<SubMenuAdapter.ViewHolder>() {
+class  SubMenuAdapter(
+    val context: Context, val subMenuItem: ArrayList<SubMenuModel>, val menuItem: ArrayList<OrderMenuModel>,
+    val recyclerView: RecyclerView) : RecyclerView.Adapter<SubMenuAdapter.ViewHolder>() {
     private val itemList: ArrayList<View> = ArrayList()
     private val menuList: ArrayList<OrderMenuModel> = ArrayList()
 

@@ -4,6 +4,7 @@ import android.util.Base64
 import java.io.BufferedInputStream
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.security.spec.AlgorithmParameterSpec
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -19,7 +20,7 @@ class Cbc {
          fun encryptCBC(byte : String): String {
             val iv = IvParameterSpec(strAESIV.toByteArray())
             val keySpec = SecretKeySpec(strAESKey.toByteArray(), "AES")
-            val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+            val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
             cipher.init(Cipher.ENCRYPT_MODE, keySpec, iv)
             val crypted = cipher.doFinal(byte.toByteArray())
             val encodedByte = Base64.encode(crypted, Base64.NO_WRAP)
@@ -29,13 +30,15 @@ class Cbc {
         // 복호화
          fun decryptCBC(byte : String): String {
             var decodedByte: ByteArray = Base64.decode(byte, Base64.DEFAULT)
-            val iv = IvParameterSpec(strAESIV.toByteArray())
+            val iv: AlgorithmParameterSpec = IvParameterSpec(strAESIV.toByteArray())
             val keySpec = SecretKeySpec(strAESKey.toByteArray(), "AES")
-            val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+            val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
             cipher.init(Cipher.DECRYPT_MODE, keySpec, iv)
             val output = cipher.doFinal(decodedByte)
 
             return String(output)
+
+
         }
     }
 }

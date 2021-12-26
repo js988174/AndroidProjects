@@ -8,18 +8,22 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.mandeum.dessert39.Find.Id.Find1Activity
 import com.mandeum.dessert39.Login.LoginActivity
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.R
 import kotlinx.android.synthetic.main.activity_find1.*
 import kotlinx.android.synthetic.main.activity_join3.*
 import java.util.regex.Pattern
+import kotlin.concurrent.thread
 
 
 class Join3Activity : AppCompatActivity() {
+
 
     private var passwordValidation = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&]).{8,15}.\$"
 
@@ -27,8 +31,32 @@ class Join3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join3)
 
+        var checkBoolean = false
+
 //        joinBackGround()
         joinArea()
+
+        checkBtnId.setOnClickListener {
+             thread(true) {
+                val idCheck: String = ServerApi.CheckId(joinIdArea.text.toString())
+
+                if (idCheck == "0000") {
+                    checkBoolean = true
+                    this.runOnUiThread {
+                        idText3.text = "사용가능한 아이디입니다."
+                        idText3.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.black2))
+                    }
+                } else if (idCheck == "0013") {
+                    checkBoolean = false
+                    this.runOnUiThread {
+                        idText3.text = "이미 등록된 아이디입니다."
+                        idText3.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.black2))
+                    }
+                }
+
+            }
+
+        }
 
         successBtn.setOnClickListener {
             val intent = Intent(this, Join5Activity::class.java)
@@ -143,10 +171,7 @@ class Join3Activity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                checkBtnId.setOnClickListener {
-                    idText3.text = "사용가능한 아이디입니다."
-                    idText3.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.black2))
-                }
+
             }
 
         })

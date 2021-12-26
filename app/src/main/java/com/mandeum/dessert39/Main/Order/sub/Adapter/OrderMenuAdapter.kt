@@ -54,19 +54,19 @@ class OrderMenuAdapter(private val menuItem: ArrayList<OrderMenuModel>, context:
                 .load(item.image)
                 .into(imageView)
 
-            if (item.soldOut) {
-                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = true
-            } else if (!item.soldOut) {
-                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = false
-            }
-            if (item.favorites) {
-                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = true
-            } else if (!item.favorites) {
-                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = false
-            }
+//            if (item.soldOut) {
+//                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = true
+//            } else if (!item.soldOut) {
+//                itemView.findViewById<ImageView>(R.id.sold_out).isVisible = false
+//            }
+//            if (item.favorites) {
+//                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = true
+//            } else if (!item.favorites) {
+//                itemView.findViewById<ConstraintLayout>(R.id.favorite).isVisible = false
+//            }
 
             itemView.setOnClickListener {
-                val direction = OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.Kname, item.Ename,item.price, item.image)
+                val direction = OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.id)
                 it.findNavController().navigate(direction)
 
             }
