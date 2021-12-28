@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">washcar</string>
+    <string name="firebase_notification_channel_id">washcar_channel</string>
 </resources>

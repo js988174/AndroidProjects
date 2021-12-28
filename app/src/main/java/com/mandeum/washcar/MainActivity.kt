@@ -1,12 +1,11 @@
 package com.mandeum.washcar
 
 import android.Manifest
+import android.Manifest.permission.*
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.location.*
@@ -18,34 +17,59 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
 import android.os.Bundle
-import android.os.Looper
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
-import com.google.android.gms.location.LocationRequest.create
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import java.net.URISyntaxException
 import java.util.*
+import android.content.Intent
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
+import android.os.Build
+import android.provider.MediaStore
+import java.io.File
+import java.io.IOException
+import java.security.Permissions
+import java.text.SimpleDateFormat
+import androidx.core.app.ActivityCompat.startActivityForResult
+
+import android.os.Parcelable
+
+import android.os.Environment
+import android.annotation.TargetApi
+import android.app.Activity
+import android.widget.Toast
+
 
 class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     var lat : Double? = null
     var lng : Double? = null
+    private val bridge = WebAppInterface()
+    val PROTOCOL_START = "intent:"
+    val GOOGLE_PLAY_STORE_PREFIX = "market://details?id="
 
-    var first : Boolean = false
+
+
+    private var filePathCallbackLollipop: ValueCallback<Array<Uri>>? = null
+    private var filePathCallbackNormal: ValueCallback<Uri?>? = null
+    private var imageUri: Uri? = null
+    val FILECHOOSER_NORMAL_REQ_CODE = 2001
+    val FILECHOOSER_LOLLIPOP_REQ_CODE = 2002
+
+    private var count: Int = 0
+    private var first: Boolean = true
     var loadingFinished : Boolean = true
+
+    private val permissionCode: Int = 100
+    private var isPermissionOK: Boolean = false
+
     private var token : String? = MyApplication.prefs.getString("token", "")
     private var target_url : String? = "http://washcar.man-deum.com/"
+
+    val REQUEST_IMAGE_CAPTURE = 1
 
     private lateinit var webView: WebView
     private lateinit var mProgressBar: ProgressBar
@@ -56,131 +80,184 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val firstPermission = MyApplication.prefs.getBoolean("firstPermission", true)
-//
-//        if (firstPermission) {
-//            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                ActivityCompat.requestPermissions(
-//                    this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
-//                MyApplication.prefs.setBoolean("firstPermission", false)
-//            }
-//        } else if (!firstPermission) {
-//            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                first = false
-//                showDialogToGetPermission()
-//            } else if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION
-//                ) == PackageManager.PERMISSION_GRANTED
-//            ) {
-//                first = true
-//            }
-//        }
+        requestPermission()
+//        checkPersmission()
+
+        val isFirst = MyApplication.prefs.getBoolean("isFirst", true)
+
+
+        if (isFirst) {
+            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ), permissionCode)
+                MyApplication.prefs.setBoolean("isFirst", false)
+            }
+        } else if (!isFirst) {
+            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            ) {
+                isPermissionOK = false
+                showDialogToGetPermission()
+            } else {
+                isPermissionOK = true
+            }
+        }
+
+        if (isPermissionOK) {
+            val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+            val isNetworkEnabled: Boolean = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+            val isGPSEnabled: Boolean = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+
+            val locationListener = LocationListener { p0 ->
+                lat = p0.latitude
+                lng = p0.longitude
+
+                count += 1
+            }
+
+            if (isNetworkEnabled) {
+                val location: Location? =
+                    locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                if (location != null) {
+                    lat = location.latitude
+                    lng = location.longitude
+                } else {
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1L,
+                        1F,
+                        locationListener
+                    )
+                    if (lat != null || lng != null) {
+                        locationManager.removeUpdates(locationListener)
+                    }
+                }
+            } else if (isGPSEnabled) {
+                val location: Location? =
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (location != null) {
+                    lat = location.latitude
+                    lng = location.longitude
+                } else {
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1L,
+                        1F,
+                        locationListener
+                    )
+                    if (lat != null || lng != null) {
+                        locationManager.removeUpdates(locationListener)
+                    }
+                }
+            }
+        }
 
         webView = findViewById(R.id.webView1)
         mProgressBar = findViewById(R.id.progress1)
 
         webView.apply {
-            // 팝업창 호출
             webChromeClient = object : WebChromeClient() {
-
-                override fun onCreateWindow(
+                override fun onJsConfirm(
                     view: WebView?,
-                    isDialog: Boolean,
-                    isUserGesture: Boolean,
-                    resultMsg: Message?
+                    url: String?,
+                    message: String?,
+                    result: JsResult?
                 ): Boolean {
-                    val newWebView = WebView(this@MainActivity).apply {
-                        webViewClient = WebViewClient()
-                        settings.javaScriptEnabled = true
-                    }
-
-                    val dialog = Dialog(this@MainActivity).apply {
-                        setContentView(newWebView)
-                        window!!.attributes.width = ViewGroup.LayoutParams.MATCH_PARENT
-                        window!!.attributes.height = ViewGroup.LayoutParams.MATCH_PARENT
-                        show()
-                    }
-                    newWebView.webChromeClient = object : WebChromeClient() {
-                        override fun onCloseWindow(window: WebView?) {
-                            super.onCloseWindow(window)
-                            dialog.dismiss()
+                    androidx.appcompat.app.AlertDialog.Builder(this@MainActivity)
+                        .setTitle("알림")
+                        .setMessage(message)
+                        .setPositiveButton("확인") { _, _ ->
                         }
-                    }
-                    (resultMsg?.obj as WebView.WebViewTransport).webView = newWebView
-                    resultMsg.sendToTarget()
+                        .setNegativeButton("취소") { _, _ ->
+                        }
+                        .create()
+                        .show()
                     return true
                 }
 
+                override fun onShowFileChooser(
+                    webView: WebView?,
+                    filePathCallback: ValueCallback<Array<Uri>>,
+                    fileChooserParams: FileChooserParams?
+                ): Boolean {
+                    if (filePathCallbackLollipop != null) {
+                        filePathCallbackLollipop!!.onReceiveValue(null)
+                        filePathCallbackLollipop = null
+                    }
+                    filePathCallbackLollipop = filePathCallback
+
+                    val isCapture = fileChooserParams!!.isCaptureEnabled
+
+                    runCamera(isCapture, 1)
+                    return true
+                }
             }
 
-            settings.javaScriptEnabled = true
-            settings.setSupportMultipleWindows(false) // 새창 띄우기
-            settings.setSupportZoom(false) // 화면 확대 허용
-            settings.javaScriptCanOpenWindowsAutomatically = false // 자바스크립트 새창 띄우기 허용
-            settings.loadWithOverviewMode = true // html의 컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
-            settings.useWideViewPort = true // html의 viewport 메타 태그 지원
-            settings.builtInZoomControls = false // 화면 확대/축소 허용
-            settings.displayZoomControls = false
-            settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
-            settings.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐쉬 허용
-            settings.domStorageEnabled = true // 로컬 저장 허용
-            settings.databaseEnabled = true
+//            settings.javaScriptEnabled = true
+//            settings.setSupportMultipleWindows(false) // 새창 띄우기
+//            settings.setSupportZoom(false) // 화면 확대 허용
+//            settings.javaScriptCanOpenWindowsAutomatically = false // 자바스크립트 새창 띄우기 허용
+//            settings.loadWithOverviewMode = true // html의 컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
+//            settings.useWideViewPort = true // html의 viewport 메타 태그 지원
+//            settings.builtInZoomControls = false // 화면 확대/축소 허용
+//            settings.displayZoomControls = false
+//            settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
+//            settings.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐쉬 허용
+//            settings.domStorageEnabled = true // 로컬 저장 허용
+//            settings.databaseEnabled = true
+//            settings.mediaPlaybackRequiresUserGesture = false
+//            settings.allowContentAccess = true
+//            settings.setGeolocationEnabled(true)
+//            settings.allowUniversalAccessFromFileURLs = true
+//            settings.allowFileAccess = true
+//            fitsSystemWindows = true
 
-//            settings.safeBrowsingEnabled = true
-
-            settings.mediaPlaybackRequiresUserGesture = false
-
-            settings.allowContentAccess = true
-            settings.setGeolocationEnabled(true)
-            settings.allowUniversalAccessFromFileURLs = true
-
-            settings.allowFileAccess = true
-            fitsSystemWindows = true
 
         }
 
-
-        val url = "http://washcar.man-deum.com/"
-        val intent = intent
-        val bundle = intent.extras
-        if (bundle != null) {
-            if (bundle.getString("url") != null && !bundle.getString("url")
-                    .equals("", ignoreCase = true)
-            ) {
-                target_url = bundle.getString("url")
-            }
-        }
-        target_url?.let { webView.loadUrl(it) }
+        webView.settings.javaScriptEnabled = true
+        webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        val cookieManager: CookieManager = CookieManager.getInstance()
+        cookieManager.setAcceptCookie(true)
+        cookieManager.setAcceptThirdPartyCookies(webView, true)
+//        webView.loadUrl("file:///android_asset/sample.html")
+        webView.loadUrl("http://carwashday.com/")
         webView.webViewClient = WebViewClientClass()
-        webView.addJavascriptInterface(WebAppInterface(this), "android")
-
+        webView.addJavascriptInterface(bridge, "android")
+        bridge.setListener(this)
 
     }
-
 
     private var mWebViewListener: WebViewListener? = null
 
-    fun setWebViewListener(webViewListener: WebViewListener) {
-        mWebViewListener = webViewListener
-    }
+
 
     inner class WebViewClientClass : WebViewClient() {
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
-
-            mProgressBar.visibility = ProgressBar.VISIBLE
             mWebViewListener?.onPageStarted(url, favicon)
             loadingFinished = false
         }
 
         @SuppressLint("MissingPermission")
         override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
             mWebViewListener?.onPageFinished(url)
 
-            if (!first) {
+
                 val lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 val isGPSEnabled : Boolean = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 val isNetworkEnabled: Boolean = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
@@ -210,24 +287,19 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                     }
                 }
 
-            } else {
+
                 loadingFinished = true
 
+            if (first) {
+                webView.loadUrl("javascript:get_my_lat(${lat},${lng})")
+                first = false
             }
-
-
-
-            webView.loadUrl("javascript:get_my_lat(${lat},${lng})")
-
-            super.onPageFinished(view, url)
-
         }
 
 
 
         override fun onLoadResource(view: WebView?, url: String?) {
             mWebViewListener?.onLoadResource(url)
-
             super.onLoadResource(view, url)
         }
 
@@ -243,85 +315,106 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         ): Boolean {
 
             var intent : Intent? = null
-            val url: String? = request?.url.toString()
+            val url: String = request?.url.toString()
 
             try {
-                if (url != null && (url.contains("market://") ||
-                            url.contains("kr.co.samsungcard.mpocket") ||
-                            url.contains("com.shcard.smartpay") ||
-                            url.contains("com.shinhancard.smartshinhan") ||
-                            url.contains("com.kbcard.cxh.appcard") ||
-                            url.contains("com.kbstar.liivbank") ||
-                            url.contains("com.kbstar.reboot") ||
-                            url.contains("kvp.jjy.MispAndroid320") ||
-                            url.contains("com.ahnlab.v3mobileplus") ||
-                            url.contains("com.hanaskcard.paycla") ||
-                            url.contains("kr.co.hanamembers.hmscustomer") ||
-                            url.contains("com.lcacApp") ||
-                            url.contains("nh.smart.nhallonepay") ||
-                            url.contains("com.wooricard.smartapp") ||
-                            url.contains("com.hyundaicard.appcard") ||
-                            url.contains("kr.co.citibank.citimobile") ||
-                            url.contains("com.kftc.bankpay.android") ||
-                            url.contains("com.kakao.talk") ||
-                            url.contains("com. nhnent.payapp") ||
-                            url.contains("com.ssg.serviceapp.android.egiftcertificate") ||
-                            url.contains("com.sktelecom.tauth") ||
-                            url.contains("com.kt.ktauth") ||
-                            url.contains("com.kt.ktauthp") ||
-                            url.contains("com.hanaskcard.rocomo.potal\n") ||
-                            url.contains("com.lumensoft.touchenappfree") ||
-                            url.contains("com.TouchEn.mVaccine.webs") ||
-                            url.contains("com.ahnlab.v3mobileplus") ||
-                            url.contains("kr.co.shiftworks.vguardweb"))
-
+                if (url.startsWith(PROTOCOL_START) ||
+                    url.contains("market://") ||
+                    url.contains("kr.co.samsungcard.mpocket") ||
+                    url.contains("com.shcard.smartpay") ||
+                    url.contains("com.shinhancard.smartshinhan") ||
+                    url.contains("com.kbcard.cxh.appcard") ||
+                    url.contains("com.kbstar.liivbank") ||
+                    url.contains("com.kbstar.reboot") ||
+                    url.contains("kvp.jjy.MispAndroid320") ||
+                    url.contains("com.hanaskcard.rocomo.potal") ||
+                    url.contains("com.hanaskcard.paycla") ||
+                    url.contains("kr.co.hanamembers.hmscustomer") ||
+                    url.contains("com.lcacApp") ||
+                    url.contains("nh.smart.nhallonepay") ||
+                    url.contains("com.wooricard.smartapp") ||
+                    url.contains("com.hyundaicard.appcard") ||
+                    url.contains("kr.co.citibank.citimobile") ||
+                    url.contains("com.kftc.bankpay.android") ||
+                    url.contains("com.kakao.talk") ||
+                    url.contains("com.nhnent.payapp") ||
+                    url.contains("com.ssg.serviceapp.android.egiftcertificate") ||
+                    url.contains("com.sktelecom.tauth") ||
+                    url.contains("com.kt.ktauth") ||
+                    url.contains("com.kt.ktauthp") ||
+                    url.contains("com.lumensoft.touchenappfree") ||
+                    url.contains("com.nhn.android.search") ||
+                    url.contains("com.samsung.android.spaylite") ||
+                    url.contains("com.samsung.android.spay") ||
+                    url.contains("com.TouchEn.mVaccine.webs") ||
+                    url.contains("com.ahnlab.v3mobileplus") ||
+                    url.contains("com.sktelecom.tauth") ||
+                    url.contains("com.kt.ktauth") ||
+                    url.contains("com.lguplus.smartotp") ||
+                    url.contains("com.lottemembers.android") ||
+                    url.contains("com.lge.lgpay" ) ||
+                    url.contains("kr.co.shiftworks.vguardweb")
                 ) {
                     intent = null
-
                     try {
                         intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+
                     } catch (e: URISyntaxException) {
-                        return false;
+                        e.printStackTrace()
+                        return false
                     }
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                        if (MainActivity().packageManager.resolveActivity(intent, 0) == null) {
+                        if (packageManager.resolveActivity(intent, 0) == null) {
                             val pkgName: String? = intent.`package`
                             if (pkgName != null) {
-                                val uri: Uri = Uri.parse("market://search?q=pname:$pkgName")
+                                val uri: Uri = Uri.parse("market://details?id= $pkgName")
                                 intent = Intent(Intent.ACTION_VIEW, uri)
-                                applicationContext.startActivity(intent)
+                                startActivity(intent)
+
                             }
                         } else {
-                            val uri: Uri = Uri.parse(intent.getDataString())
+                            intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                            val uri: Uri = Uri.parse(intent.dataString)
                             intent = Intent(Intent.ACTION_VIEW, uri)
-                            applicationContext.startActivity(intent)
+                            startActivity(intent)
+
                         }
                     } else {
                         try {
-                            applicationContext.startActivity(intent)
+                            startActivity(intent)
+
                         } catch (e: ActivityNotFoundException) {
-                            val uri: Uri = Uri.parse("market://search?q=pname:" + intent.getPackage())
+                            val uri: Uri = Uri.parse("market://details?id=" + intent.getPackage())
                             intent = Intent(Intent.ACTION_VIEW, uri)
-                            applicationContext.startActivity(intent)
+                            startActivity(intent)
+
                         }
                     }
                 } else {
-                    view!!.loadUrl(url!!)
+                    view?.loadUrl(url)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
                 return false
             }
 
-
-            if (!loadingFinished) {
-                first = true
+            if (url.startsWith("tel:")) {
+                val intent = Intent(Intent.ACTION_DIAL, Uri.parse(url))
+                startActivity(intent)
+                view!!.reload()
+                return true
             }
-
-
-            loadingFinished = false
             mWebViewListener?.shouldOverrideUrlLoading(request)
-            return super.shouldOverrideUrlLoading(view, request)
+            return true
+
+
+//            if (!loadingFinished) {
+//                first = true
+//            }
+//
+//            loadingFinished = false
+
+//            return super.shouldOverrideUrlLoading(view, request)
         }
 
         override fun onReceivedError(
@@ -350,33 +443,40 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             alertDialog.show()
         }
     }
-    // 주기적으로 사용할 시시
-//    val gpsLocatonListener = object : LocationListener {
-//        override fun onLocationChanged(location: Location) {
-//           val provider: String = location.provider
-//            val lat: Double = location.longitude
-//            val lng: Double = location.longitude
-//        }
-//
-//    }
-    private var handler = Handler()
 
-    @JavascriptInterface
-    fun get_my_lat(lat: String, lng: String) {
-        handler.post {
-            webView.loadUrl("javascript:my_lat(${lat},${lng})")
 
-        }
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(READ_EXTERNAL_STORAGE, CAMERA,ACCESS_FINE_LOCATION,WRITE_EXTERNAL_STORAGE),
+            REQUEST_IMAGE_CAPTURE)
     }
 
 
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == permissionCode) {
+            if (grantResults.isNotEmpty()) {
+                for (item in grantResults) {
+                    if (item == PackageManager.PERMISSION_GRANTED) {
+                        isPermissionOK = true
+                    }
+                    if (item != PackageManager.PERMISSION_GRANTED) {
+                        isPermissionOK = false
+                        showDialogToGetPermission()
+                    }
+                }
+            }
+        }
+    }
 
     private fun showDialogToGetPermission() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("위치 설정")
-            .setMessage("위치 설정이 거부되었습니다. " +
-                    "위치 설정을 하로 가시겠습니까?")
+        builder.setTitle("권한 설정")
+            .setMessage("권한 설정이 거부되었습니다. " +
+                    "권한 설정을 하로 가시겠습니까?")
 
         builder.setPositiveButton("확인") { dialogInterface, i ->
             val intent = Intent(
@@ -403,19 +503,82 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     }
 
     override fun androidMyLatitude() {
-        Toast.makeText(this, "androidMyLatitude()\nlatitude = $lat\nlongitude = $lng", Toast.LENGTH_SHORT).show()
         webView.loadUrl("javascript:get_my_lat($lat, $lng)")
+        Log.d("java_lat","$lat,$lng")
     }
 
     override fun androidLogin() {
         webView.loadUrl("javascript:get_my_device('android', '$token')")
         webView.loadUrl("javascript:get_my_lat($lat, $lng)")
-        Toast.makeText(this, "2", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         target_url = "http://washcar.man-deum.com/"
+    }
+
+    private fun runCamera(_isCapture: Boolean, selectedType: Int) {
+        val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        val path = Environment.getExternalStorageDirectory()
+        val file = File(path, "temp.png") // temp.png 는 카메라로 찍었을 때 저장될 파일명이므로 사용자 마음대로
+        imageUri = Uri.fromFile(file)
+        intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+        if (!_isCapture) { // 선택팝업 카메라, 갤러리 둘다 띄우고 싶을 때
+            val pickIntent = Intent(Intent.ACTION_PICK)
+            if (selectedType == 1) {
+                pickIntent.type = MediaStore.Images.Media.CONTENT_TYPE
+                pickIntent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            } else if (selectedType == 2) {
+                pickIntent.type = MediaStore.Video.Media.CONTENT_TYPE
+                pickIntent.data = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            }
+            val pickTitle = "사진 가져올 방법을 선택하세요."
+            val chooserIntent = Intent.createChooser(pickIntent, pickTitle)
+
+            // 카메라 intent 포함시키기..
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf<Parcelable>(intentCamera))
+            startActivityForResult(chooserIntent, FILECHOOSER_LOLLIPOP_REQ_CODE)
+        } else { // 바로 카메라 실행..
+            startActivityForResult(intentCamera, FILECHOOSER_LOLLIPOP_REQ_CODE)
+        }
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        var data = data
+        when (requestCode) {
+            FILECHOOSER_NORMAL_REQ_CODE -> if (resultCode == RESULT_OK) {
+                if (filePathCallbackNormal == null) return
+                val result =
+                    if (data == null || resultCode != RESULT_OK) null else data.data //  onReceiveValue 로 파일을 전송한다.
+                filePathCallbackNormal!!.onReceiveValue(result)
+                filePathCallbackNormal = null
+            }
+            FILECHOOSER_LOLLIPOP_REQ_CODE -> if (resultCode == RESULT_OK) {
+                if (filePathCallbackLollipop == null) return
+                if (data == null) data = Intent()
+                if (data.data == null) data.data = imageUri
+                filePathCallbackLollipop!!.onReceiveValue(
+                    WebChromeClient.FileChooserParams.parseResult(
+                        resultCode,
+                        data
+                    )
+                )
+                filePathCallbackLollipop = null
+            } else {
+                if (filePathCallbackLollipop != null) {
+                    filePathCallbackLollipop!!.onReceiveValue(null)
+                    filePathCallbackLollipop = null
+                }
+                if (filePathCallbackNormal != null) {
+                    filePathCallbackNormal!!.onReceiveValue(null)
+                    filePathCallbackNormal = null
+                }
+            }
+            else -> {}
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
 

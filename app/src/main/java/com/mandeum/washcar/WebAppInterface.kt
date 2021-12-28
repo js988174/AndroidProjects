@@ -6,16 +6,15 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.widget.Toast
 
-class WebAppInterface(private val mContext: Context) {
+class WebAppInterface() {
 
     private var callback: BridgeListener? = null
-    private var handler = Handler()
-
-
 
     fun setListener(listener: BridgeListener) {
         callback = listener
     }
+
+    private val handler: Handler = Handler()
 
     @JavascriptInterface
     fun myLat() {
