@@ -197,6 +197,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/content_image.xml" value="0.19739583333333333" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/content_join5.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/coupon_item.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dessert_dialog.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_all_delete.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_auto_charge.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/dialog_auto_charge_cancel.xml" value="0.36614583333333334" />
@@ -223,9 +224,10 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_bottom_home_list_dialog.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_bottom_home_list_dialog_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_bottom_sheet_home.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge.xml" value="0.22" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card.xml" value="0.25" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge2.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_charge3.xml" value="0.22" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_card_choice.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_coffee.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_contact.xml" value="0.33" />
@@ -233,6 +235,8 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_customer_question.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_desert.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_dessert.xml" value="0.22" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_dialog222.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_event.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_event_detail.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_favorite.xml" value="0.36614583333333334" />
@@ -241,7 +245,8 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_frappe.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_frequent_shop.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_fromage.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_home.xml" value="0.25950535252860835" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_home_dialog.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_ice.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_inquiries.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_milk_tea.xml" value="0.36614583333333334" />
@@ -252,7 +257,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_my39_shop.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_my39_shop_detail.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_my_coupon.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_my_info.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_my_info.xml" value="0.2660862982588948" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_near_shop.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_non_coffee.xml" value="0.1598817375483284" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_onboarding1.xml" value="0.25" />
@@ -278,7 +283,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_question.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_receipt.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_receipt_detail.xml" value="0.25" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_recommend.xml" value="0.22" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_recommend.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_review.xml" value="0.25" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_reward.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_search.xml" value="0.33" />
@@ -289,7 +294,8 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_shop_information.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_shop_star.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_shop_story.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_term_setting.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_term_setting.xml" value="0.25" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_test.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/fragment_test001.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_1.xml" value="0.2046875" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_1p.xml" value="0.36614583333333334" />
@@ -297,6 +303,7 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/frame_3.xml" value="0.2046875" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/holder_terms.xml" value="0.2046875" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/home_bottom_dialog.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/home_dialog.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/home_item.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/home_user_menu_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/inquiry_item.xml" value="0.33" />
@@ -313,11 +320,11 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_cart_item.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_event_menu.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_favorite.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_menu_item.xml" value="0.396798652064027" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_menu_item.xml" value="0.5" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_new_menu.xml" value="0.5" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_season_menu.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_shop_recommand.xml" value="0.33" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_user_recommand.xml" value="0.67" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_shop_recommand.xml" value="0.5" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/order_user_recommand.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/point_item_layout.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/question_item.xml" value="0.387037037037037" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/question_tab_item.xml" value="0.5" />
@@ -326,11 +333,13 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/review_item.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/row.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/row_item.xml" value="0.19739583333333333" />
-        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/select_shop_item.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/select_shop_item.xml" value="0.5" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/shop_event_item.xml" value="0.5" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/layout/sub_menu_item.xml" value="0.33" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/menu/bottom_main_nav.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/menu/bottom_navigation_item.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_dessert.xml" value="0.3764102564102564" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_dessert_round.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_main.xml" value="0.38229166666666664" />

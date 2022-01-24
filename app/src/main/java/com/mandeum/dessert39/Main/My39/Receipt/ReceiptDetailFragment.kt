@@ -63,11 +63,6 @@ class ReceiptDetailFragment : Fragment() {
         val receiptModel : ArrayList<ReceiptDetailModel> = ArrayList()
         val rvAdapter = ReceiptDetailAdapter(requireContext(), receiptModel)
         val rv : RecyclerView = binding.receiptDetailRecyclerView
-
-        binding.findImage.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-
         rv.adapter = rvAdapter
 
         rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -80,6 +75,11 @@ class ReceiptDetailFragment : Fragment() {
         receiptModel.add(ReceiptDetailModel("오리지널도코룔(S)", "1", "4,800"))
         receiptModel.add(ReceiptDetailModel("오리지널도코룔(S)", "1", "4,800"))
         receiptModel.add(ReceiptDetailModel("오리지널도코룔(S)", "1", "4,800"))
+
+        binding.findImage.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
 
 
 

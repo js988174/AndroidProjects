@@ -129,7 +129,7 @@
                     android:textColor="@color/black2"
                     android:textSize="18dp"
                     app:layout_constraintStart_toEndOf="@+id/user_id"
-                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

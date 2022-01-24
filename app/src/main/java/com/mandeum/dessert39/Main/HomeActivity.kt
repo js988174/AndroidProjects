@@ -1,16 +1,24 @@
 package com.mandeum.dessert39.Main
 
-import android.content.pm.PackageManager
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.LikingModel
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
+import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.ActivityHomeBinding
-import kotlinx.android.synthetic.main.activity_home.*
-import java.security.MessageDigest
-import java.util.*
-import java.util.Base64 as Base641
+import kotlinx.android.synthetic.main.fragment_order_menu_detail.*
+import kotlin.concurrent.thread
 
 
 class HomeActivity : AppCompatActivity() {
@@ -20,25 +28,21 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //   setContentView(R.layout.activity_main)
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//            activity = this
-//        val view: View = layoutInflater.inflate(R.layout.bottom_sheet_home, null)
-//        val dialog = BottomSheetDialog(this)
-//        dialog.setContentView(view)
-//        dialog.show()
 
 
+//        val navHost = supportFragmentManager.findFragmentById(R.id.nav_fragment)
+//        navHost?.let { navFragment ->
+//            navFragment.childFragmentManager.primaryNavigationFragment?.let {fragment->
+//                //DO YOUR STUFF
+//            }
+//        }
 
     }
-
-
-//    companion object {
-//        var activity: HomeActivity? = null
-//    }
-
 }

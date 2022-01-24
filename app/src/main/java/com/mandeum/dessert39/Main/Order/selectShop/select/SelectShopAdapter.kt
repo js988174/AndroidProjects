@@ -39,39 +39,33 @@ class SelectShopAdapter (private val selectShopModel : ArrayList<SelectShopModel
             val name = itemView.findViewById<TextView>(R.id.shop_name)
             val location = itemView.findViewById<TextView>(R.id.shop_location2)
             val distance = itemView.findViewById<TextView>(R.id.shop_location)
-            val startTime = itemView.findViewById<TextView>(R.id.weekday_start)
-            val endTime = itemView.findViewById<TextView>(R.id.weekday_end)
-            val startTime1 = itemView.findViewById<TextView>(R.id.weekend_start)
-            val endTime1 = itemView.findViewById<TextView>(R.id.weekend_end)
+            val time = itemView.findViewById<TextView>(R.id.weekday)
 
             name.text = item.shopName
-            location.text = item.shopLocation
+            location.text = item.address
             distance.text = item.distance
-            startTime.text = item.weekdayStart
-            endTime.text = item.weekdayEnd
-            startTime1.text = item.weekendStart
-            endTime1.text = item.weekendEnd
+            time.text = item.time
 
 
             Glide.with(itemView)
                 .load(item.image)
                 .into(imageView)
-
-            if (item.fixNo) {
-                itemView.findViewById<ImageView>(R.id.fix_no).isVisible = true
-            } else if (!item.fixNo) {
-                itemView.findViewById<ImageView>(R.id.fix_no).isVisible = false
-            }
-            if (item.fixYes) {
-                itemView.findViewById<ConstraintLayout>(R.id.fix_yes).isVisible = true
-            } else if (!item.fixYes) {
-                itemView.findViewById<ConstraintLayout>(R.id.fix_yes).isVisible = false
-            }
-            if (item.event) {
-                itemView.findViewById<ConstraintLayout>(R.id.event_image).isVisible = true
-            } else if (!item.event) {
-                itemView.findViewById<ConstraintLayout>(R.id.event_image).isVisible = false
-            }
+//
+//            if (item.fixNo) {
+//                itemView.findViewById<ImageView>(R.id.fix_no).isVisible = true
+//            } else if (!item.fixNo) {
+//                itemView.findViewById<ImageView>(R.id.fix_no).isVisible = false
+//            }
+//            if (item.fixYes) {
+//                itemView.findViewById<ConstraintLayout>(R.id.fix_yes).isVisible = true
+//            } else if (!item.fixYes) {
+//                itemView.findViewById<ConstraintLayout>(R.id.fix_yes).isVisible = false
+//            }
+//            if (item.event) {
+//                itemView.findViewById<ConstraintLayout>(R.id.event_image).isVisible = true
+//            } else if (!item.event) {
+//                itemView.findViewById<ConstraintLayout>(R.id.event_image).isVisible = false
+//            }
 
             itemView.setOnClickListener {
 
@@ -82,12 +76,7 @@ class SelectShopAdapter (private val selectShopModel : ArrayList<SelectShopModel
                 val image : ImageView = dialog.findViewById<ImageView>(R.id.imageView) as ImageView
                 Glide.with(itemView).load(item.image).into(image)
                 dialog.findViewById<TextView>(R.id.shop_name)?.text = item.shopName
-                dialog.findViewById<TextView>(R.id.shop_location)?.text = item.shopLocation
-                dialog.findViewById<TextView>(R.id.distance)?.text = item.distance
-                dialog.findViewById<TextView>(R.id.start_time)?.text = item.weekdayStart
-                dialog.findViewById<TextView>(R.id.end_time)?.text = item.weekdayEnd
-                dialog.findViewById<TextView>(R.id.start_time1)?.text = item.weekendStart
-                dialog.findViewById<TextView>(R.id.end_time1)?.text = item.weekendEnd
+
                 dialog.findViewById<ConstraintLayout>(R.id.cancel_btn)?.setOnClickListener {
                     dialog.dismiss()
                 }

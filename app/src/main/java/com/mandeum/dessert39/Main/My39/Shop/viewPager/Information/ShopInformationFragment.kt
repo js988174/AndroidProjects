@@ -14,11 +14,11 @@ import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
 
-class ShopInformationFragment : Fragment() {
+class ShopInformationFragment : Fragment()  {
 
     private var _binding: FragmentShopInformationBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var mapView: MapView
 
      lateinit var viewPagerAdapter: InformationViewPager
 
@@ -37,24 +37,23 @@ class ShopInformationFragment : Fragment() {
     ): View? {
         _binding = FragmentShopInformationBinding.inflate(layoutInflater)
 
-//        val mapView = MapView(requireActivity())
-//        binding.clKakaoMapView.addView(mapView)
-//
-//        // 역삼동에서 한 주소
-//
-//        //37.57949781081026, 37.57949781081026
-//        val mapPoint = MapPoint.mapPointWithGeoCoord(37.57949781081026, 37.57949781081026)
-//
-//        mapView.setMapCenterPoint(mapPoint, true)
-//        mapView.setZoomLevel(1, true)
+         mapView = MapView(activity)
+         val mapViewContainer = binding.clKakaoMapView as ViewGroup
 
-//        val marker = MapPOIItem()
-//        marker.itemName = "강남"
-//        marker.mapPoint = mapPoint
-//        marker.markerType = MapPOIItem.MarkerType.BluePin
-//        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-//
-//        mapView.addPOIItem(marker)
+
+        val mapPoint = MapPoint.mapPointWithGeoCoord(37.5514579595, 126.951949155)
+        mapView.setMapCenterPoint(mapPoint, true) // anime
+        mapViewContainer.addView(mapView)
+
+           val marker = MapPOIItem()
+            marker.itemName = "wwwwww"
+            marker.tag = 0
+            marker.mapPoint = MapPoint.mapPointWithGeoCoord(37.5514579595, 126.951949155)
+            marker.markerType = MapPOIItem.MarkerType.BluePin
+            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+
+
+        mapView.addPOIItem(marker)
 
         viewModel = ViewModelProvider(this).get(InformationViewModel::class.java)
         viewModel.setBannerItems(
@@ -98,17 +97,26 @@ class ShopInformationFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
 
+
+
+
+    override fun onResume() {
+        mapView.onResume()
+        super.onResume()
     }
 
     override fun onPause() {
+        mapView.onPause()
         super.onPause()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
 }

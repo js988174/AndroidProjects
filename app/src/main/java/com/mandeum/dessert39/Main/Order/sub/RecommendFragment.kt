@@ -1,14 +1,17 @@
 package com.mandeum.dessert39.Main.Order.sub
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.mandeum.dessert39.Login.ServerApi.Model.OrderBannerModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.*
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.Main.Order.banner.OrderBannerRecyclerAdapter
@@ -27,6 +30,8 @@ class RecommendFragment : Fragment() {
         private var _binding: FragmentRecommendBinding? = null
         private val binding get() = _binding!!
         lateinit var thread : HomeActivity
+        private var condition : Boolean = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +44,10 @@ class RecommendFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentRecommendBinding.inflate(layoutInflater)
-
         thread = context as HomeActivity
+
+        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val token = shared.getString("LoginToken", "")
 
         binding.couponLayout.setOnClickListener {
             val coupon =  CouponFragment()
@@ -52,30 +59,24 @@ class RecommendFragment : Fragment() {
          val favoriteModel1 = ArrayList<OrderFavoriteItem>()
          val favoriteModel2 = ArrayList<OrderFavoriteItem2>()
          val favoriteModel3 = ArrayList<OrderFavoriteItem3>()
-
          val eventItem: ArrayList<OrderEventItem> = ArrayList()
-         val recommandItem: ArrayList<OrderRecommandItem> = ArrayList()
-         val newItem: ArrayList<OrderNewItem> = ArrayList()
-         val shopItem: ArrayList<OrderShopItem> = ArrayList()
+
 
 
         val rvAdapter2 = OrderEventRecyclerAdapter(eventItem)
-        val rvAdapter3  = OrderRecommandRecyclerAdapter(recommandItem)
-        val rvAdapter4  = OrderNewRecyclerAdapter(newItem)
-        val rvAdapter5  = OrderShopRecyclerAdapter(shopItem)
+
 
 
 
         val rv2: RecyclerView = binding.eventMenuRecyclerView
-        val rv3: RecyclerView = binding.recommandRecyclerView
-        val rv4: RecyclerView = binding.newMenuRecyclerView
-        val rv5: RecyclerView = binding.recommandDessertRecyclerView
+
+
+
 
 
         rv2.adapter = rvAdapter2
-        rv3.adapter = rvAdapter3
-        rv4.adapter = rvAdapter4
-        rv5.adapter = rvAdapter5
+
+
 
 
         thread(start = true) {
@@ -84,7 +85,7 @@ class RecommendFragment : Fragment() {
             if (orderBanner.connection) {
                 if (orderBanner.errCode == "0000") {
                     thread.runOnUiThread {
-                        val rv : ViewPager2 = binding.viewPager1
+                        val rv: ViewPager2 = binding.viewPager1
                         rv.adapter = OrderBannerRecyclerAdapter(orderBanner.Arraylist)
                         binding.dotsIndicator.setViewPager2(rv)
                     }
@@ -97,36 +98,127 @@ class RecommendFragment : Fragment() {
                     ).show()
                 }
             }
+
+
+            val newItem: ArrayList<OrderNewItem> = ArrayList()
+            val newMenu: NewMenuModel = ServerApi.newMenu(token.toString())
+
+            if (newMenu.connection) {
+                if (newMenu.errCode == "0000") {
+                    thread.runOnUiThread {
+
+                        val rv4: RecyclerView = binding.newMenuRecyclerView
+                        rv4.adapter = OrderNewRecyclerAdapter(newMenu.list, requireContext())
+                        rv4.layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "connection = ${newMenu.connection}\n연결 실패",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+
+            val seasonMenu: SeasonMenuModel = ServerApi.seasonMenu(token.toString())
+            val seaonModel =
+                SeasonMenuModel(seasonMenu.connection, seasonMenu.errCode, seasonMenu.list)
+
+            Log.d("확인", seasonMenu.list.toString())
+            if (seasonMenu.connection) {
+                if (seasonMenu.errCode == "0000") {
+                    thread.runOnUiThread {
+                        val rv5: RecyclerView = binding.season1Laout
+                        rv5.adapter =
+                            OrderSeasonRecyclerAdapter(seasonMenu.list, requireContext())
+                        rv5.layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.VERTICAL,
+                                false
+                            )
+                        Log.d("확인", seasonMenu.list.toString())
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "connection = ${seasonMenu.connection}\n연결 실패",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d("확인", seasonMenu.list.toString())
+                }
+            }
+
+
+            val recommandMenu: RecommandMenuModel = ServerApi.recommandMenu(token.toString())
+
+            if (recommandMenu.connection) {
+                if (recommandMenu.errCode == "0000") {
+                    thread.runOnUiThread {
+                        val rv5: RecyclerView = binding.recommandDessertRecyclerView
+                        rv5.adapter = OrderShopRecyclerAdapter(recommandMenu.list)
+                        rv5.layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "connection = ${recommandMenu.connection}\n연결 실패",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+
+            val adminMenu: AdminRecommandModel = ServerApi.adminRecommandMenu(token.toString())
+
+            if (adminMenu.connection) {
+                if (adminMenu.errCode == "0000") {
+                    thread.runOnUiThread {
+                        val rv3: RecyclerView = binding.recommandRecyclerView
+                        rv3.adapter = OrderRecommandRecyclerAdapter(adminMenu.list)
+                        rv3.layoutManager =
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "connection = ${adminMenu.connection}\n연결 실패",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
         }
-
-
-
 
 
         eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","딸기 순수 우유케익"))
         eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        eventItem.add(OrderEventItem("http://dessert39.com/data/product/21.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        eventItem.add(OrderEventItem("http://dessert39.com/data/product/25.png","https://ifh.cc/g/dBgxVz.png","딸기"))
 
 
-        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
-        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","딸기"))
-        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","돌체 돌체 돌체 돌체 라떼 아이스"))
-        recommandItem.add(OrderRecommandItem("http://dessert39.com/data/product/60.png","https://ifh.cc/g/dBgxVz.png","허니 카페라떼"))
 
 
-        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_green, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
-        newItem.add(OrderNewItem(R.drawable.background_radius_green, "http://dessert39.com/data/product/43.png", "그린티 엑스트라 카페"))
-
-
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/64.png", "망고 도코룔"))
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange, "http://dessert39.com/data/product/64.png", "망고 도코룔"))
-        shopItem.add(OrderShopItem(R.drawable.background_radius_orange,"http://dessert39.com/data/product/64.png", "망고 도코룔"))
 
         favoriteModel1.add(OrderFavoriteItem(R.drawable.tea1,"달고나 초코라떼 아이스","Dalgona Chocolate Latt Ice", "8.700"))
         binding.favoriteImage1.setImageResource(favoriteModel1[0].image)
@@ -175,6 +267,19 @@ class RecommendFragment : Fragment() {
 //        newItem.clear()
 //    }
 
+
+    override fun onPause() {
+        super.onPause()
+        condition = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

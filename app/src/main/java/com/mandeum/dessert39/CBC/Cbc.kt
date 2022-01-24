@@ -1,9 +1,6 @@
 package com.mandeum.dessert39.CBC
 
 import android.util.Base64
-import java.io.BufferedInputStream
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.security.spec.AlgorithmParameterSpec
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
@@ -17,7 +14,7 @@ class Cbc {
 
 
         // 암호화
-         fun encryptCBC(byte : String): String {
+        fun encryptCBC(byte : String): String {
             val iv = IvParameterSpec(strAESIV.toByteArray())
             val keySpec = SecretKeySpec(strAESKey.toByteArray(), "AES")
             val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
@@ -37,7 +34,6 @@ class Cbc {
             val output = cipher.doFinal(decodedByte)
 
             return String(output)
-
 
         }
     }

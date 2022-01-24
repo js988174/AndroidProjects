@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -18,15 +19,23 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.CategoryModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.DessertListModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.GoodsModel
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.Card.CardChargeFragmentArgs
+import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.Main.Order.OrderFragment
 import com.mandeum.dessert39.Main.Order.OrderFragmentDirections
 import com.mandeum.dessert39.Main.Order.dialog.OrderCustomFragment
+import com.mandeum.dessert39.Main.Order.sub.Adapter.SubMenuAdapter
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentOrderMenuDetailBinding
 import kotlinx.android.synthetic.main.fragment_order_menu_detail.*
+import kotlin.concurrent.thread
 
 
 class OrderMenuDetailFragment : Fragment() {
@@ -35,8 +44,9 @@ class OrderMenuDetailFragment : Fragment() {
         private var _binding: FragmentOrderMenuDetailBinding? = null
         private val binding get() = _binding!!
         private lateinit var callback: OnBackPressedCallback
-    }
 
+    }
+    lateinit var thread : HomeActivity
 
     var hotSelected : Boolean = false
     var iceSelected : Boolean = false
@@ -60,24 +70,15 @@ class OrderMenuDetailFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentOrderMenuDetailBinding.inflate(layoutInflater)
-
-
-
-        val dessertImage : ImageView = binding.dessertImage
-        val kname : TextView = binding.kName
-        val ename : TextView = binding.eName
-        val dessertPrice : TextView = binding.price
+        thread = context as HomeActivity
 
         val args: OrderMenuDetailFragmentArgs by navArgs()
 
-//        val imageView = args.imageView
+        val no: Int = args.no
+        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val token = shared.getString("LoginToken", "")
 
-//        binding.apply {
-//            Glide.with(requireContext()).load(imageView).into(dessertImage)
-//            kname.text = args.title
-//            ename.text = args.content
-//            dessertPrice.text = args.price
-//        }
+        Toast.makeText(requireContext(), "no =$no", Toast.LENGTH_SHORT).show()
 
         binding.cartBtn.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.CustomAlertDialog)
@@ -107,6 +108,28 @@ class OrderMenuDetailFragment : Fragment() {
 //            }.apply()
 //        }
 
+        thread(start = true) {
+            val detailModel: GoodsModel = ServerApi.menudetail(token.toString(),no)
+            if (detailModel.connection) {
+                if (detailModel.errCode == "0000") {
+                    thread.runOnUiThread {
+                        Toast.makeText(
+                            requireContext(), "성공",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            } else {
+                thread.runOnUiThread {
+                    Toast.makeText(
+                        requireContext(), "${detailModel.connection}오류",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+
 
 
         binding.favorite1.setOnCheckedChangeListener { checkBox, isChecked ->
@@ -127,10 +150,7 @@ class OrderMenuDetailFragment : Fragment() {
 
         binding.findImage.setOnClickListener {
             requireActivity().onBackPressed()
-            /*
-            val action = OrderMenuDetailFragmentDirections.actionOrderMenuDetailFragmentToOrderFragment()
-            findNavController().navigate(action)
-             */
+
         }
 
         binding.infoBtn.setOnClickListener {

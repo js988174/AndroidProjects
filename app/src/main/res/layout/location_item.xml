@@ -71,113 +71,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shop_name" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/pretendard_light"
+            android:text="영업시간 | 평일 09:00 ~ 22:00     주말 | 10:00 ~ 22:00"
+            android:textColor="@color/black5"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shop_location">
-
-            <TextView
-                android:id="@+id/textView43"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_light"
-                android:text="영업시간  |  평일 "
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/start_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_light"
-                android:text="09:00"
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView43"
-                app:layout_constraintStart_toEndOf="@+id/textView43"
-                app:layout_constraintTop_toTopOf="@+id/textView43" />
-
-            <TextView
-                android:id="@+id/textView46"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_light"
-                android:text=" ~ "
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/start_time"
-                app:layout_constraintStart_toEndOf="@+id/start_time"
-                app:layout_constraintTop_toTopOf="@+id/start_time" />
+            app:layout_constraintStart_toStartOf="@+id/shop_location"
+            app:layout_constraintTop_toBottomOf="@+id/shop_location" />
 
 
-            <TextView
-                android:id="@+id/end_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_light"
-                android:text="22:00"
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView46"
-                app:layout_constraintStart_toEndOf="@+id/textView46"
-                app:layout_constraintTop_toTopOf="@+id/textView46" />
 
-
-            <TextView
-                android:id="@+id/textView47"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:text="주말 "
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/end_time"
-                app:layout_constraintTop_toTopOf="@+id/end_time" />
-
-            <TextView
-                android:id="@+id/start_time1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:00"
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView47"
-                app:layout_constraintStart_toEndOf="@+id/textView47"
-                app:layout_constraintTop_toTopOf="@+id/textView47" />
-
-            <TextView
-                android:id="@+id/textView48"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_light"
-                android:text=" ~ "
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/start_time1"
-                app:layout_constraintStart_toEndOf="@+id/start_time1"
-                app:layout_constraintTop_toTopOf="@+id/start_time1" />
-
-            <TextView
-                android:id="@+id/end_time1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:00"
-                android:textColor="@color/black5"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView48"
-                app:layout_constraintStart_toEndOf="@+id/textView48"
-                app:layout_constraintTop_toTopOf="@+id/textView48" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

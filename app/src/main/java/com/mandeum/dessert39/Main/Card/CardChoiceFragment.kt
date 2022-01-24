@@ -2,9 +2,7 @@ package com.mandeum.dessert39.Main.Card
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
-import android.app.Dialog
 import android.content.ContentValues
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,35 +13,22 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.provider.Settings
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.FileProvider
-import androidx.core.view.isGone
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mandeum.dessert39.Main.Card.Slide.*
-import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentCardChoiceBinding
-import kotlinx.android.synthetic.main.fragment_card_choice.*
 import java.io.IOException
 import java.text.SimpleDateFormat
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.File
-import java.util.*
 
 
 class CardChoiceFragment : Fragment() {
@@ -147,7 +132,7 @@ class CardChoiceFragment : Fragment() {
         cardTypeModel.add(CardTypeModel("Season Design", listModel6))
 
 
-        val rvAdapter1 = CardTypeAdapter(requireContext(), cardTypeModel)
+        val rvAdapter1 = CardTypeAdapter(requireContext(), cardTypeModel, "Change", null)
         val rv: RecyclerView = binding.rv1
         rv.adapter = rvAdapter1
 

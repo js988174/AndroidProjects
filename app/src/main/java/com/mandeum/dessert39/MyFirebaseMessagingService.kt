@@ -8,22 +8,38 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.mandeum.dessert39.Intro.MainActivity
+import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.SharedPreferences.MyApplication
+import androidx.navigation.fragment.NavHostFragment
+
+
+
 
 
 class MyFirebaseMessagingService: FirebaseMessagingService() {
     private val logTag = "MyFirebaseMessagingService.Tag"
 
     override fun onNewToken(token: String) {
-        MyApplication.prefs.setString("token", token)
+        val shared = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = shared.edit()
+        editor.putString("FirebaseToken", token)
+        editor.apply()
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        Log.d(logTag, "remoteMessage = $remoteMessage")
+        Log.d(logTag, "remoteMessage.from = ${remoteMessage.from}")
+        Log.d(logTag, "remoteMessage.data = ${remoteMessage.data}")
         sendNotification(remoteMessage)
+
+
+        // log 받으면,push 받을 시 현재 플래그먼트 뱃지 활성화
+//        HomeActivity().findViewById<Imge>(R.id.adfs).isGone = false
     }
 
     @SuppressLint("UnspecifiedImmutableFlag", "WrongConstant")
@@ -44,10 +60,11 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(remoteMessage.data["title"])
             .setContentText(remoteMessage.data["body"])
+//            .setContentTitle(remoteMessage.notification?.title) // 제목
+//            .setContentText(remoteMessage.notification?.body) // 타이틀
 //            .setContentText(null) // 메시지 내용
             .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
             .setSound(soundUri) // 알림 소리
-//            .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
             .setContentIntent(pendingIntent) // 알림 실행 시 Intent
             .setNumber(1)
 

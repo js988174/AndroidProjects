@@ -1,5 +1,6 @@
 package com.mandeum.dessert39.Main.Order.selectShop.select
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,15 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.MenuListModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.OrderShopMenuModel
+import com.mandeum.dessert39.Login.ServerApi.ServerApi
+import com.mandeum.dessert39.Main.HomeActivity
+import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuAdapter
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentAllShopBinding
 import com.mandeum.dessert39.databinding.FragmentNearShopBinding
+import kotlin.concurrent.thread
 
 
 class AllShopFragment : Fragment() {
 
     private  var _binding: FragmentAllShopBinding? = null
     private val binding get() = _binding!!
+    lateinit var thread : HomeActivity
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+    private var count: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,34 +38,29 @@ class AllShopFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentAllShopBinding.inflate(layoutInflater)
+        thread = context as HomeActivity
+
+        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val token = shared.getString("LoginToken", "")
+
 
         val selectShopModel: ArrayList<SelectShopModel> = ArrayList()
 
-        val rvAdapter : SelectShopAdapter = SelectShopAdapter(selectShopModel, requireContext())
-        val rv : RecyclerView = binding.allRecyclerView
-        rv.adapter = rvAdapter
-        rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = true, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
 
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = true, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
 
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = true, fixNo = false, fixYes = true, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
+        thread(start = true) {
+            val shopList: OrderShopMenuModel = ServerApi.AllStore(token = token.toString(), latitude=latitude , longitude = longitude)
+            if (shopList.connection) {
+                thread.runOnUiThread {
+                    val rv: RecyclerView = binding.allRecyclerView
+                    rv.adapter = SelectShopAdapter(
+                        selectShopModel = shopList.list, requireContext())
+                    rv.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                }
+            }
+        }
 
         return binding.root
     }

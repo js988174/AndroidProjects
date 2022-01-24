@@ -38,18 +38,13 @@ class FindShopAdapter (val context: Context, val findShopModel : ArrayList<FindS
             val name = itemView.findViewById<TextView>(R.id.shop_name)
             val location = itemView.findViewById<TextView>(R.id.shop_location)
             val distance = itemView.findViewById<TextView>(R.id.distance)
-            val startTime = itemView.findViewById<TextView>(R.id.start_time)
-            val endTime = itemView.findViewById<TextView>(R.id.end_time)
-            val startTime1 = itemView.findViewById<TextView>(R.id.start_time)
-            val endTime1 = itemView.findViewById<TextView>(R.id.end_time1)
+            val time = itemView.findViewById<TextView>(R.id.time)
 
-            name.text = item.shopName
-            location.text = item.shopLocation
+
+            name.text = item.store
+            location.text = item.address
             distance.text = item.distance
-            startTime.text = item.weekdayStart
-            endTime.text = item.weekdayEnd
-            startTime1.text = item.weekendStart
-            endTime1.text = item.weekendEnd
+            time.text = item.time
 
 
         }

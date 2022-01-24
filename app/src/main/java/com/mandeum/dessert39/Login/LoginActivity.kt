@@ -5,7 +5,6 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,21 +19,19 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
-import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import com.mandeum.dessert39.Find.Id.Find1Activity
 import com.mandeum.dessert39.Find.Password.FindPw1Activity
 import com.mandeum.dessert39.Join.JoinActivity
 import com.mandeum.dessert39.Main.HomeActivity
-import com.mandeum.dessert39.Intro.MainActivity.Companion.TAG
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
-import com.mandeum.dessert39.Login.ServerApi.Model.LoginModel
-import com.mandeum.dessert39.Login.ServerApi.Model.SnsLoginModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.LoginModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.SnsLoginModel
 import com.mandeum.dessert39.R
-import com.mandeum.dessert39.SharedPreferences.MyApplication
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import kotlinx.android.synthetic.main.activity_login.*
@@ -43,7 +40,6 @@ import java.util.*
 import kotlin.concurrent.thread
 import org.json.JSONException
 import org.json.JSONObject
-import com.mandeum.dessert39.Login.LoginActivity.RequestApiTask
 import com.nhn.android.naverlogin.OAuthLogin.mOAuthLoginHandler
 
 
@@ -55,19 +51,33 @@ class LoginActivity : AppCompatActivity() {
      var mOAuthLoginInstance: OAuthLogin? = null
     lateinit var mContext: Context
     private var mIsShowPass = false
-
+    var firebaseToken: String = ""
+//     var prefs: SharedPreferences = getSharedPreferences("prefs_name", Context.MODE_PRIVATE)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Log.d("fcm_token", task.result.toString())
+
+
+        FirebaseApp.initializeApp(this)
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (it.isSuccessful) {
+                firebaseToken = it.result.toString()
+                val shared = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                val editor = shared.edit()
+                editor.putString("FirebaseToken", firebaseToken)
+                Log.d("firebase", firebaseToken)
+            } else {
+                Toast.makeText(
+                    this,
+                    "통신 상태가 원활하지 않습니다. 재접속 바랍니다.\nFirebaseTokenIsSuccessfulFalse",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
-
         }
+
+
         val imm =
             getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
@@ -106,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         loginBtn.setOnClickListener {
-            loginApi(idArea2, passwordArea2, idArea2.text.toString(), passwordArea2.text.toString())
+            loginApi(idArea2, passwordArea2, idArea2.text.toString(), passwordArea2.text.toString(),firebaseToken)
 
         }
 
@@ -137,7 +147,6 @@ class LoginActivity : AppCompatActivity() {
         mContext = this
 
 
-
         naverBtn.setOnClickListener {
             //네이버 로그인
             mOAuthLoginInstance = OAuthLogin.getInstance()
@@ -156,9 +165,9 @@ class LoginActivity : AppCompatActivity() {
 //         카카오 로그인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
-                Toast.makeText(this, "토근 정보 보기 실패", Toast.LENGTH_SHORT).show()
+
             } else if (tokenInfo != null) {
-                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+
             }
         }
 
@@ -195,19 +204,28 @@ class LoginActivity : AppCompatActivity() {
                 }
 //                Toast.makeText(this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
             } else if (token != null) {
+
                 Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 UserApiClient.instance.me { user, error ->
-                    snsApi2(
-                        ID = user?.id.toString(), EMAIL = user?.kakaoAccount?.email.toString(), NAME =user?.kakaoAccount?.legalName.toString(),
-                        PHONE = user?.kakaoAccount?.phoneNumber.toString(), BIRTH = user?.kakaoAccount?.birthday.toString())
+                    val id = user?.kakaoAccount?.email.toString()
+                    val idx: Int = id!!.indexOf("@")
+                    val mail: String = id.substring(0, idx)
 
-                    Log.d("확인", user?.id.toString())
+                    val birthYear = user?.kakaoAccount?.birthyear.toString()
+                    val birthDay = user?.kakaoAccount?.birthday.toString()
+                    val birth = birthYear + birthDay
+
+                    snsApi2(
+                        ID = mail , EMAIL = user?.kakaoAccount?.email.toString(), NAME =user?.kakaoAccount?.legalName.toString(),
+                        PHONE = user?.kakaoAccount?.phoneNumber.toString(), BIRTH = birth)
+
+                    Log.d("확인", mail)
                     Log.d("확인", user?.kakaoAccount?.email.toString())
                     Log.d("확인", user?.kakaoAccount?.legalName.toString())
                     Log.d("확인", user?.kakaoAccount?.phoneNumber.toString())
-                    Log.d("확인", user?.kakaoAccount?.birthday.toString())
+                    Log.d("확인", birth)
                 }
-                val intent = Intent(this, FindPw1Activity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
 
@@ -246,18 +264,30 @@ class LoginActivity : AppCompatActivity() {
                 val loginResult = JSONObject(content)
                 if (loginResult.getString("resultcode") == "00") {
                     val response = loginResult.getJSONObject("response")
-                    val id = response.optString("id", "")
                     val email = response.optString("email","")
                     val name = response.optString("name","")
-                    val phone = response.optString("mobile", "")
+                    val mobile = response.getString("mobile")
                     val birthday = response.optString("birthday", "")
-                    Log.d("확인", id)
+                    val birthyear = response.optString("birthyear", "")
+
+                    var idx: Int = email.indexOf("@")
+                    var mail: String = email.substring(0, idx)
+
+                    Log.d("확인", mail)
                     Log.d("확인", email)
                     Log.d("확인", name)
-                    Log.d("확인", phone)
-                    Log.d("확인", birthday)
-                    Toast.makeText(mContext, "id : $id email : $email name : $name phone : $phone birth : $birthday" ,Toast.LENGTH_SHORT).show()
-                    snsApi(ID =id , EMAIL = email, NAME =name ,"", BIRTH = birthday)
+                    Log.d("확인", mobile)
+                    Log.d("확인", birthyear + birthday)
+                    Log.d("확인", response.toString())
+                    Log.d("확인", loginResult.toString())
+
+                        snsApi(
+                            ID = mail,
+                            EMAIL = email,
+                            NAME = name,
+                            PHONE = mobile,
+                            BIRTH = birthyear + birthday
+                        , firebaseToken)
 
                 }
             } catch (e: JSONException) {
@@ -303,22 +333,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-
-    // 카카오 계정 로그인
-    private fun kakaoLogin() {
-        UserApiClient.instance.loginWithKakaoAccount(mContext) { token, error ->
-            if (error != null) {
-                Log.e(TAG, "로그인 실패", error)
-            }
-            else if (token != null) {
-                Log.i(TAG, "로그인 성공 ${token.accessToken}")
-                Toast.makeText(this, "로그인에 222222222222.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
-            }
-        }
-    }
 
     private fun showPassword(isShow: Boolean) {
         if (isShow) {
@@ -388,47 +402,62 @@ class LoginActivity : AppCompatActivity() {
 
 
     @SuppressLint("HardwareIds")
-    private fun snsApi(ID: String, EMAIL: String, NAME: String, PHONE: String, BIRTH: String) {
+    private fun snsApi(ID: String, EMAIL: String, NAME: String, PHONE: String, BIRTH: String, firebaseToken: String) {
 
         val uuid = android.provider.Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
         val byteArray: ByteArray = uuid.toByteArray()
         val uuidByte = java.util.UUID.nameUUIDFromBytes(byteArray).toString()
 
-        thread(start = true) {
-            val user: SnsLoginModel = ServerApi.Snslogin(ID, EMAIL, NAME, PHONE, BIRTH, uuidByte)
-            val snsLoginModel = SnsLoginModel(user.errCode, user.strToken, user.isFirstLogin, user.cardImg)
+        val shared = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = shared.edit()
 
+        thread(start = true) {
+            val user: SnsLoginModel = ServerApi.Snslogin(ID, EMAIL, NAME, PHONE, BIRTH, firebaseToken)
+            val snsLoginModel = SnsLoginModel(user.errCode, user.errMsg, user.strToken, user.isFirstLogin, user.cardImg)
             if (snsLoginModel.errCode == "0000") {
-                MyApplication.prefs.setString("LoginToken", user.strToken)
-                MyApplication.prefs.setString("FirstLogin", user.isFirstLogin)
-                MyApplication.prefs.setString("AndroidUUID", uuidByte)
+                editor.putString("LoginToken",user.strToken)
+                editor.putString("FirebaseToken", firebaseToken)
+                editor.putString("FirstLogin", user.isFirstLogin)
+
+                editor.apply()
+
+                Log.d("sdasd", user.strToken)
+                Log.d("user_token", user.strToken)
                 this.runOnUiThread {
                     Toast.makeText(this, "사용자 정보 가져오기 성공", Toast.LENGTH_SHORT).show()
+
                 }
             }  else if (snsLoginModel.errCode == "0001") {
                 this.runOnUiThread {
                     Toast.makeText(this, "회원 아이디는 필수입니다.", Toast.LENGTH_SHORT).show()
                 }
+
             }
+
         }
     }
 
     @SuppressLint("HardwareIds")
     private fun snsApi2(ID: String, EMAIL: String, NAME: String, PHONE: String, BIRTH: String) {
 
-
+//        val editor = prefs.edit()
         val uuid = android.provider.Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
         val byteArray: ByteArray = uuid.toByteArray()
         val uuidByte2 = java.util.UUID.nameUUIDFromBytes(byteArray).toString()
-
+        val shared = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = shared.edit()
         thread(start = true) {
             val user2: SnsLoginModel = ServerApi.Snslogin2(ID, EMAIL, NAME, PHONE, BIRTH, uuidByte2)
-            val snsLoginModel = SnsLoginModel(user2.errCode, user2.strToken, user2.isFirstLogin, user2.cardImg)
+            val snsLoginModel = SnsLoginModel(user2.errCode,user2.errMsg, user2.strToken, user2.isFirstLogin, user2.cardImg)
+            Log.d("user_token", user2.strToken)
 
             if (snsLoginModel.errCode == "0000") {
-//                MyApplication.prefs.setString("LoginToken", user2.strToken)
-//                MyApplication.prefs.setString("FirstLogin", user2.isFirstLogin)
-//                MyApplication.prefs.setString("AndroidUUID", uuidByte2)
+                editor.putString("LoginToken",user2.strToken)
+                editor.putString("AndroidUUID", uuidByte2)
+                editor.putString("FirstLogin", user2.isFirstLogin)
+
+                editor.apply()
+                Log.d("user_token", user2.strToken)
                 this.runOnUiThread {
                     Toast.makeText(this, "사용자 정보 가져오기 성공", Toast.LENGTH_SHORT).show()
                 }
@@ -442,8 +471,8 @@ class LoginActivity : AppCompatActivity() {
 
 
     @SuppressLint("HardwareIds")
-    private fun loginApi(idArea2 : EditText, passwordArea2 : EditText, userId : String, userPw : String) {
-
+    private fun loginApi(idArea2 : EditText, passwordArea2 : EditText, userId : String, userPw : String, firebase: String) {
+//        val editor = prefs.edit()
         if (idArea2.length() == 0 && passwordArea2.length() == 0) {
             Toast.makeText(this, "아이디와 비밀번호를 입력해 주세요.", Toast.LENGTH_SHORT).show()
         } else if (idArea2.length() == 0) {
@@ -451,21 +480,25 @@ class LoginActivity : AppCompatActivity() {
         } else if (passwordArea2.length() == 0) {
             Toast.makeText(this, "비밀번호를 입력해 주세요.", Toast.LENGTH_SHORT).show()
         } else if (idArea2.length() > 0 && passwordArea2.length() > 0) {
-            val uuid = android.provider.Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
-            val byteArray: ByteArray = uuid.toByteArray()
-            val uuidByte = UUID.nameUUIDFromBytes(byteArray).toString()
-            Log.d("test", uuidByte)
+
+            val shared = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+            val editor = shared.edit()
 
 
             thread(start = true) {
-                val userInfo: LoginModel = ServerApi.login(userId, userPw, uuidByte)
+                val userInfo: LoginModel = ServerApi.login(userId, userPw, firebaseToken)
                 val loginModel = LoginModel(userInfo.errCode, userInfo.strToken, userInfo.isFirstLogin)
 
+                Log.d("sdasd", userInfo.strToken)
+                Log.d("user_token", userInfo.strToken)
 
                 if (loginModel.errCode == "0000") {
-                    MyApplication.prefs.setString("LoginToken", userInfo.strToken)
-                    MyApplication.prefs.setString("FirstLogin", userInfo.isFirstLogin)
-                    MyApplication.prefs.setString("AndroidUUID", uuidByte)
+
+                    editor.putString("LoginToken",userInfo.strToken)
+                    editor.putString("FirebaseToken", firebaseToken)
+                    editor.putString("FirstLogin", userInfo.isFirstLogin)
+
+                    editor.apply()
 
                     val intent = Intent(this, HomeActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

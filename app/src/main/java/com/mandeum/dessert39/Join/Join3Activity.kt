@@ -3,21 +3,18 @@ package com.mandeum.dessert39.Join
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.mandeum.dessert39.Find.Id.Find1Activity
-import com.mandeum.dessert39.Login.LoginActivity
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.MemberRegModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.R
-import kotlinx.android.synthetic.main.activity_find1.*
 import kotlinx.android.synthetic.main.activity_join3.*
+import java.util.*
 import java.util.regex.Pattern
 import kotlin.concurrent.thread
 
@@ -59,6 +56,8 @@ class Join3Activity : AppCompatActivity() {
         }
 
         successBtn.setOnClickListener {
+            joinApi(joinIdArea.text.toString(), joinPwArea.text.toString(), joinEmailArea.text.toString(),
+                joinNicknameArea.text.toString(),joinNameArea.text.toString(), joinPhoneArea.text.toString(), joinBirthArea.toString())
             val intent = Intent(this, Join5Activity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
@@ -335,6 +334,30 @@ class Join3Activity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
+    private fun joinApi(ID: String, PWD: String, EMAIL:String, NICK: String, NAME:String, PHONE: String, BIRTH: String) {
+        val uuid = android.provider.Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
+        val byteArray: ByteArray = uuid.toByteArray()
+        val uuidByte = UUID.nameUUIDFromBytes(byteArray).toString()
+
+        thread(start = true) {
+            val userInfo: MemberRegModel = ServerApi.MemberReg(ID, PWD, EMAIL, NICK, NAME, PHONE, BIRTH, uuidByte)
+            val joinModel = MemberRegModel(userInfo.connection, userInfo.errCode, userInfo.strToken)
+
+
+            if (joinModel.errCode == "0000") {
+//                    MyApplication.prefs.setString("LoginToken", userInfo.strToken)
+//                    MyApplication.prefs.setString("FirstLogin", userInfo.isFirstLogin)
+//                    MyApplication.prefs.setString("AndroidUUID", uuidByte)
+
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
+
+            }
+        }
+    }
 
 
     override fun onBackPressed() {

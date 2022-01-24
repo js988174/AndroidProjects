@@ -1,9 +1,13 @@
 package com.mandeum.dessert39.Main.Home
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Typeface
+import android.location.*
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +16,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.navigation.findNavController
@@ -19,7 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.mandeum.dessert39.Login.ServerApi.Model.BannerModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Home.BannerModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Home.WeatherModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.Home.Slide.HomeSliderRecyclerAdapter
 import com.mandeum.dessert39.R
@@ -29,6 +35,7 @@ import com.mandeum.dessert39.Main.Home.expandable.popularityModel2
 import com.mandeum.dessert39.Main.Home.expandable.popularityModel3
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.databinding.FragmentHomeBinding
+import java.lang.reflect.InvocationTargetException
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -61,6 +68,8 @@ class HomeFragment : Fragment() {
         val monthModel = ArrayList<popularityModel3>()
         var selected : Int = 0
 
+
+
         private var selectTimer : Timer? = null
 
 
@@ -89,6 +98,98 @@ class HomeFragment : Fragment() {
         }
         binding.orderIcon.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_orderFragment)
+        }
+
+        val locationManager: LocationManager =
+            thread.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        val isNetworkEnable: Boolean =
+            locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        val isGPSEnable: Boolean = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+
+        val geocoder = Geocoder(requireContext())
+        val addressList: List<Address>
+
+        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = shared.edit()
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext().applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                0
+            )
+
+        } else {
+
+            val locationListener: LocationListener = object : LocationListener {
+                override fun onLocationChanged(location: Location) {
+
+                    editor.putString("latitude", "${location.latitude}")
+                    editor.putString("longitude", "${location.longitude}")
+                    editor.apply()
+
+                }
+            }
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                100,
+                1f,
+                locationListener
+            )
+
+                locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            val gpsLocation: Location? =
+                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+            if (isNetworkEnable) {
+
+
+                val location: Location? =
+                    locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
+                val latitude: Double? = location?.latitude
+                val longitude: Double? = location?.longitude
+
+                try {
+
+                    addressList = geocoder.getFromLocation(37.5339545, 126.6368149, 3)
+
+                    val city: String = addressList[2].adminArea
+                    val guGun: String = addressList[2].featureName
+
+                    val weatherData: WeatherModel = ServerApi.weatherAPI(city, guGun)
+
+                } catch (e: InvocationTargetException) {
+                }
+
+
+            } else if (isGPSEnable) {
+
+                val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+                val latitude: Double? = location?.longitude
+                val longitude: Double? = location?.latitude
+
+                addressList = geocoder.getFromLocation(latitude!!, longitude!!, 3)
+
+                val city: String = addressList[2].adminArea
+                val guGun: String = addressList[2].featureName
+
+                val weatherData: WeatherModel = ServerApi.weatherAPI(city, guGun)
+                Log.d("Weather", "${weatherData.isConnect}")
+                Log.d("Weather", weatherData.errCode)
+                Log.d("Weather", weatherData.korStatus)
+                Log.d("Weather", weatherData.enStatus)
+            } else {
+                val latitude: Double = 0.0
+                val longitude: Double = 0.0
+            }
         }
 
 
@@ -237,6 +338,22 @@ class HomeFragment : Fragment() {
 
         }
 
+//        프래그먼트다이얼로그()
+//
+//        // rkqt 취향정보 값
+//
+//        val like = ""
+//        asdfasdfasdfasdf
+//
+//        버튼.setoncli P{
+//            like = "다른값"
+//            HttpAPI.주는갓ㅂ(like)
+//            CATA=""
+//            DRINK=""
+//            BRAND=""
+//        }
+//
+//        like = 다른값
 
         val circleProgress : ProgressBar = binding.rewardProgressBar
         // My Reward

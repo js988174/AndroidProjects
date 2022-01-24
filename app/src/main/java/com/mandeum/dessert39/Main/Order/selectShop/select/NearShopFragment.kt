@@ -38,26 +38,6 @@ class NearShopFragment : Fragment() {
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-        "09:00", "22:00", "10:00", "22:00", event = true, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = true, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = true, fixNo = false, fixYes = true, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
-
-        selectShopModel.add(SelectShopModel("청라호수공원점","인천광역시 서구 크리스탈로 102","200m",
-            "09:00", "22:00", "10:00", "22:00", event = false, fixNo = true, fixYes = false, "https://ifh.cc/g/tpLWqM.png"))
 
         return binding.root
     }

@@ -1,5 +1,6 @@
 package com.mandeum.dessert39.Main.Order
 
+import android.Manifest
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,18 +22,29 @@ import android.content.ClipboardManager
 import android.content.Context
 
 import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.net.Uri
+import android.provider.Settings
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-
+import java.io.IOException
 
 
 class OrderFragment : Fragment(R.layout.fragment_order) {
 
         private  var _binding: FragmentOrderBinding? = null
         private val binding get() = _binding!!
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+    private var count: Int = 0
 
         private lateinit var callback: OnBackPressedCallback
 
@@ -44,7 +56,56 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
     ): View? {
         _binding = FragmentOrderBinding.inflate(layoutInflater)
 
-
+        if (ContextCompat.checkSelfPermission(
+                requireContext().applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            showDialogToGetPermission()
+        } else {
+            val locationManager: LocationManager =
+                requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val isNetworkEnabled: Boolean =
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+            val isGPSEnabled: Boolean =
+                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+            val locationListener = LocationListener { p0 ->
+                latitude = p0.latitude
+                longitude = p0.longitude
+                count += 1
+            }
+            if (isNetworkEnabled) {
+                val location: Location? =
+                    locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                if (location != null) {
+                    latitude = location.latitude
+                    longitude = location.longitude
+                } else {
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1L,
+                        1F,
+                        locationListener
+                    )
+                    locationManager.removeUpdates(locationListener)
+                }
+            } else if (isGPSEnabled) {
+                val location: Location? =
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (location != null) {
+                    latitude = location.latitude
+                    longitude = location.longitude
+                } else {
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1L,
+                        1F,
+                        locationListener
+                    )
+                    locationManager.removeUpdates(locationListener)
+                }
+            }
+        }
 
         binding.orderIcon.setOnClickListener {
             val action = OrderFragmentDirections.actionOrderFragmentToOrderCartFragment()
@@ -820,7 +881,25 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         return binding.root
     }
 
+    private fun showDialogToGetPermission() {
+        val builder = android.app.AlertDialog.Builder(requireContext())
+        builder.setTitle("권한 설정")
+            .setMessage("권한 설정이 거부되었습니다. " +
+                    "권한 설정을 하로 가시겠습니까?")
 
+        builder.setPositiveButton("확인") { _, i ->
+            val intent = Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.fromParts("package", "com.mandeum.dessert39", null))
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)   // 6
+        }
+        builder.setNegativeButton("취소") { _, i ->
+            // ignore
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

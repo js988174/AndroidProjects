@@ -156,7 +156,7 @@ class CardChargeFragment : Fragment(), View.OnClickListener {
 
 
         binding.cardCharge.setOnClickListener {
-            val direction = CardChargeFragmentDirections.actionCardChargeFragmentToCardFragment()
+//            val direction = CardChargeFragmentDirections.actionCardChargeFragmentToCardFragment()
         }
 
         binding.chargeOff.setOnClickListener {
@@ -767,7 +767,7 @@ class CardChargeFragment : Fragment(), View.OnClickListener {
 
 
             dialog.ok.setOnClickListener {
-                val direction = CardChargeFragmentDirections.actionCardChargeFragmentToCardFragment()
+//                val direction = CardChargeFragmentDirections.actionCardChargeFragmentToCardFragment()
             }
 
             dialog.no.setOnClickListener {

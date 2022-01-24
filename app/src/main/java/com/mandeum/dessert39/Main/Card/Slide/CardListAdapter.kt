@@ -43,7 +43,6 @@ class CardListAdapter(var TypeItem: MutableList<CardListModel>) : RecyclerView.A
                 itemView.setOnClickListener {
                     val direction = CardChoiceFragmentDirections.actionCardChoiceFragmentToCardChargeFragment(item.imageUrl, "", "","")
                     it.findNavController().navigate(direction)
-
                 }
 
 

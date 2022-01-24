@@ -45,7 +45,7 @@ class  SubMenuAdapter(
                     .setBackgroundResource(R.drawable.background_radius_maincolor5)
 
                 for (i in menuItem) {
-                    if (i.category == item.name) {
+                    if (i.category == subMenuItem[0].no) {
                         menuList.add(i)
                     }
                 }
@@ -61,16 +61,12 @@ class  SubMenuAdapter(
             itemView.findViewById<TextView>(R.id.sub_menu).text = item.name
             itemView.findViewById<ConstraintLayout>(R.id.sub_menu_layout).setOnClickListener {
                 menuList.clear()
-                for (i: Int in 0 until position) {
-                    itemList[i].findViewById<ConstraintLayout>(R.id.sub_menu_layout)
-                        .setBackgroundResource(R.drawable.background_radius_gray13)
 
-                }
                 itemView.findViewById<ConstraintLayout>(R.id.sub_menu_layout)
                     .setBackgroundResource(R.drawable.background_radius_maincolor5)
 
                 for (i in menuItem) {
-                    if (i.category == item.name) {
+                    if (i.category == item.no) {
                         menuList.add(i)
                     }
                 }

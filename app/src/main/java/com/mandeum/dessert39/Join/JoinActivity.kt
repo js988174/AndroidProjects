@@ -24,6 +24,8 @@ class JoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+
+
         val check1 : Boolean = intent.getBooleanExtra("checkBox1", false)
 
         if (check1) {

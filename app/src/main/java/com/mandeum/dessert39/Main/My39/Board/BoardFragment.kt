@@ -71,7 +71,7 @@ class BoardFragment : Fragment() {
 
         boardItem.add(BoardItem("긴급","이벤트","2021.10.10","test test test test test test test test test tesst test test test test test test test test test test testtest test test test test test test test test","https://ifh.cc/g/CJtiuO.png"))
 
-        boardItem.add(BoardItem("긴급","이벤트","2021.10.10","test test test test test test ttest test test test test test test test testtest test test test test test test test testtest test test test test test test test testtest test test test test test test test testtestst test test test test test",""))
+        boardItem.add(BoardItem("긴급","이벤트","2021.10.10","test test test test test test ttest test test test test test test test testtest test test test test test test test testtest test test test test test test test testtest test test test test test test test testtestst test test test test test", ""))
         return binding.root
     }
 

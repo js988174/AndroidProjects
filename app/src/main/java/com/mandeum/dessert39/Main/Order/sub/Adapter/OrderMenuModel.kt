@@ -6,7 +6,7 @@ OrderMenuModel (
     val Kname: String,
     val Ename: String,
     val image: String,
-    val category: String,
-    val price: Int,
+    val category: Int,
+    val price: String,
     val status: String
     )

@@ -1,8 +1,10 @@
 package com.mandeum.dessert39.Find.Password
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -11,10 +13,11 @@ import android.os.Bundle
 import android.os.Message
 import android.view.ViewGroup
 import android.webkit.*
-import android.widget.ProgressBar
 import androidx.annotation.RequiresApi
-import androidx.databinding.adapters.ViewGroupBindingAdapter.setListener
+import androidx.core.os.bundleOf
 import com.mandeum.dessert39.Login.LoginActivity
+import com.mandeum.dessert39.Main.My39.Info.MyInfoFragment
+
 
 
 import com.mandeum.dessert39.R
@@ -27,8 +30,12 @@ import java.net.URISyntaxException
 class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     private lateinit var webView: WebView
-    private lateinit var mProgressBar: ProgressBar
     private val bridge = WebAppInterface()
+    private lateinit var dialog : Dialog
+    private val context : Context
+        get() {
+            TODO()
+        }
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetJavaScriptEnabled")
@@ -131,7 +138,7 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
                             }
                         }
                     }
-                    val dialog = Dialog(this@FindPw1Activity).apply {
+                     dialog = Dialog(this@FindPw1Activity).apply {
                         setContentView(newWebView)
                         window!!.attributes.width = ViewGroup.LayoutParams.MATCH_PARENT
                         window!!.attributes.height = ViewGroup.LayoutParams.MATCH_PARENT
@@ -153,7 +160,6 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
             cookieManager.setAcceptCookie(true)
             cookieManager.setAcceptThirdPartyCookies(webView, true)
             webView.loadUrl("http://dessert39.com/plugin/nice_auth/auth_pw.php?os=A")
-            //        webView.loadUrl("file:///android_asset/sample.html")
             addJavascriptInterface(bridge, "Android")
             bridge.setListener(this@FindPw1Activity)
         }
@@ -161,12 +167,21 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     }
 
+
+
+
     override fun auth_return(p1: String, p2: String, p3: String, p4: String, p5: String) {
         if (p4 == "0") {
-            val intent = Intent(this, FindPw2Activity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
-            intent.putExtra("userID", p5)
-            startActivity(intent)
+//            val intent = Intent(this, FindPw2Activity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
+//            intent.putExtra("userID", p5)
+//            startActivity(intent)
+
+//            val fragment = MyInfoFragment()
+//            val bundle = bundleOf("key1" to "010-2221-4906")
+//            fragment.arguments = bundle
+
+            dialog.dismiss()
 
         } else {
             val intent = Intent(this, LoginActivity::class.java)
@@ -174,7 +189,9 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
             startActivity(intent)
 
         }
-    }
+      }
+
+
     }
 
 

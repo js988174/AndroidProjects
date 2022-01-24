@@ -41,18 +41,14 @@ class My39ShopAdapter (private val shopModel : ArrayList<My39ShopModel>, private
             val name = itemView.findViewById<TextView>(R.id.shop_name)
             val location = itemView.findViewById<TextView>(R.id.shop_location2)
             val distance = itemView.findViewById<TextView>(R.id.shop_location)
-            val startTime = itemView.findViewById<TextView>(R.id.weekday_start)
-            val endTime = itemView.findViewById<TextView>(R.id.weekday_end)
-            val startTime1 = itemView.findViewById<TextView>(R.id.weekend_start)
-            val endTime1 = itemView.findViewById<TextView>(R.id.weekend_end)
+            val startTime = itemView.findViewById<TextView>(R.id.weekday)
+
 
             name.text = item.shopName
             location.text = item.shopLocation
             distance.text = item.distance
             startTime.text = item.weekdayStart
-            endTime.text = item.weekdayEnd
-            startTime1.text = item.weekendStart
-            endTime1.text = item.weekendEnd
+
 
 
             Glide.with(itemView)

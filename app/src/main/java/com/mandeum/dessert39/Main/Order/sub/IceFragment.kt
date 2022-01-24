@@ -1,5 +1,7 @@
 package com.mandeum.dessert39.Main.Order.sub
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,19 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mandeum.dessert39.Login.ServerApi.Model.MenuListModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Order.MenuListModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
+import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuAdapter
-import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuModel
 import com.mandeum.dessert39.databinding.FragmentIceBinding
+import kotlin.concurrent.thread
 
 
 class IceFragment : Fragment() {
 
 
        private var _binding: FragmentIceBinding? = null
-    private val binding get() = _binding!!
-
+       private val binding get() = _binding!!
+       lateinit var thread : HomeActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,21 +35,24 @@ class IceFragment : Fragment() {
     ): View? {
         _binding = FragmentIceBinding.inflate(layoutInflater)
 
-//        val menuItem: ArrayList<OrderMenuModel> = ArrayList()
-//        val rvAdapter : OrderMenuAdapter = OrderMenuAdapter(menuItem, requireContext())
-//        val rv : RecyclerView = binding.iceRecyclerView
-//        rv.adapter = rvAdapter
-//        rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        thread = context as HomeActivity
 
-        val menuListModel: MenuListModel = ServerApi.menuList(9)
-        if (menuListModel.connection) {
-            val rv : RecyclerView = binding.iceRecyclerView
-            rv.adapter = OrderMenuAdapter(
-                menuItem = menuListModel.list, requireContext()
-            )
-            rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val token = shared.getString("LoginToken", "")
+
+        thread(start = true) {
+            val menuListModel: MenuListModel = ServerApi.menuList(token.toString(),9)
+            if (menuListModel.connection) {
+                thread.runOnUiThread {
+                    val rv: RecyclerView = binding.iceRecyclerView
+                    rv.adapter = OrderMenuAdapter(
+                        menuItem = menuListModel.list, requireContext()
+                    )
+                    rv.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                }
+            }
         }
-
 
 
 

@@ -18,26 +18,12 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import com.mandeum.dessert39.Login.LoginActivity
-import com.mandeum.dessert39.Login.ServerApi.Model.FindIdModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.FindIdModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.SmsModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.R
 import kotlinx.android.synthetic.main.activity_find1.*
-import kotlinx.android.synthetic.main.activity_login.*
-import org.json.JSONArray
-import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.DataOutputStream
-import java.io.InputStreamReader
-import java.io.UnsupportedEncodingException
-import java.lang.StringBuilder
-import java.net.HttpURLConnection
-import java.net.URL
-import java.security.InvalidKeyException
-import java.security.NoSuchAlgorithmException
-import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 import kotlin.concurrent.thread
 
 
@@ -72,6 +58,7 @@ class Find1Activity : AppCompatActivity() {
 
         checkBtn.setOnClickListener {
             findIdApi(nameArea , phoneArea1, nameArea.text.toString(), phoneArea1.text.toString())
+            smsApi(nameArea, phoneArea1, nameArea.text.toString(), phoneArea1.text.toString())
         }
 
         checkBtn2.setOnClickListener {
@@ -315,43 +302,23 @@ class Find1Activity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_left_exit)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    @Throws(NoSuchAlgorithmException::class, InvalidKeyException::class)
-    fun makeSignature(
-        url: String,
-        timestamp: String,
-        method: String,
-        accessKey: String,
-        secretKey: String
-    ): String {
-        val space = " " // one space
-        val newLine = "\n" // new line
-        val message = StringBuilder()
-            .append(method)
-            .append(space)
-            .append(url)
-            .append(newLine)
-            .append(timestamp)
-            .append(newLine)
-            .append(accessKey)
-            .toString()
-        val signingKey: SecretKeySpec
-        var encodeBase64String: String
-        try {
-            signingKey = SecretKeySpec(secretKey.toByteArray(charset("UTF-8")), "HmacSHA256")
-            val mac: Mac = Mac.getInstance("HmacSHA256")
-            mac.init(signingKey)
-            val rawHmac: ByteArray = mac.doFinal(message.toByteArray(charset("UTF-8")))
-            encodeBase64String = Base64.getEncoder().encodeToString(rawHmac)
-        } catch (e: UnsupportedEncodingException) {
-            // TODO Auto-generated catch block
-            encodeBase64String = e.toString()
+
+    private fun smsApi(nameArea: EditText, phoneArea1: EditText, HPNUM:String, CONTENT:String) {
+        thread(start = true) {
+            val userInfo: SmsModel = ServerApi.sendSms(HPNUM, CONTENT)
+            val smsModel = SmsModel(
+                userInfo.errCode,
+                userInfo.requestId,
+                userInfo.requestTime,
+                userInfo.statusCode
+            )
+
+            if (smsModel.errCode == "0000") {
+                this.runOnUiThread {
+                    Toast.makeText(this, "메세지 보내기 성공.", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-        return encodeBase64String
+
     }
-
-
-
-
-
 }

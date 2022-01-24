@@ -49,6 +49,15 @@
     <color name="black6">#3B3B3B</color>
     <color name="red_light">#743C3A</color>
 
+    <!-- Dessert 39 Black -->
+    <color name="dessert39_black_001">#1C1C1C</color>
+    <color name="dessert39_black_002">#202020</color>
+    <color name="dessert39_black_003">#4B4B4B</color>
+    <color name="dessert39_black_004">#484848</color>
+    <color name="dessert39_black_005">#3B3B3B</color>
+    <color name="dessert_39_gray_020">#7B7B7B</color>
+    <color name="dessert_39_gray_001">#AEAEAE</color>
+
 
 </resources>
 
