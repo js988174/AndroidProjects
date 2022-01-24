@@ -38,8 +38,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.mipmap.ic_wash)
-            .setContentTitle(remoteMessage.data["body"].toString()) // 제목
-            .setContentText(remoteMessage.data["title"].toString())
+            .setContentTitle(remoteMessage.data["title"])
+            .setContentText(remoteMessage.data["body"])
             .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
             .setSound(soundUri) // 알림 소리
             .setContentIntent(pendingIntent) // 알림 실행 시 Intent

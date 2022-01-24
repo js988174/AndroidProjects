@@ -45,12 +45,10 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
-    var lat : Double? = null
-    var lng : Double? = null
+    var lat : Double = 0.0
+    var lng : Double = 0.0
     private val bridge = WebAppInterface()
     val PROTOCOL_START = "intent:"
-    val GOOGLE_PLAY_STORE_PREFIX = "market://details?id="
-
 
 
     private var filePathCallbackLollipop: ValueCallback<Array<Uri>>? = null
@@ -81,10 +79,9 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         setContentView(R.layout.activity_main)
 
         requestPermission()
-//        checkPersmission()
+
 
         val isFirst = MyApplication.prefs.getBoolean("isFirst", true)
-
 
         if (isFirst) {
             if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -141,9 +138,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                         1F,
                         locationListener
                     )
-                    if (lat != null || lng != null) {
-                        locationManager.removeUpdates(locationListener)
-                    }
+                    locationManager.removeUpdates(locationListener)
                 }
             } else if (isGPSEnabled) {
                 val location: Location? =
@@ -158,9 +153,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                         1F,
                         locationListener
                     )
-                    if (lat != null || lng != null) {
-                        locationManager.removeUpdates(locationListener)
-                    }
+                    locationManager.removeUpdates(locationListener)
                 }
             }
         }
@@ -233,7 +226,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         val cookieManager: CookieManager = CookieManager.getInstance()
         cookieManager.setAcceptCookie(true)
         cookieManager.setAcceptThirdPartyCookies(webView, true)
-//        webView.loadUrl("file:///android_asset/sample.html")
         webView.loadUrl("http://carwashday.com/")
         webView.webViewClient = WebViewClientClass()
         webView.addJavascriptInterface(bridge, "android")
@@ -249,6 +241,11 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
             mWebViewListener?.onPageStarted(url, favicon)
+
+
+            webView.loadUrl("javascript:my_lat(${lat},${lng})")
+
+
             loadingFinished = false
         }
 
@@ -401,6 +398,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             if (url.startsWith("tel:")) {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse(url))
                 startActivity(intent)
+                // reload 안하면 페이지 오류 문구 뜸
                 view!!.reload()
                 return true
             }
@@ -447,7 +445,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(this, arrayOf(READ_EXTERNAL_STORAGE, CAMERA,ACCESS_FINE_LOCATION,WRITE_EXTERNAL_STORAGE),
-            REQUEST_IMAGE_CAPTURE)
+            REQUEST_IMAGE_CAPTURE, )
     }
 
 
@@ -520,10 +518,10 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     private fun runCamera(_isCapture: Boolean, selectedType: Int) {
         val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         val path = Environment.getExternalStorageDirectory()
-        val file = File(path, "temp.png") // temp.png 는 카메라로 찍었을 때 저장될 파일명이므로 사용자 마음대로
+        val file = File(path, "temp.png")
         imageUri = Uri.fromFile(file)
         intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-        if (!_isCapture) { // 선택팝업 카메라, 갤러리 둘다 띄우고 싶을 때
+        if (!_isCapture) {
             val pickIntent = Intent(Intent.ACTION_PICK)
             if (selectedType == 1) {
                 pickIntent.type = MediaStore.Images.Media.CONTENT_TYPE
@@ -535,10 +533,9 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             val pickTitle = "사진 가져올 방법을 선택하세요."
             val chooserIntent = Intent.createChooser(pickIntent, pickTitle)
 
-            // 카메라 intent 포함시키기..
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf<Parcelable>(intentCamera))
             startActivityForResult(chooserIntent, FILECHOOSER_LOLLIPOP_REQ_CODE)
-        } else { // 바로 카메라 실행..
+        } else {
             startActivityForResult(intentCamera, FILECHOOSER_LOLLIPOP_REQ_CODE)
         }
     }
@@ -551,7 +548,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             FILECHOOSER_NORMAL_REQ_CODE -> if (resultCode == RESULT_OK) {
                 if (filePathCallbackNormal == null) return
                 val result =
-                    if (data == null || resultCode != RESULT_OK) null else data.data //  onReceiveValue 로 파일을 전송한다.
+                    if (data == null || resultCode != RESULT_OK) null else data.data
                 filePathCallbackNormal!!.onReceiveValue(result)
                 filePathCallbackNormal = null
             }
@@ -580,6 +577,12 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
+
+    override fun onStart() {
+        super.onStart()
+        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
+    }
+
 }
 
 
