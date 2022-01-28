@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518002399821",
+    "project_id": "kidforp",
+    "storage_bucket": "kidforp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518002399821:android:ae7f6890af1e98f7a41a04",
+        "android_client_info": {
+          "package_name": "com.mandeum.kidforp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518002399821-njs3kqc7nqlsd5503rddnilteialcaoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBxdSAPMLRnSOipZBnyRIWT43NEVgLcPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518002399821-njs3kqc7nqlsd5503rddnilteialcaoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

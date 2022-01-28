@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">kidforp</string>
+    <string name="firebase_notification_channel_id">kidforp_channel</string>
+</resources>
