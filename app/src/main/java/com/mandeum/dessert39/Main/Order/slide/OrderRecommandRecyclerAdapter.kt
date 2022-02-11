@@ -53,7 +53,7 @@ class OrderRecommandRecyclerAdapter(private val recommandItem: ArrayList<OrderRe
 
             itemView.setOnClickListener {
                 val direction =
-                    OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.no)
+                    OrderFragmentDirections.actionOrderFragmentToOrderDetailFragment(item.no)
                 it.findNavController().navigate(direction)
             }
 

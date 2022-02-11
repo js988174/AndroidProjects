@@ -51,7 +51,7 @@ class OrderShopRecyclerAdapter(private val shopItem: ArrayList<OrderShopItem>) :
 
             itemView.setOnClickListener {
                 val direction =
-                    OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.no)
+                    OrderFragmentDirections.actionOrderFragmentToOrderDetailFragment(item.no)
                 it.findNavController().navigate(direction)
             }
 

@@ -42,7 +42,11 @@ import com.mandeum.dessert39.R
 import android.R.attr.path
 import android.database.Cursor
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.media.MediaScannerConnection
+import kotlinx.android.synthetic.main.fragment_reward.*
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
 import java.lang.Exception
@@ -3590,46 +3594,88 @@ class MyInfoFragment() : Fragment() {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == cameraRequestCode) {
+        if(requestCode == cameraRequestCode && resultCode == AppCompatActivity.RESULT_OK){
+            val bitmap = BitmapFactory.decodeFile(photoPath)
+            lateinit var exif : ExifInterface
 
-            val file = createImageFile()
+            try{
+                exif = ExifInterface(photoPath)
+                var exifOrientation = 0
+                var exifDegree = 0
 
-
-            if (Build.VERSION.SDK_INT >= 29) {
-
-                val source: ImageDecoder.Source =
-                    ImageDecoder.createSource(requireContext().contentResolver, Uri.fromFile(file))
-
-                try {
-                    val bitmap = ImageDecoder.decodeBitmap(source)
-//                    val imageSrc = saveImage(bitmap)
-                    binding.image11.setImageBitmap(bitmap)
-
-                } catch (e: IOException) {
-                    e.printStackTrace()
+                if (exif != null) {
+                    exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_NORMAL)
+                    exifDegree = exifOrientationToDegress(exifOrientation)
                 }
-            } else if (Build.VERSION.SDK_INT <= 28) {
-                try {
-                    val bitmap = MediaStore.Images.Media.getBitmap(
-                        requireActivity().contentResolver,
-                        Uri.fromFile(file)
-                    )
-                    if (bitmap != null) {
-                        binding.image11.setImageBitmap(bitmap)
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+
+                binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+            }catch (e : IOException){
+                e.printStackTrace()
             }
-
-        } else if (resultCode == AppCompatActivity.RESULT_OK && requestCode == galleryRequestCode) {
-            binding.image11.setImageURI(data?.data)
 
         }
     }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == cameraRequestCode) {
+//
+//            val file = File(photoPath)
+//            lateinit var exif : ExifInterface
+//            if (Build.VERSION.SDK_INT >= 29) {
+//
+//                val source: ImageDecoder.Source =
+//                    ImageDecoder.createSource(requireContext().contentResolver, Uri.fromFile(file))
+//
+//                try {
+//                    val bitmap = BitmapFactory.decodeFile(photoPath)
+//                    exif = ExifInterface(photoPath)
+//                    var exifOrientation = 0
+//                    var exifDegree = 0
+//
+//                    if (exif != null) {
+//                        exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+//                            ExifInterface.ORIENTATION_NORMAL)
+//                        exifDegree = exifOrientationToDegress(exifOrientation)
+//                    }
+//
+//                    binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            } else if (Build.VERSION.SDK_INT <= 28) {
+//                try {
+//                    val bitmap = MediaStore.Images.Media.getBitmap(
+//                        requireActivity().contentResolver,
+//                        Uri.fromFile(file)
+//                    )
+//                    if (bitmap != null) {
+//                        exif = ExifInterface(photoPath)
+//                        var exifOrientation = 0
+//                        var exifDegree = 0
+//
+//                        if (exif != null) {
+//                            exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+//                                ExifInterface.ORIENTATION_NORMAL)
+//                            exifDegree = exifOrientationToDegress(exifOrientation)
+//                        }
+//                        binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+//                    }
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//
+//        } else if (resultCode == AppCompatActivity.RESULT_OK && requestCode == galleryRequestCode) {
+//            binding.image11.setImageURI(data?.data)
+//
+//        }
+//    }
 
 
     companion object {
@@ -3766,7 +3812,47 @@ class MyInfoFragment() : Fragment() {
         )
     }
 
+    fun exifOrientationToDegress(exifOrientation: Int): Int {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
+            return 90
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
+            return 180
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
+            return 270
+        }
+        return 0
+    }
 
+    fun rotate(bitmap: Bitmap?, degrees: Int): Bitmap? {
+        var bitmap = bitmap
+        if (degrees != 0 && bitmap != null) {
+            val m = Matrix()
+            m.setRotate(degrees.toFloat(), bitmap.width.toFloat() / 2,
+                bitmap.height.toFloat() / 2)
+            try {
+                val converted = Bitmap.createBitmap(bitmap, 0, 0,
+                    bitmap.width, bitmap.height, m, true)
+                if (bitmap != converted) {
+                    bitmap.recycle()
+                    bitmap = converted
+                    val options = BitmapFactory.Options()
+                    options.inSampleSize = 4
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 1280, 1280, true)
+                }
+            } catch (ex: OutOfMemoryError) {
+
+            }
+        }
+        return bitmap
+    }
+
+
+//    private fun rotate(bitmap: Bitmap, degree: Int) : Bitmap {
+//        Log.d("rotate","init rotate")
+//        val matrix = Matrix()
+//        matrix.postRotate(degree.toFloat())
+//        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix,true)
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

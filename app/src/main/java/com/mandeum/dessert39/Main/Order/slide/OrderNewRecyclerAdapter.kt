@@ -52,7 +52,7 @@ class OrderNewRecyclerAdapter(private val newItem: ArrayList<OrderNewItem>, cont
 
             itemView.setOnClickListener {
                 val direction =
-                    OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.no)
+                    OrderFragmentDirections.actionOrderFragmentToOrderDetailFragment(item.no)
                 it.findNavController().navigate(direction)
             }
             }

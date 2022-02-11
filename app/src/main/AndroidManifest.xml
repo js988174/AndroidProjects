@@ -27,9 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dessert39"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Find.Password.TestActivity"
-            android:exported="true" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

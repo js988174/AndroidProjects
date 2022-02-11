@@ -86,7 +86,17 @@ class CartAdapter(private val cartModel : ArrayList<CartModel>, private val cont
 //
 //            itemView.number1.text = item.quantity.toString()
 
+            minusButton.setOnClickListener {
+                val countNumber : Int = quantity.text.toString().toInt()
+                quantity.text = "${countNumber - 1}"
+            }
 
+            plusButton.setOnClickListener {
+                val countNumber : Int = quantity.text.toString().toInt()
+                if (countNumber > 1) {
+                    quantity.text = "${countNumber + 1}"
+                }
+            }
 
             itemView.findViewById<ImageView>(R.id.close_btn).setOnClickListener {
                 val dialog = Dialog(context)

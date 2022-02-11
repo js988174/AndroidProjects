@@ -1,6 +1,7 @@
 package com.mandeum.dessert39.Main.Order
 
 import android.Manifest
+import android.app.Activity
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -29,13 +30,11 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
 import android.provider.Settings
-import android.view.WindowManager
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import java.io.IOException
 
 
 class OrderFragment : Fragment(R.layout.fragment_order) {
@@ -111,6 +110,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
             val action = OrderFragmentDirections.actionOrderFragmentToOrderCartFragment()
             findNavController().navigate(action)
         }
+
 
         binding.navHome.setOnClickListener {
             it.findNavController().navigate(R.id.action_orderFragment_to_homeFragment)
@@ -930,4 +930,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         _binding = null
 
     }
+
+
+
 }

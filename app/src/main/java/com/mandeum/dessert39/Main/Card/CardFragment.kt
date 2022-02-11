@@ -2,6 +2,7 @@ package com.mandeum.dessert39.Main.Card
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,10 +27,7 @@ class CardFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-
-
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +56,18 @@ class CardFragment : Fragment() {
                 charging_settings.isGone = true
 
             }
+
+
+        addOnWindowFocusChangeListener { _ ->
+            val location = IntArray(2)
+            binding.cardChangeBtn.getLocationOnScreen(location)
+
+            location[0]
+            location[1]
+
+            Log.d("addOnWindowFocusChangeListener", location[0].toString())
+            Log.d("addOnWindowFocusChangeListener", location[1].toString())
+        }
 
 //        val cardImage : ImageView = binding.registeredCard
 //        val args: CardFragmentArgs by navArgs()
@@ -151,4 +161,7 @@ class CardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun Fragment.addOnWindowFocusChangeListener(callback: (hasFocus: Boolean) -> Unit) =
+        view?.viewTreeObserver?.addOnWindowFocusChangeListener(callback)
 }

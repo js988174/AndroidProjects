@@ -62,9 +62,8 @@ class OrderMenuAdapter(private val menuItem: ArrayList<OrderMenuModel>, context:
 //            }
 
             itemView.setOnClickListener {
-                val direction = OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.id)
+                val direction = OrderFragmentDirections.actionOrderFragmentToOrderDetailFragment(item.id)
                 it.findNavController().navigate(direction)
-
             }
 
 

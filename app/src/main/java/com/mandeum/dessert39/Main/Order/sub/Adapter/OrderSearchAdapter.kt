@@ -64,7 +64,7 @@ class OrderSearchAdapter(private val menuItem: ArrayList<OrderMenuModel>) : Recy
 
 
             itemView.setOnClickListener {
-                val direction2 = SearchFragmentDirections.actionSearchFragmentToOrderMenuDetailFragment(item.id)
+                val direction2 = SearchFragmentDirections.actionSearchFragmentToOrderDetailFragment(item.id)
                 it.findNavController().navigate(direction2)
             }
 

@@ -3,6 +3,7 @@ package com.mandeum.dessert39.Main.Order.sub
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,7 @@ class DessertFragment : Fragment() {
 
         thread(start = true) {
             val categoryModel: CategoryModel = ServerApi.Category()
+
             if (categoryModel.connection) {
                 if (categoryModel.errCode == "0000") {
                     val dessertListModel: DessertListModel = ServerApi.dessertList(token.toString())
@@ -65,6 +67,28 @@ class DessertFragment : Fragment() {
                                     LinearLayoutManager.HORIZONTAL,
                                     false
                                 )
+
+                            val len:Int = dessertListModel.list.toString().length
+
+                            val MAX_LEN = 2000
+                            if (len > MAX_LEN) {
+                                var pos = 0
+                                var nextPos = 0
+                                while (pos < len) {
+                                    nextPos += MAX_LEN
+                                    Log.e(
+                                        "dessert2",
+                                        dessertListModel.list.toString().substring(pos, if (nextPos > pos) pos else nextPos)
+                                    )
+                                    pos = nextPos
+                                }
+                            } else {
+                                Log.e("dessert2",  dessertListModel.list.toString())
+                            }
+
+
+                            Log.d("category", categoryModel.toString())
+                            Log.d("dessert", dessertListModel.list.toString())
                         }
                     }
                 }
@@ -76,7 +100,10 @@ class DessertFragment : Fragment() {
                     ).show()
                 }
             }
+            Log.d("category", categoryModel.toString())
+
         }
+
 
 
 

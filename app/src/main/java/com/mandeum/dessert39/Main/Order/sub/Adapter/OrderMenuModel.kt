@@ -8,5 +8,6 @@ OrderMenuModel (
     val image: String,
     val category: Int,
     val price: String,
+    val dessertPrice: String,
     val status: String
     )

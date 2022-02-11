@@ -56,7 +56,7 @@ class OrderSeasonRecyclerAdapter(private val seasonItem: ArrayList<OrderSeasonIt
 
             itemView.setOnClickListener {
                 val direction =
-                    OrderFragmentDirections.actionOrderFragmentToOrderMenuDetailFragment(item.no)
+                    OrderFragmentDirections.actionOrderFragmentToOrderDetailFragment(item.no)
                 it.findNavController().navigate(direction)
             }
 

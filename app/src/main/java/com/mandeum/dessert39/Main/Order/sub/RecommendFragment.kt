@@ -62,17 +62,8 @@ class RecommendFragment : Fragment() {
          val eventItem: ArrayList<OrderEventItem> = ArrayList()
 
 
-
         val rvAdapter2 = OrderEventRecyclerAdapter(eventItem)
-
-
-
-
         val rv2: RecyclerView = binding.eventMenuRecyclerView
-
-
-
-
 
         rv2.adapter = rvAdapter2
 

@@ -224,7 +224,6 @@ class Json {
 
             for (index in 0 until subCatesArray.length()) {
                 val subName : String = JSONObject(subCatesArray[index].toString()).optString("subName", "")
-
                 val subOrder : Int = JSONObject(subCatesArray[index].toString()).optInt("subOrder", 0) + 10
                 categoryList.add(SubMenuModel(name = subName, no = subOrder, select = true))
             }
@@ -250,7 +249,7 @@ class Json {
                 val status = goodsListObject.optString("status", "")
 
                 dessertList.add(OrderMenuModel(id= no, Kname = name, Ename = eName, image = imgHot, category = cate2,
-                price = "${price_dessert}원", status = status))
+                price = "${price_dessert}원", status = status, dessertPrice = "${price_dessert}원"))
             }
             return DessertListModel(connection = true, errCode = errCode, list =  dessertList)
         }
@@ -269,18 +268,26 @@ class Json {
                 val eName = goodsListObject.optString("eng_name", "")
                 val imgHot = goodsListObject.optString("imgHot", "")
                 var price = 0
+                val priceDessert = goodsListObject.optInt("price_dessert", 0)
                 val cate1 = goodsListObject.optInt("cate1", 0)
                 val price_hot_grande = goodsListObject.optInt("price_hot_grande", 0)
                 val price_ice_grande = goodsListObject.optInt("price_ice_grande", 0)
-                if (price_hot_grande != 0) {
-                    price = price_hot_grande
-                } else if (price_ice_grande != 0) {
-                    price = price_ice_grande
+
+                if (cate1 == 1) {
+                    price = priceDessert
+                } else if (cate1 != 1) {
+                    if (price_hot_grande != 0) {
+                        price = price_hot_grande
+                    } else if (price_ice_grande != 0) {
+                        price = price_ice_grande
+                    }
                 }
+
+
                 val status = goodsListObject.optString("status", "")
 
                 dessertList.add(OrderMenuModel(id= no, Kname = name, Ename = eName, image = imgHot, category = cate1,
-                    price = "${price}원", status = status))
+                    price = "${price}원", status = status, dessertPrice = "${priceDessert}원"))
             }
             return MenuListModel(connection = true, errCode = errCode, list =  dessertList)
         }
@@ -292,19 +299,53 @@ class Json {
                 val name = jsonObject.optString("name", "")
                 val eName = jsonObject.optString("eng_name", "")
                 val imgHot = jsonObject.optString("imgHot", "")
+                val imgIce = jsonObject.optString("imgIce", "")
                 var price = 0
-                val price_hot_grande = jsonObject.optInt("price_hot_grande", 0)
-                val price_ice_grande = jsonObject.optInt("price_ice_grande", 0)
-                if (price_hot_grande != 0) {
-                    price = price_hot_grande
-                } else if (price_ice_grande != 0) {
-                    price = price_ice_grande
+                val priceDessert = jsonObject.optInt("price_dessert", 0)
+                val cate1 = jsonObject.optInt("cate1", 0)
+                val cate2 = jsonObject.optString("cate2", "")
+                val price_hot_grande = jsonObject.optString("price_hot_grande", "")
+                val price_ice_grande = jsonObject.optString("price_ice_grande", "")
+                val price_hot_venti = jsonObject.optString("price_hot_venti", "")
+                val price_ice_venti = jsonObject.optString("price_ice_venti", "")
+                val price_hot_large = jsonObject.optString("price_hot_large", "")
+                val price_ice_large = jsonObject.optString("price_ice_large", "")
+                val optSpecial = jsonObject.optString("opt_special", "")
+                val useOpt = jsonObject.optString("useOpt", "")
+                val optSyrup = jsonObject.optString("opt_syrup", "")
+                val optShot = jsonObject.optString("opt_shot", "")
+                val optDecaffeine = jsonObject.optString("opt_decaffeine", "")
+                val optHard = jsonObject.optString("opt_hard", "")
+                val optPearl = jsonObject.optString("opt_pearl", "")
+                val optNatadcoco = jsonObject.optString("opt_natadcoco", "")
+
+            if (cate1 == 1) {
+                price = priceDessert
+            } else if (cate1 != 1) {
+                if (price_hot_grande.toInt() != 0) {
+                    price = price_hot_grande.toInt()
+                } else if (price_ice_grande.toInt() != 0) {
+                    price = price_ice_grande.toInt()
                 }
+                if (price_hot_venti.toInt() != 0) {
+                    price = price_hot_venti.toInt()
+                } else if (price_ice_venti.toInt() != 0) {
+                    price = price_ice_venti.toInt()
+                }
+                if (price_hot_large.toInt() != 0) {
+                    price = price_hot_large.toInt()
+                } else if (price_ice_large.toInt() != 0) {
+                    price = price_ice_large.toInt()
+                }
+            }
 
 
-            return GoodsModel(connection = true, errCode = errCode, no = no, name = name, eng_name = eName, imgHot = imgHot
-            , price = price)
+            return GoodsModel(connection = true, errCode = errCode, no = no, name = name, eng_name = eName, imgHot = imgHot, imgIce = imgIce
+            , price = price.toString(),cate1 = cate1, cate2 = cate2, priceDessert = priceDessert,useOpt = useOpt, optSyrup = optSyrup, optShot = optShot,
+                optDecaffeine = optDecaffeine, optHard = optHard, optPearl = optPearl, optNatadcoco = optNatadcoco, price_hot_grande, price_ice_grande,
+            price_hot_venti, price_ice_venti, price_hot_large,price_ice_large, optSpecial = optSpecial)
         }
+
 
 
         fun newMenu(json: String): NewMenuModel {
@@ -565,6 +606,14 @@ class Json {
             return UserImageModel(Connection = true, errCode = errCode, userImg = userImg)
         }
 
+        fun setOrder(json: String): SetOrderModel {
+
+            val jsonObject = JSONObject(json)
+            val errCode: String = jsonObject.optString("errCode", "")
+            val orderNo: String = jsonObject.optString("order_no","")
+
+            return SetOrderModel(errCode = errCode, orderNo = orderNo)
+        }
 
 
     }

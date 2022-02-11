@@ -624,7 +624,7 @@ class ServerApi {
 
 
         fun menudetail(TOKEN: String, NO: Int): GoodsModel {
-            val code = "<CMD>get_goods_detail</CMD><DATA><TOKEN>$TOKEN</TOKEN><NO>$NO</NO></DATA>"
+            val code = "<CMD>get_goods_detail</CMD><DATA><TOKEN>$TOKEN</TOKEN><NO>$NO</NO><SHOPNO></SHOPNO></DATA>"
             val Ase256: String = Cbc.encryptCBC(code)
             val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
             val resultUrl: String = serverUrl + EncodeUrl
@@ -654,15 +654,17 @@ class ServerApi {
                     return Json.menuDetailJSONParse(decryptedString)
                 } else {
                     httpClient.disconnect()
-                    return GoodsModel(connection = false, errCode = "", no = 0, "", "", ""
-                    , price = 0)
+                    return GoodsModel(connection = false, errCode = "", no = 0, "", "", "", ""
+                        , price = "", 0,"",0,"","","","", "", "", "","",
+                    "", "", "", "", "", "")
                 } } catch (e: Exception) {
                 e.printStackTrace()
                 Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
             }
             httpClient.disconnect()
-            return GoodsModel(connection = false, errCode = "", no = 0, "", "", ""
-                , price = 0)
+            return GoodsModel(connection = false, errCode = "", no = 0, "", "", "", ""
+                , price = "", 0,"",0,"","","","", "", "", "", "",
+            "", "", "", "", "" ,"")
         }
 
 
@@ -987,6 +989,50 @@ class ServerApi {
 //            return BoardListModel(connection = false, errCode = "", list = ArrayList())
 //        }
 
+        fun setOrder(TOKEN: String, SHOPNO:String, GOODS:String, TOTALCNT:String, TOTALPRICE:String, REQUEST: String, COUPON: String,
+        COUPONDISCOUNT: String, TOTALDISCOUNT: String, ORIGINPRICE: String, TOTALUMBLER: String, COUPONOWNER: String): SetOrderModel {
+            val code = "<CMD>set_order</CMD><DATA><TOKEN>$TOKEN</TOKEN><SHOPNO>$SHOPNO</SHOPNO><GOODS>$GOODS</GOODS><TOTALCNT>$TOTALCNT</TOTALCNT>" +
+                    "<TOTALPRICE>$TOTALPRICE</TOTALPRICE><REQUEST>$REQUEST</REQUEST><COUPON>$COUPON</COUPON><COUPONDISCOUNT>$COUPONDISCOUNT</COUPONDISCOUNT>" +
+                    "<TOTALDISCOUNT>$TOTALDISCOUNT</TOTALDISCOUNT><ORIGINPRICE>$ORIGINPRICE</ORIGINPRICE>" +
+                    "<TOTALTUMBLER>$TOTALUMBLER</TOTALTUMBLER><COUPONOWNER>$COUPONOWNER</COUPONOWNER></DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.setOrder(decryptedString)
+
+                } else {
+                    httpClient.disconnect()
+                    return SetOrderModel(errCode ="", orderNo = "")
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return SetOrderModel(errCode ="", orderNo = "")
+        }
 
 
         @SuppressLint("LogNotTimber")

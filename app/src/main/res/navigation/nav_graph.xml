@@ -241,13 +241,6 @@
             app:popEnterAnim="@anim/slide_left_enter"
             app:popExitAnim="@anim/slide_left_exit" />
         <action
-            android:id="@+id/action_orderFragment_to_orderMenuDetailFragment"
-            app:destination="@id/orderMenuDetailFragment"
-            app:enterAnim="@anim/slide_right_enter"
-            app:exitAnim="@anim/slide_right_exit"
-            app:popEnterAnim="@anim/slide_left_enter"
-            app:popExitAnim="@anim/slide_left_exit" />
-        <action
             android:id="@+id/action_orderFragment_to_searchFragment"
             app:destination="@id/searchFragment"
             app:enterAnim="@anim/slide_up_enter"
@@ -257,6 +250,13 @@
         <action
             android:id="@+id/action_orderFragment_to_orderCartFragment"
             app:destination="@id/orderCartFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
     </fragment>
     <fragment
         android:id="@+id/cardChoiceFragment"
@@ -386,61 +386,23 @@
             app:destination="@id/orderFragment" />
     </dialog>
     <fragment
-        android:id="@+id/orderMenuDetailFragment"
-        android:name="com.mandeum.dessert39.Main.Order.sub.detail.OrderMenuDetailFragment"
-        android:label="fragment_order_menu_detail"
-        tools:layout="@layout/fragment_order_menu_detail" >
-        <argument
-            android:name="no"
-            app:argType="integer"/>
-
-        <action
-            android:id="@+id/action_orderMenuDetailFragment_to_orderMenuInfoFragment"
-            app:destination="@id/orderMenuInfoFragment"
-            app:enterAnim="@anim/slide_right_enter"
-            app:exitAnim="@anim/slide_right_exit"
-            app:popEnterAnim="@anim/slide_left_enter"
-            app:popExitAnim="@anim/slide_left_exit" />
-        <action
-            android:id="@+id/action_orderMenuDetailFragment_to_orderCartFragment"
-            app:destination="@id/orderCartFragment"
-            app:enterAnim="@anim/slide_right_enter"
-            app:exitAnim="@anim/slide_right_exit"
-            app:popEnterAnim="@anim/slide_left_enter"
-            app:popExitAnim="@anim/slide_left_exit" />
-        <action
-            android:id="@+id/action_orderMenuDetailFragment_to_searchFragment"
-            app:destination="@id/searchFragment"
-            app:enterAnim="@anim/slide_left_enter"
-            app:exitAnim="@anim/slide_left_exit"
-            app:popEnterAnim="@anim/slide_right_enter"
-            app:popExitAnim="@anim/slide_left_exit" />
-        <action
-            android:id="@+id/action_orderMenuDetailFragment_to_orderFragment"
-            app:destination="@id/orderFragment"
-            app:enterAnim="@anim/slide_left_enter"
-            app:exitAnim="@anim/slide_left_exit"
-            app:popEnterAnim="@anim/slide_right_enter"
-            app:popExitAnim="@anim/slide_right_exit" />
-    </fragment>
-    <fragment
         android:id="@+id/orderMenuInfoFragment"
         android:name="com.mandeum.dessert39.Main.Order.sub.detail.OrderMenuInfoFragment"
         android:label="fragment_order_menu_info"
         tools:layout="@layout/fragment_order_menu_info" >
-        <action
-            android:id="@+id/action_orderMenuInfoFragment_to_orderMenuDetailFragment"
-            app:destination="@id/orderMenuDetailFragment"
-            app:enterAnim="@anim/slide_left_enter"
-            app:exitAnim="@anim/slide_left_exit"
-            app:popEnterAnim="@anim/slide_right_enter"
-            app:popExitAnim="@anim/slide_right_exit" />
         <action
             android:id="@+id/action_orderMenuInfoFragment_to_orderCartFragment"
             app:destination="@id/orderCartFragment" />
         <argument
             android:name="imageView1"
             app:argType="string" />
+        <action
+            android:id="@+id/action_orderMenuInfoFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
     </fragment>
     <fragment
         android:id="@+id/orderCartFragment"
@@ -448,18 +410,8 @@
         android:label="fragment_order_cart"
         tools:layout="@layout/fragment_order_cart" >
         <action
-            android:id="@+id/action_orderCartFragment_to_orderMenuDetailFragment"
-            app:destination="@id/orderMenuDetailFragment" />
-        <action
             android:id="@+id/action_orderCartFragment_to_orderMenuInfoFragment"
             app:destination="@id/orderMenuInfoFragment" />
-        <action
-            android:id="@+id/action_orderCartFragment_to_orderMenuDetailFragment2"
-            app:destination="@id/orderMenuDetailFragment"
-            app:enterAnim="@anim/slide_left_enter"
-            app:exitAnim="@anim/slide_left_exit"
-            app:popEnterAnim="@anim/slide_right_enter"
-            app:popExitAnim="@anim/slide_right_exit" />
         <action
             android:id="@+id/action_orderCartFragment_to_orderFragment"
             app:destination="@id/orderFragment"
@@ -476,6 +428,13 @@
         <action
             android:id="@+id/action_orderCartFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_orderCartFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -490,8 +449,8 @@
             app:popEnterAnim="@anim/slide_up_enter"
             app:popExitAnim="@anim/slide_up_exit" />
         <action
-            android:id="@+id/action_searchFragment_to_orderMenuDetailFragment"
-            app:destination="@id/orderMenuDetailFragment"
+            android:id="@+id/action_searchFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment"
             app:enterAnim="@anim/slide_right_enter"
             app:exitAnim="@anim/slide_right_exit"
             app:popEnterAnim="@anim/slide_left_enter"
@@ -941,6 +900,43 @@
         <action
             android:id="@+id/action_testFragment_to_myInfoFragment"
             app:destination="@id/myInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.mandeum.dessert39.Main.Order.sub.detail.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            android:id="@+id/action_orderDetailFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderMenuInfoFragment"
+            app:destination="@id/orderMenuInfoFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderCartFragment"
+            app:destination="@id/orderCartFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_right_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_left_exit" />
+        <argument
+            android:name="no"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit" />
     </fragment>
 
 

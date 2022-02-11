@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -40,6 +41,7 @@ class Find1Activity : AppCompatActivity() {
 
         findArea()
         Find1backGround()
+
 
 
         tvTimer = findViewById(R.id.counter)
@@ -321,4 +323,17 @@ class Find1Activity : AppCompatActivity() {
         }
 
     }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        val location = IntArray(2)
+        textView18.getLocationOnScreen(location)
+
+        location[0]
+        location[1]
+
+        Log.d("test", location[0].toString())
+        Log.d("test", location[1].toString())
+    }
+
 }
