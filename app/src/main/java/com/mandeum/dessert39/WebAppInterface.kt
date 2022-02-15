@@ -6,7 +6,7 @@ import android.webkit.JavascriptInterface
 
 
 class WebAppInterface() {
-
+        //test
 
         private var callback: BridgeListener? = null
         private var handler = Handler()
