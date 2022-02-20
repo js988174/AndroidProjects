@@ -18,7 +18,6 @@ class ViewPager(fragment: Fragment) : FragmentStateAdapter(fragment) {
         FromageFragment(),
         IceFragment(),
         FavoriteFragment()
-
     )
 
     override fun getItemCount(): Int {

@@ -68,7 +68,6 @@ class SelectShopAdapter (private val selectShopModel : ArrayList<SelectShopModel
 //            }
 
             itemView.setOnClickListener {
-
                 val dialog = BottomSheetDialog(context, R.style.CustomAlertDialog)
                 dialog.setContentView(R.layout.fragment_order_shop_detail)
                 dialog.setCanceledOnTouchOutside(false)
@@ -76,6 +75,9 @@ class SelectShopAdapter (private val selectShopModel : ArrayList<SelectShopModel
                 val image : ImageView = dialog.findViewById<ImageView>(R.id.imageView) as ImageView
                 Glide.with(itemView).load(item.image).into(image)
                 dialog.findViewById<TextView>(R.id.shop_name)?.text = item.shopName
+                dialog.findViewById<TextView>(R.id.distance)?.text = item.distance
+                dialog.findViewById<TextView>(R.id.shop_location)?.text = item.address
+                dialog.findViewById<TextView>(R.id.start_time)?.text = item.time
 
                 dialog.findViewById<ConstraintLayout>(R.id.cancel_btn)?.setOnClickListener {
                     dialog.dismiss()

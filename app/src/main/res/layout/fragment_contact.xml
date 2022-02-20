@@ -75,6 +75,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView101">
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="문의 유형을 선택하세요"
@@ -125,6 +126,7 @@
 
 
                 <EditText
+                    android:id="@+id/titleArea"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
@@ -168,6 +170,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView103">
 
                 <EditText
+                    android:id="@+id/contentArea"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"

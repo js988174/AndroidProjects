@@ -39,13 +39,13 @@ import androidx.navigation.fragment.findNavController
 
 class OrderFragment : Fragment(R.layout.fragment_order) {
 
-        private  var _binding: FragmentOrderBinding? = null
-        private val binding get() = _binding!!
+    private  var _binding: FragmentOrderBinding? = null
+    private val binding get() = _binding!!
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     private var count: Int = 0
 
-        private lateinit var callback: OnBackPressedCallback
+    private lateinit var callback: OnBackPressedCallback
 
 
 
@@ -139,6 +139,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         binding.changeBtn.setOnClickListener {
 
         }
+
 
 
         val findShop =  OrderFindShopFragment()

@@ -39,7 +39,6 @@ class DessertFragment : Fragment() {
        _binding = FragmentDessertBinding.inflate(layoutInflater)
         thread = context as HomeActivity
 
-
         val dessert : RecyclerView = binding.dessertRecyclerView
 
         val sub_menu_recyclerView: RecyclerView = binding.subMenuRecyclerView

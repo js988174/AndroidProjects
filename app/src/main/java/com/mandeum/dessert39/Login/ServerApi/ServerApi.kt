@@ -5,7 +5,9 @@ import android.graphics.Bitmap
 import android.util.Log
 import com.mandeum.dessert39.CBC.Cbc
 import com.mandeum.dessert39.Login.ServerApi.Model.*
+import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardEventModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardListModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Board.SetBoardModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Card.CardChoiceModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Home.BannerModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Home.WeatherModel
@@ -831,7 +833,7 @@ class ServerApi {
 
 
         fun nearbyStore(token:String, latitude: Double, longitude: Double): StoreModel {
-            val code = "<CMD>get_shop_list</CMD><DATA><TOKEN>$token</TOKEN><LATITUDE>$latitude</LATITUDE><LONGITUDE>$longitude</LONGITUDE><SHOPNAME></SHOPNAME></DATA>"
+            val code = "<CMD>get_shop_list</CMD><DATA><TOKEN>$token</TOKEN><LATITUDE>$latitude</LATITUDE><LONGITUDE>$longitude</LONGITUDE><SHOPNAME></SHOPNAME><PART></PART></DATA>"
             val Ase256: String = Cbc.encryptCBC(code)
             val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
             val resultUrl: String = serverUrl + EncodeUrl
@@ -868,8 +870,8 @@ class ServerApi {
             return StoreModel(connection = false, errCode = "", list = ArrayList())
         }
 
-        fun AllStore(token:String, latitude: Double, longitude: Double): OrderShopMenuModel {
-            val code = "<CMD>get_shop_list</CMD><DATA><TOKEN>$token</TOKEN><LATITUDE>$latitude</LATITUDE><LONGITUDE>$longitude</LONGITUDE><SHOPNAME>A</SHOPNAME></DATA>"
+        fun AllStore(token:String, latitude: Double, longitude: Double, part: String): OrderShopMenuModel {
+            val code = "<CMD>get_shop_list</CMD><DATA><TOKEN>$token</TOKEN><LATITUDE>$latitude</LATITUDE><LONGITUDE>$longitude</LONGITUDE><SHOPNAME></SHOPNAME><PART>$part</PART></DATA>"
             val Ase256: String = Cbc.encryptCBC(code)
             val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
             val resultUrl: String = serverUrl + EncodeUrl
@@ -949,45 +951,124 @@ class ServerApi {
             return LikingModel(connection = false, errCode ="")
         }
 
+        fun setBoard(TOKEN: String, category:String, subject: String, content:String): SetBoardModel {
+            val code = "<CMD>set_board</CMD><DATA><TOKEN>$TOKEN</TOKEN><PART>custom</PART><CATEGORY>$category</CATEGORY><SUBJECT>$subject</SUBJECT><CONTENT>$content</CONTENT></DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
 
-//        fun BoardList(token:String, PART: String, PAGE: String, CATEGORY: String): BoardListModel {
-//            val code = "<CMD>get_board_list</CMD><DATA><TOKEN></TOKEN><PART></PART><PAGE></PAGE><CATEGORY></CATEGORY></DATA>"
-//            val Ase256: String = Cbc.encryptCBC(code)
-//            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
-//            val resultUrl: String = serverUrl + EncodeUrl
-//            val url = URL(resultUrl)
-//            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
-//
-//            httpClient.requestMethod = "GET"
-//            httpClient.doOutput = true
-//            httpClient.doInput = true
-//            httpClient.connectTimeout = 10000
-//            httpClient.readTimeout = 10000
-//
-//            try {
-//                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
-//                    val streamReader = InputStreamReader(httpClient.inputStream)
-//                    val buffered = BufferedReader(streamReader)
-//                    val content = StringBuilder()
-//
-//                    while (true) {
-//                        val line = buffered.readLine() ?: break
-//                        content.append(line)
-//                    }
-//
-//                    val contentString: String = content.toString()
-//                    val decryptedString: String = Cbc.decryptCBC(contentString)
-//                    httpClient.disconnect()
-//                    return Json.shopList(decryptedString)
-//                } else {
-//                    return BoardListModel(connection = false, errCode = "", list = ArrayList())
-//                } } catch (e: Exception) {
-//                e.printStackTrace()
-//                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
-//            }
-//            httpClient.disconnect()
-//            return BoardListModel(connection = false, errCode = "", list = ArrayList())
-//        }
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.setBoard(decryptedString)
+                } else {
+                    httpClient.disconnect()
+                    return SetBoardModel(connection = false, errCode = "", idx = "")
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return SetBoardModel(connection = false, errCode = "", idx = "")
+        }
+
+
+        fun BoardList(token:String, PAGE: Int): BoardListModel {
+            val code = "<CMD>get_board_list</CMD><DATA><TOKEN>$token</TOKEN><PART>custom</PART><PAGE>$PAGE</PAGE><CATEGORY></CATEGORY></DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.boardList(decryptedString)
+                } else {
+                    return BoardListModel(connection = false, errCode = "", list = ArrayList(), page = 0)
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return BoardListModel(connection = false, errCode = "", list = ArrayList(), page = 0)
+        }
+
+        fun BoardEvent(token:String, PAGE: Int): BoardEventModel {
+            val code = "<CMD>get_board_list</CMD><DATA><TOKEN>$token</TOKEN><PART>event</PART><PAGE>$PAGE</PAGE><CATEGORY></CATEGORY></DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.eventBoard(decryptedString)
+                } else {
+                    return BoardEventModel(connection = false, errCode = "", list = ArrayList(), page = 0)
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return BoardEventModel(connection = false, errCode = "", list = ArrayList(), page = 0)
+        }
 
         fun setOrder(TOKEN: String, SHOPNO:String, GOODS:String, TOTALCNT:String, TOTALPRICE:String, REQUEST: String, COUPON: String,
         COUPONDISCOUNT: String, TOTALDISCOUNT: String, ORIGINPRICE: String, TOTALUMBLER: String, COUPONOWNER: String): SetOrderModel {

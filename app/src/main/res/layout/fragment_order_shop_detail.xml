@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendard_light"
-                    android:text="영업시간  |  평일 "
+                    android:text="영업시간  | "
                     android:textColor="@color/black5"
                     android:textSize="12dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +116,7 @@
                 <TextView
                     android:id="@+id/start_time"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:fontFamily="@font/pretendard_light"
                     android:text="09:00"
                     android:textColor="@color/black5"
@@ -125,77 +125,7 @@
                     app:layout_constraintStart_toEndOf="@+id/textView43"
                     app:layout_constraintTop_toTopOf="@+id/textView43" />
 
-                <TextView
-                    android:id="@+id/textView46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendard_light"
-                    android:text=" ~ "
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/start_time"
-                    app:layout_constraintStart_toEndOf="@+id/start_time"
-                    app:layout_constraintTop_toTopOf="@+id/start_time" />
 
-
-                <TextView
-                    android:id="@+id/end_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendard_light"
-                    android:text="22:00"
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView46"
-                    app:layout_constraintStart_toEndOf="@+id/textView46"
-                    app:layout_constraintTop_toTopOf="@+id/textView46" />
-
-
-                <TextView
-                    android:id="@+id/textView47"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="13dp"
-                    android:text="주말 "
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/end_time"
-                    app:layout_constraintTop_toTopOf="@+id/end_time" />
-
-                <TextView
-                    android:id="@+id/start_time1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:00"
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView47"
-                    app:layout_constraintStart_toEndOf="@+id/textView47"
-                    app:layout_constraintTop_toTopOf="@+id/textView47" />
-
-                <TextView
-                    android:id="@+id/textView48"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendard_light"
-                    android:text=" ~ "
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/start_time1"
-                    app:layout_constraintStart_toEndOf="@+id/start_time1"
-                    app:layout_constraintTop_toTopOf="@+id/start_time1" />
-
-                <TextView
-                    android:id="@+id/end_time1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:00"
-                    android:textColor="@color/black5"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView48"
-                    app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toTopOf="@+id/textView48" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

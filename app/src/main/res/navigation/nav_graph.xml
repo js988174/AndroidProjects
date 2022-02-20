@@ -853,10 +853,10 @@
         <argument android:name="startDate"
             app:argType="string" />
         <argument
-            android:name="endDate"
+            android:name="content"
             app:argType="string" />
         <argument
-            android:name="content"
+            android:name="endDate"
             app:argType="string" />
         <argument
             android:name="image"

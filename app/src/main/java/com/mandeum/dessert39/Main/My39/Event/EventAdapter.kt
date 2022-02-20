@@ -49,13 +49,19 @@ class EventAdapter  (val context: Context, val eventItem: ArrayList<EventItem>) 
             val endDate = itemView.findViewById<TextView>(R.id.e_day)
             val grayTitle: Int = ContextCompat.getColor(context, R.color.colorGray8)
             val grayDate: Int = ContextCompat.getColor(context, R.color.check_NoColor)
+            val image = itemView.findViewById<ImageView>(R.id.image)
 
             title.text = item.title
             title2.text = item.boardTitle
             startDate.text = item.startDate
-            endDate.text = item.endDate
+            Glide.with(itemView)
+                .load(item.image)
+                .into(image)
+            if (endDate != null) {
+                endDate.text = item.endDate
+            }
 
-            if (item.term) {
+            if (item.title == "종료") {
                 itemView.findViewById<ConstraintLayout>((R.id.parent))
                     .setBackgroundColor(Color.parseColor("#F8F8F8"))
                 title.setTextColor(grayTitle)
@@ -66,11 +72,10 @@ class EventAdapter  (val context: Context, val eventItem: ArrayList<EventItem>) 
                     .setImageResource(R.drawable.gray_calender)
                 itemView.findViewById<ImageView>(R.id.arrow)
                     .setImageResource(R.drawable.gray_right)
-
             }
 
             itemView.setOnClickListener {
-                val direction = EventFragmentDirections.actionEventFragmentToEventDetailFragment(item.title, item.boardTitle,item.startDate, item.endDate, item.content, item.image )
+                val direction = EventFragmentDirections.actionEventFragmentToEventDetailFragment(item.title, item.boardTitle,item.startDate, item.content, item.endDate, item.image)
                 it.findNavController().navigate(direction)
             }
 

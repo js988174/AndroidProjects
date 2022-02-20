@@ -3,6 +3,7 @@ package com.mandeum.dessert39.Main.Order.sub
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.mandeum.dessert39.Intro.MainActivity
 import com.mandeum.dessert39.Login.ServerApi.Model.Order.MenuListModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.HomeActivity
+import com.mandeum.dessert39.Main.Order.OrderFragment
 import com.mandeum.dessert39.Main.Order.sub.Adapter.OrderMenuAdapter
 import com.mandeum.dessert39.databinding.FragmentBlendingBinding
 import kotlin.concurrent.thread

@@ -1,6 +1,7 @@
 package com.mandeum.dessert39.Login.ServerApi
 
 import com.mandeum.dessert39.Login.ServerApi.Model.*
+import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardEventModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardListModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardViewModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.SetBoardModel
@@ -20,6 +21,8 @@ import com.mandeum.dessert39.Login.ServerApi.Model.Info.*
 import com.mandeum.dessert39.Login.ServerApi.Model.Login.*
 import com.mandeum.dessert39.Login.ServerApi.Model.Login.LikingModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Order.*
+import com.mandeum.dessert39.Main.My39.Event.EventItem
+import com.mandeum.dessert39.Main.My39.Sound.InquiriesItem
 import com.mandeum.dessert39.Main.Order.dialog.FindShopModel
 import com.mandeum.dessert39.Main.Order.selectShop.select.SelectShopModel
 import com.mandeum.dessert39.Main.Order.slide.OrderNewItem
@@ -512,8 +515,6 @@ class Json {
             val shopList: String = jsonObject.optString("shopList", "")
             val shopListArrayList = JSONArray(shopList)
 
-
-
             if (shopListArrayList.length() == 0) {
                 return OrderShopMenuModel(connection = true, errCode = errCode, list = list)
             } else {
@@ -548,6 +549,19 @@ class Json {
                             image = imgPath
                         )
                     )
+                    for (index in 0 until image.length()) {
+                        val imgPath = JSONObject(image[index].toString()).optString("imgPath", "")
+                        list.add(
+                            SelectShopModel(
+                                shopName = name,
+                                address = addr1 + addr2 + addr3,
+                                distance = distance,
+                                time = time,
+                                image = "imgPath"
+                            )
+                        )
+                    }
+
                 }
                 return OrderShopMenuModel(connection = true, errCode = errCode, list = list)
             }
@@ -614,30 +628,78 @@ class Json {
 
             return SetOrderModel(errCode = errCode, orderNo = orderNo)
         }
+        fun setBoard(json: String): SetBoardModel {
 
+            val jsonObject = JSONObject(json)
+
+            val errCode: String = jsonObject.optString("errCode", "")
+            val idx: String = jsonObject.optString("idx","")
+
+
+            return  SetBoardModel(connection = true, errCode = errCode, idx = idx)
+        }
+
+        fun boardList(json: String): BoardListModel {
+            val jsonObject = JSONObject(json)
+            val list = ArrayList<InquiriesItem>()
+            val errCode: String = jsonObject.optString("errCode","")
+            val page: Int = jsonObject.optInt("page")
+            val boardList: String = jsonObject.optString("boardList", "")
+            val boardListArray = JSONArray(boardList)
+
+            for (index in 0 until boardListArray.length()) {
+                val boardListObject = JSONObject(boardListArray[index].toString())
+                val category = boardListObject.optString("category", "")
+                val subject = boardListObject.optString("subject", "")
+                val content = boardListObject.optString("content", "")
+                val writeId = boardListObject.optString("write_id", "")
+                val writeName = boardListObject.optString("write_name", "")
+                val writeDate = boardListObject.optString("write_date", "")
+                val answerSubject = boardListObject.optString("answer_subject", "")
+                val answerContent = boardListObject.optString("answer_content", "")
+                val answerDate = boardListObject.optString("price_dessert", "")
+
+                list.add(InquiriesItem(anser = false, kinds = category, title = subject, date = writeDate,
+                content = content, writeId = writeId, writeName = writeName, content2 = answerContent, date2 = answerDate, isExpanded = false, anserExpanded = false))
+            }
+
+            return  BoardListModel(connection = true, errCode =errCode , page = page, list = list)
+        }
+
+        fun eventBoard(json: String): BoardEventModel {
+            val jsonObject = JSONObject(json)
+            val list = ArrayList<EventItem>()
+            val errCode: String = jsonObject.optString("errCode","")
+            val page: Int = jsonObject.optInt("page")
+            val boardList: String = jsonObject.optString("boardList", "")
+            val boardListArray = JSONArray(boardList)
+
+            for (index in 0 until boardListArray.length()) {
+                val boardListObject = JSONObject(boardListArray[index].toString())
+                val subject = boardListObject.optString("subject", "")
+                val content = boardListObject.optString("content", "")
+                val eventStatus = boardListObject.optString("event_status", "")
+                val eventStartDate = boardListObject.optString("event_start_date", "")
+                val eventEndDate = boardListObject.optString("event_end_date", "")
+                val eventBannerPath = boardListObject.optString("event_banner_path", "")
+
+                val imgs: String = boardListObject.optString("imgs", "")
+                val imageArray = JSONArray(imgs)
+
+                for (index in 0 until imageArray.length()) {
+                    val imgPath = JSONObject(imageArray[index].toString()).optString("imgPath", "")
+                    list.add(EventItem(term = false, title = eventStatus, boardTitle = subject, content = content, startDate = eventStartDate,
+                        endDate = eventEndDate, image = imgPath))
+                }
+
+                list.add(EventItem(term = false, title = eventStatus, boardTitle = subject, content = content, startDate = eventStartDate,
+                    endDate = eventEndDate, image = eventBannerPath))
+            }
+
+            return  BoardEventModel(connection = true, errCode =errCode , page = page, list = list)
+        }
 
     }
-
-
-//    fun boardList(json: String): BoardListModel {
-//
-//
-//
-//        return  BoardListModel(connection = true, errCode = , page = , list = )
-//    }
-
-
-//    fun boardView(json: String): BoardViewModel {
-//
-//
-//        return  BoardViewModel(connection = true, errCode = , list = )
-//    }
-
-//        fun bookmarkMenu(json: String): BookmarkMenuModel {
-//
-//
-//        return  BookmarkMenuModel(connection = true, errCode = , page = , list = )
-//    }
 
 
 //    fun bookmarkShop(json: String): BookmarkShopModel {
@@ -723,11 +785,6 @@ class Json {
 //    }
 
 
-//        fun setBoard(json: String): SetBoardModel {
-//
-//
-//        return  SetBoardModel(connection = true, errCode = , idx = )
-//    }
 
 
 

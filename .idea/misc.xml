@@ -348,6 +348,20 @@
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_main.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/mipmap-anydpi-v26/ic_main_round.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39/app/src/main/res/xml/network_security_config.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/event_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_board.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_contact.xml" value="0.34513274336283184" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_customer_question.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_event_detail.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_order.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_order_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_order_find_shop.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_order_shop_detail.xml" value="0.33" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/fragment_question.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/inquiry_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/location_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/JU/AndroidStudioProjects/dessert39_2/app/src/main/res/layout/select_shop_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/JU/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.36614583333333334" />
       </map>
     </option>

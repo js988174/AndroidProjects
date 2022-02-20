@@ -1,6 +1,7 @@
 package com.mandeum.dessert39.Main.My39.Event
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,7 @@ class EventDetailFragment : Fragment() {
         val startDate: String = argument.startDate
         val endDate: String = argument.endDate
         val content: String = argument.content
-        val image: String? = argument.image
+        val image: String = argument.image
 
         binding.title.text = title
         binding.boardTitle.text = title2
@@ -45,12 +46,13 @@ class EventDetailFragment : Fragment() {
         binding.content.text = content
 
         val contentImage: ImageView = binding.contentImage
-        if (image.isNullOrEmpty()) {
+
+        if (image.isEmpty()) {
             contentImage.isGone = true
         } else {
             Glide.with(requireContext()).load(image).into(contentImage)
         }
-
+        Log.d("test15", image.toString())
 
         binding.findImage.setOnClickListener {
             requireActivity().onBackPressed()
