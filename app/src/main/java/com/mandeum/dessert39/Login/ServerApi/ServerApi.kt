@@ -29,7 +29,7 @@ class ServerApi {
 
     companion object {
 
-        private const val serverUrl = "http://dessert39.man-deum.com/api/index.php?code="
+        private const val serverUrl = "http://dessert39.com/api/index.php?code="
         private const val LogTag = "HttpAPI.Tag"
 
         fun login(userId: String, userPw: String, uuid: String): LoginModel1 {
@@ -1118,7 +1118,7 @@ class ServerApi {
 
         @SuppressLint("LogNotTimber")
         fun cardChoice(strToken: String, file: String): UserImageModel {
-            val postBaseURL = "http://dessert39.man-deum.com/api/index.php/"
+            val postBaseURL = "http://dessert39.com/api/index.php/"
             val boundary = "*****" + System.currentTimeMillis().toString() + "*****"
             val lineFeed = "\r\n"
             val twoHyphens = "--"

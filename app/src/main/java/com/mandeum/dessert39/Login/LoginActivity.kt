@@ -23,6 +23,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
+import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import com.mandeum.dessert39.Find.Id.Find1Activity
 import com.mandeum.dessert39.Find.Password.FindPw1Activity
@@ -59,6 +60,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        var keyHash = Utility.getKeyHash(this)
+        Log.d("keyHash", keyHash.toString())
 
         FirebaseApp.initializeApp(this)
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
@@ -98,7 +101,6 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
 //        }
-
 
         backGround()
         Area()

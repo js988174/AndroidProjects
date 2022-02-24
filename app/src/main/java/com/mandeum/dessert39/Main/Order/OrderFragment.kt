@@ -922,10 +922,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
     override fun onDestroyView() {
 
         val viewPager2 = _binding?.viewPager
-
-        viewPager2?.let {
-            it.adapter = null
-        }
+        viewPager2?.adapter = null
 
         super.onDestroyView()
         _binding = null

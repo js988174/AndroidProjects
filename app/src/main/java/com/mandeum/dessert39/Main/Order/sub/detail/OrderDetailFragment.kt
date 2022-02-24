@@ -372,6 +372,7 @@ class OrderDetailFragment : Fragment() {
                         }
 
                         binding.customBtn.setOnClickListener {
+
                             val dialog = BottomSheetDialog(requireContext(), R.style.CustomAlertDialog)
                             dialog.setContentView(R.layout.order_custom)
                             dialog.behavior.state = BottomSheetBehavior.STATE_SETTLING
