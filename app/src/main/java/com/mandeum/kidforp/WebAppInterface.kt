@@ -16,12 +16,6 @@ class WebAppInterface() {
 
     private val handler: Handler = Handler()
 
-    @JavascriptInterface
-    fun myLat() {
-        handler.post(Runnable() {
-            callback?.androidMyLatitude()
-        })
-    }
 
     @JavascriptInterface
     fun login() {
@@ -31,7 +25,6 @@ class WebAppInterface() {
     }
 
     interface BridgeListener {
-        fun androidMyLatitude()
         fun androidLogin()
     }
 }

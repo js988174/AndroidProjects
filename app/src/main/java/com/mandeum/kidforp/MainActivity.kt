@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     private var imageUri: Uri? = null
     val FILECHOOSER_NORMAL_REQ_CODE = 2001
     val FILECHOOSER_LOLLIPOP_REQ_CODE = 2002
+    private var token : String? = MyApplication.prefs.getString("token", "")
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetJavaScriptEnabled", "JavascriptInterface")
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         setContentView(R.layout.activity_main)
 
         webView = findViewById(R.id.webView1)
+
 
         webView.apply {
             webChromeClient = object : WebChromeClient() {
@@ -379,11 +381,8 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         webView.onPause()
     }
 
-    override fun androidMyLatitude() {
-
-    }
 
     override fun androidLogin() {
-
+        webView.loadUrl("javascript:get_my_device('android', '$token')")
     }
 }
