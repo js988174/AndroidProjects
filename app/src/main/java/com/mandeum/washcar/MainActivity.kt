@@ -30,16 +30,9 @@ import android.webkit.WebChromeClient
 import android.os.Build
 import android.provider.MediaStore
 import java.io.File
-import java.io.IOException
-import java.security.Permissions
-import java.text.SimpleDateFormat
-import androidx.core.app.ActivityCompat.startActivityForResult
-
 import android.os.Parcelable
-
 import android.os.Environment
 import android.annotation.TargetApi
-import android.app.Activity
 import android.widget.Toast
 
 
@@ -65,7 +58,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     private var isPermissionOK: Boolean = false
 
     private var token : String? = MyApplication.prefs.getString("token", "")
-    private var target_url : String? = "http://washcar.man-deum.com/"
 
     val REQUEST_IMAGE_CAPTURE = 1
 
@@ -79,7 +71,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         setContentView(R.layout.activity_main)
 
         requestPermission()
-
 
         val isFirst = MyApplication.prefs.getBoolean("isFirst", true)
 
@@ -111,52 +102,60 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                 isPermissionOK = true
             }
         }
+        try {
+            if (isPermissionOK) {
+                val locationManager: LocationManager =
+                    getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                val isNetworkEnabled: Boolean =
+                    locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+                val isGPSEnabled: Boolean =
+                    locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
 
-        if (isPermissionOK) {
-            val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                val locationListener = LocationListener { p0 ->
+                    lat = p0.latitude
+                    lng = p0.longitude
 
-            val isNetworkEnabled: Boolean = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-            val isGPSEnabled: Boolean = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-
-            val locationListener = LocationListener { p0 ->
-                lat = p0.latitude
-                lng = p0.longitude
-
-                count += 1
-            }
-
-            if (isNetworkEnabled) {
-                val location: Location? =
-                    locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-                if (location != null) {
-                    lat = location.latitude
-                    lng = location.longitude
-                } else {
-                    locationManager.requestLocationUpdates(
-                        LocationManager.NETWORK_PROVIDER,
-                        1L,
-                        1F,
-                        locationListener
-                    )
-                    locationManager.removeUpdates(locationListener)
+                    count += 1
                 }
-            } else if (isGPSEnabled) {
-                val location: Location? =
-                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-                if (location != null) {
-                    lat = location.latitude
-                    lng = location.longitude
-                } else {
-                    locationManager.requestLocationUpdates(
-                        LocationManager.NETWORK_PROVIDER,
-                        1L,
-                        1F,
-                        locationListener
-                    )
-                    locationManager.removeUpdates(locationListener)
+
+                if (isNetworkEnabled) {
+                    val location: Location? =
+                        locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                    if (location != null) {
+                        lat = location.latitude
+                        lng = location.longitude
+                    } else {
+                        locationManager.requestLocationUpdates(
+                            LocationManager.NETWORK_PROVIDER,
+                            1L,
+                            1F,
+                            locationListener
+                        )
+                        locationManager.removeUpdates(locationListener)
+                    }
+                } else if (isGPSEnabled) {
+                    val location: Location? =
+                        locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                    if (location != null) {
+                        lat = location.latitude
+                        lng = location.longitude
+                    } else {
+                        locationManager.requestLocationUpdates(
+                            LocationManager.NETWORK_PROVIDER,
+                            1L,
+                            1F,
+                            locationListener
+                        )
+                        locationManager.removeUpdates(locationListener)
+                    }
                 }
             }
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+        } finally {
+            requestPermission()
         }
+
 
         webView = findViewById(R.id.webView1)
         mProgressBar = findViewById(R.id.progress1)
@@ -241,11 +240,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
             mWebViewListener?.onPageStarted(url, favicon)
-
-
             webView.loadUrl("javascript:my_lat(${lat},${lng})")
-
-
             loadingFinished = false
         }
 
@@ -259,8 +254,17 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                 val isGPSEnabled : Boolean = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 val isNetworkEnabled: Boolean = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 first = false
-                if (Build.VERSION.SDK_INT >= 26 && ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 0)
+            try {
+                if (Build.VERSION.SDK_INT >= 26 && ContextCompat.checkSelfPermission(
+                        applicationContext,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        this@MainActivity,
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        0
+                    )
                 } else {
                     when {
                         isNetworkEnabled -> {
@@ -283,7 +287,11 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                         }
                     }
                 }
-
+            } catch (e : SecurityException) {
+                e.printStackTrace()
+            } finally {
+                requestPermission()
+            }
 
                 loadingFinished = true
 
@@ -333,6 +341,31 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
                     url.contains("com.hyundaicard.appcard") ||
                     url.contains("kr.co.citibank.citimobile") ||
                     url.contains("com.kftc.bankpay.android") ||
+                    url.contains("kftc-bankpay://") ||
+                    url.contains("bankwallet://") ||
+                    url.contains("ukbanksmartbanknonloginpay://") ||
+                    url.contains("kdb-bankpay://") ||
+                    url.contains("ibk-bankpay://") ||
+                    url.contains("kb-bankpay://") ||
+                    url.contains("keb-bankpay://") ||
+                    url.contains("sh-bankpay://") ||
+                    url.contains("nhb-bankpay://") ||
+                    url.contains("nh-bankpay://") ||
+                    url.contains("wr-bankpay://") ||
+                    url.contains("sc-bankpay://") ||
+                    url.contains("s-bankpay://") ||
+                    url.contains("ct-bankpay://") ||
+                    url.contains("dg-bankpay://") ||
+                    url.contains("bnk-bankpay://") ||
+                    url.contains("kj-bankpay://") ||
+                    url.contains("jj-bankpay://") ||
+                    url.contains("jb-bankpay://") ||
+                    url.contains("kn-bankpay://") ||
+                    url.contains("kp-bankpay://") ||
+                    url.contains("cu-bankpay://") ||
+                    url.contains("mg-bankpay://") ||
+                    url.contains("kbn-bankpay://") ||
+                    url.contains("kkb-bankpay://") ||
                     url.contains("com.kakao.talk") ||
                     url.contains("com.nhnent.payapp") ||
                     url.contains("com.ssg.serviceapp.android.egiftcertificate") ||
@@ -405,14 +438,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             mWebViewListener?.shouldOverrideUrlLoading(request)
             return true
 
-
-//            if (!loadingFinished) {
-//                first = true
-//            }
-//
-//            loadingFinished = false
-
-//            return super.shouldOverrideUrlLoading(view, request)
         }
 
         override fun onReceivedError(
@@ -426,9 +451,8 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     }
 
     override fun onBackPressed() {
-        //웹사이트에서 뒤로 갈 페이지 존재시
         if (webView.canGoBack()) {
-            webView.goBack() // 웹사이트 뒤로가기
+            webView.goBack()
         } else {
             val builder: AlertDialog.Builder = AlertDialog.Builder(this)
             builder.setMessage("앱을 종료하시겠습니까?")
@@ -444,10 +468,9 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
 
 
     private fun requestPermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(READ_EXTERNAL_STORAGE, CAMERA,ACCESS_FINE_LOCATION,WRITE_EXTERNAL_STORAGE),
-            REQUEST_IMAGE_CAPTURE, )
+        ActivityCompat.requestPermissions(this, arrayOf(READ_EXTERNAL_STORAGE, CAMERA,ACCESS_FINE_LOCATION,WRITE_EXTERNAL_STORAGE, ACCESS_COARSE_LOCATION),
+            REQUEST_IMAGE_CAPTURE)
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -484,7 +507,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
             startActivity(intent)   // 6
         }
         builder.setNegativeButton("취소") { dialogInterface, i ->
-            // ignore
         }
         val dialog = builder.create()
         dialog.show()
@@ -501,19 +523,15 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
     }
 
     override fun androidMyLatitude() {
-        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
-        Log.d("java_lat","$lat,$lng")
+        webView.loadUrl("javascript:get_my_lat('$lat, $lng)'")
+        Log.d("java_lat","'$lat,$lng'")
     }
 
     override fun androidLogin() {
         webView.loadUrl("javascript:get_my_device('android', '$token')")
-        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
+        webView.loadUrl("javascript:get_my_lat('$lat, $lng)'")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        target_url = "http://washcar.man-deum.com/"
-    }
 
     private fun runCamera(_isCapture: Boolean, selectedType: Int) {
         val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -540,8 +558,6 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         }
     }
 
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         var data = data
         when (requestCode) {
@@ -578,10 +594,7 @@ class MainActivity : AppCompatActivity(), WebAppInterface.BridgeListener {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onStart() {
-        super.onStart()
-        webView.loadUrl("javascript:get_my_lat($lat, $lng)")
-    }
+
 
 }
 

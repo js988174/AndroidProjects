@@ -4,7 +4,6 @@
     package="com.mandeum.washcar">
 
     <queries>
-
         <!-- 신용카드 -->
         <package android:name="kr.co.samsungcard.mpocket" /> <!-- 삼성 앱카드, 삼성 앱카드 공동인증서 -->
         <package android:name="com.shcard.smartpay" /> <!-- 신한 페이판 -->
@@ -20,19 +19,13 @@
         <package android:name="com.wooricard.smartapp" /> <!-- 우리 WON 카드 -->
         <package android:name="com.hyundaicard.appcard" /> <!-- 현대 앱카드 -->
         <package android:name="kr.co.citibank.citimobile" /> <!-- 씨티카드 -->
-
-
         <!-- 공인인증 -->
         <package android:name="com.hanaskcard.rocomo.potal" /> <!-- 하나카드 -->
         <package android:name="com.lumensoft.touchenappfree" /> <!-- 공동인증서 -->
-
-
         <!-- 백신 -->
         <package android:name="com.TouchEn.mVaccine.webs" /> <!-- TouchEn mVaccine(신한) -->
         <package android:name="com.ahnlab.v3mobileplus" /> <!-- V3(NH, 현대) -->
         <package android:name="kr.co.shiftworks.vguardweb" /> <!-- V-Guard(삼성) -->
-
-
         <!-- 간편결제 -->
         <package android:name="com.samsung.android.spay" /> <!-- 삼성페이(삼성, 농협, KB) -->
         <package android:name="com.samsung.android.spaylite" /> <!-- 삼성페이 미니(삼성, KB) -->
@@ -42,12 +35,8 @@
         <package android:name="com.nhnent.payapp" /> <!-- 페이코(삼성, 농협, KB) -->
         <package android:name="com.lge.lgpay" /> <!-- 엘지페이(삼성, KB) -->
         <package android:name="com.lottemembers.android" /> <!-- LPay -->
-
-
         <!-- 계좌이체 -->
         <package android:name="com.kftc.bankpay.android" /> <!-- 금결원 -->
-
-
         <!-- 본인인증 -->
         <package android:name="com.sktelecom.tauth" /> <!-- SKT -->
         <package android:name="com.kt.ktauth" /> <!-- KT -->
@@ -60,9 +49,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyApplication"
@@ -74,8 +60,6 @@
         android:theme="@style/Theme.Washcar"
         android:usesCleartextTraffic="true"
         tools:replace="android:name">
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true" />
