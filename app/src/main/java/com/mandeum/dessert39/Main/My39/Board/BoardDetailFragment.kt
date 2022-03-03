@@ -10,7 +10,7 @@ import androidx.core.view.isGone
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.mandeum.dessert39.Main.My39.Event.EventDetailFragmentArgs
+
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentBoardDetailBinding
 

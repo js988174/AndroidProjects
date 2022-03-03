@@ -46,6 +46,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.media.MediaScannerConnection
+import com.mandeum.dessert39.Login.ServerApi.Model.Info.LikingModel
 import kotlinx.android.synthetic.main.fragment_reward.*
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
@@ -3371,6 +3372,7 @@ class MyInfoFragment() : Fragment() {
                 Log.d("categoryText", keywordText)
                 Log.d("categoryText", brandText)
                 Log.d("categoryText", aa)
+                likingApi(cate11, keywordText, brandText, aa, token.toString())
                 Toast.makeText(requireContext(), "정보를 저장했습니다.", Toast.LENGTH_SHORT).show()
             }
 
@@ -3567,6 +3569,18 @@ class MyInfoFragment() : Fragment() {
         return directoryFolder
     }
 
+    private fun likingApi(cate: String, drink:String, brand:String, bDrink:String, token:String) {
+
+            thread(start = true) {
+                val likingModel : com.mandeum.dessert39.Login.ServerApi.Model.Login.LikingModel = ServerApi.likingMenu(cate, drink, brand, bDrink, token)
+            if (likingModel.connection) {
+                thread.runOnUiThread {
+                    Toast.makeText(requireContext(), "정보 저장", Toast.LENGTH_SHORT).show()
+                }
+            }
+            }
+    }
+
 
     @SuppressLint("SimpleDateFormat")
     private fun createImageFile(): File {
@@ -3593,89 +3607,90 @@ class MyInfoFragment() : Fragment() {
 
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == cameraRequestCode && resultCode == AppCompatActivity.RESULT_OK){
-            val bitmap = BitmapFactory.decodeFile(photoPath)
-            lateinit var exif : ExifInterface
-
-            try{
-                exif = ExifInterface(photoPath)
-                var exifOrientation = 0
-                var exifDegree = 0
-
-                if (exif != null) {
-                    exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-                        ExifInterface.ORIENTATION_NORMAL)
-                    exifDegree = exifOrientationToDegress(exifOrientation)
-                }
-
-                binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
-            }catch (e : IOException){
-                e.printStackTrace()
-            }
-
-        }
-    }
-
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//
 //        super.onActivityResult(requestCode, resultCode, data)
 //
-//        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == cameraRequestCode) {
-//
-//            val file = File(photoPath)
+//        if(requestCode == cameraRequestCode && resultCode == AppCompatActivity.RESULT_OK){
+//            val bitmap = BitmapFactory.decodeFile(photoPath)
 //            lateinit var exif : ExifInterface
-//            if (Build.VERSION.SDK_INT >= 29) {
 //
-//                val source: ImageDecoder.Source =
-//                    ImageDecoder.createSource(requireContext().contentResolver, Uri.fromFile(file))
+//            try{
+//                exif = ExifInterface(photoPath)
+//                var exifOrientation = 0
+//                var exifDegree = 0
 //
-//                try {
-//                    val bitmap = BitmapFactory.decodeFile(photoPath)
-//                    exif = ExifInterface(photoPath)
-//                    var exifOrientation = 0
-//                    var exifDegree = 0
-//
-//                    if (exif != null) {
-//                        exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-//                            ExifInterface.ORIENTATION_NORMAL)
-//                        exifDegree = exifOrientationToDegress(exifOrientation)
-//                    }
-//
-//                    binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
+//                if (exif != null) {
+//                    exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+//                        ExifInterface.ORIENTATION_NORMAL)
+//                    exifDegree = exifOrientationToDegress(exifOrientation)
 //                }
-//            } else if (Build.VERSION.SDK_INT <= 28) {
-//                try {
-//                    val bitmap = MediaStore.Images.Media.getBitmap(
-//                        requireActivity().contentResolver,
-//                        Uri.fromFile(file)
-//                    )
-//                    if (bitmap != null) {
-//                        exif = ExifInterface(photoPath)
-//                        var exifOrientation = 0
-//                        var exifDegree = 0
 //
-//                        if (exif != null) {
-//                            exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-//                                ExifInterface.ORIENTATION_NORMAL)
-//                            exifDegree = exifOrientationToDegress(exifOrientation)
-//                        }
-//                        binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
-//                    }
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
+//                binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+//            }catch (e : IOException){
+//                e.printStackTrace()
 //            }
-//
-//        } else if (resultCode == AppCompatActivity.RESULT_OK && requestCode == galleryRequestCode) {
-//            binding.image11.setImageURI(data?.data)
 //
 //        }
 //    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == cameraRequestCode) {
+
+            val file = File(photoPath)
+            lateinit var exif : ExifInterface
+            if (Build.VERSION.SDK_INT >= 29) {
+
+                val source: ImageDecoder.Source =
+                    ImageDecoder.createSource(requireContext().contentResolver, Uri.fromFile(file))
+
+                try {
+                    val bitmap = BitmapFactory.decodeFile(photoPath)
+                    exif = ExifInterface(photoPath)
+                    var exifOrientation = 0
+                    var exifDegree = 0
+
+                    if (exif != null) {
+                        exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                            ExifInterface.ORIENTATION_NORMAL)
+                        exifDegree = exifOrientationToDegress(exifOrientation)
+                    }
+
+                    binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            } else if (Build.VERSION.SDK_INT <= 29) {
+                try {
+                    val bitmap = MediaStore.Images.Media.getBitmap(
+                        requireActivity().contentResolver,
+                        Uri.fromFile(file)
+                    )
+                    if (bitmap != null) {
+                        exif = ExifInterface(photoPath)
+                        var exifOrientation = 0
+                        var exifDegree = 0
+
+                        if (exif != null) {
+                            exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                                ExifInterface.ORIENTATION_NORMAL)
+                            exifDegree = exifOrientationToDegress(exifOrientation)
+                        }
+                        saveImage(bitmap)
+                        binding.image11.setImageBitmap(rotate(bitmap, exifDegree))
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+
+        } else if (resultCode == AppCompatActivity.RESULT_OK && requestCode == galleryRequestCode) {
+            binding.image11.setImageURI(data?.data)
+
+        }
+    }
 
 
     companion object {
@@ -3718,7 +3733,7 @@ class MyInfoFragment() : Fragment() {
     }
 
 
-    fun setUser(TOKEN: String, file: String) {
+    fun setUser(TOKEN: String, file: File) {
 
         thread(start = true) {
             val user: UserImageModel = ServerApi.cardChoice(TOKEN, file)

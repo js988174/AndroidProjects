@@ -5,9 +5,11 @@ import android.graphics.Bitmap
 import android.util.Log
 import com.mandeum.dessert39.CBC.Cbc
 import com.mandeum.dessert39.Login.ServerApi.Model.*
+import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardEvent2Model
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardEventModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.BoardListModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Board.SetBoardModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Bookmark.MenuBookMarkModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Card.CardChoiceModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Home.BannerModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Home.WeatherModel
@@ -910,7 +912,7 @@ class ServerApi {
         }
 
 
-        fun likingMenu(TOKEN: String, CATA:String, DRINK:String, BRAND:String, B_DRINK:String): LikingModel {
+        fun likingMenu(CATA:String, DRINK:String, BRAND:String, B_DRINK:String, TOKEN: String): LikingModel {
             val code = "<CMD>liking</CMD><DATA><CATA>$CATA</CATA><DRINK>$DRINK</DRINK><BRAND>$BRAND</BRAND><B_DRINK>$B_DRINK</B_DRINK><TOKEN>$TOKEN</TOKEN></DATA>"
             val Ase256: String = Cbc.encryptCBC(code)
             val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
@@ -1070,6 +1072,45 @@ class ServerApi {
             return BoardEventModel(connection = false, errCode = "", list = ArrayList(), page = 0)
         }
 
+        fun BoardEvent2(token:String, PAGE: Int): BoardEvent2Model {
+            val code = "<CMD>get_board_list</CMD><DATA><TOKEN>$token</TOKEN><PART>notice</PART><PAGE>$PAGE</PAGE><CATEGORY></CATEGORY></DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.eventBoard2(decryptedString)
+                } else {
+                    return BoardEvent2Model(connection = false, errCode = "", list = ArrayList(), page = 0)
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return BoardEvent2Model(connection = false, errCode = "", list = ArrayList(), page = 0)
+        }
+
         fun setOrder(TOKEN: String, SHOPNO:String, GOODS:String, TOTALCNT:String, TOTALPRICE:String, REQUEST: String, COUPON: String,
         COUPONDISCOUNT: String, TOTALDISCOUNT: String, ORIGINPRICE: String, TOTALUMBLER: String, COUPONOWNER: String): SetOrderModel {
             val code = "<CMD>set_order</CMD><DATA><TOKEN>$TOKEN</TOKEN><SHOPNO>$SHOPNO</SHOPNO><GOODS>$GOODS</GOODS><TOTALCNT>$TOTALCNT</TOTALCNT>" +
@@ -1115,9 +1156,48 @@ class ServerApi {
             return SetOrderModel(errCode ="", orderNo = "")
         }
 
+        fun funMenuMark(token:String, no: Int, part: String): MenuBookMarkModel {
+            val code = "<CMD>set_bookmark_menu</CMD><DATA><TOKEN>$token</TOKEN><NO>$no</NO><PART></PART>$part</DATA>"
+            val Ase256: String = Cbc.encryptCBC(code)
+            val EncodeUrl = URLEncoder.encode(Ase256, "UTF-8")
+            val resultUrl: String = serverUrl + EncodeUrl
+            val url = URL(resultUrl)
+            val httpClient: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            httpClient.requestMethod = "GET"
+            httpClient.doOutput = true
+            httpClient.doInput = true
+            httpClient.connectTimeout = 10000
+            httpClient.readTimeout = 10000
+
+            try {
+                if (httpClient.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader = InputStreamReader(httpClient.inputStream)
+                    val buffered = BufferedReader(streamReader)
+                    val content = StringBuilder()
+
+                    while (true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    val contentString: String = content.toString()
+                    val decryptedString: String = Cbc.decryptCBC(contentString)
+                    httpClient.disconnect()
+                    return Json.bookmarkMenu(decryptedString)
+                } else {
+                    return MenuBookMarkModel(connection = false, errCode = "")
+                } } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(LogTag,"e.printStackTrace() = ${e.printStackTrace()}")
+            }
+            httpClient.disconnect()
+            return MenuBookMarkModel(connection = false, errCode = "")
+        }
+
 
         @SuppressLint("LogNotTimber")
-        fun cardChoice(strToken: String, file: String): UserImageModel {
+        fun cardChoice(strToken: String, file: File): UserImageModel {
             val postBaseURL = "http://dessert39.com/api/index.php/"
             val boundary = "*****" + System.currentTimeMillis().toString() + "*****"
             val lineFeed = "\r\n"
@@ -1252,5 +1332,7 @@ class ServerApi {
 //            return sb.toString()
 //        }
     }
+
+
 
 }

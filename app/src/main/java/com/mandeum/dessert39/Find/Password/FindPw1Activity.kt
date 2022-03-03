@@ -117,6 +117,7 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
                                             )
                                         }
                                     }
+
                                     return true
                                 } else if (
                                     url.startsWith("https://play.google.com/store/apps/details?id=") ||
@@ -132,8 +133,10 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
                                             )
                                         )
                                     }
+
                                     return true
                                 }
+
                                 return false
                             }
                         }
@@ -168,18 +171,16 @@ class FindPw1Activity : AppCompatActivity(), WebAppInterface.BridgeListener {
     }
 
 
-
-
     override fun auth_return(p1: String, p2: String, p3: String, p4: String, p5: String) {
         if (p4 == "0") {
-//            val intent = Intent(this, FindPw2Activity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
-//            intent.putExtra("userID", p5)
-//            startActivity(intent)
+            val intent = Intent(this, FindPw2Activity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
+            intent.putExtra("userID", p5)
+            startActivity(intent)
 
-//            val fragment = MyInfoFragment()
-//            val bundle = bundleOf("key1" to "010-2221-4906")
-//            fragment.arguments = bundle
+            val fragment = MyInfoFragment()
+            val bundle = bundleOf("key1" to "010-2221-4906")
+            fragment.arguments = bundle
 
             dialog.dismiss()
 

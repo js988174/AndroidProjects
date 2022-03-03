@@ -1,9 +1,11 @@
 package com.mandeum.dessert39.Main.Order.sub.detail
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,12 +29,15 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.mandeum.dessert39.Login.ServerApi.Model.Bookmark.MenuBookMarkModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Login.SnsLoginModel
 import com.mandeum.dessert39.Login.ServerApi.Model.Order.GoodsModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.HomeActivity
 import com.mandeum.dessert39.R
 import com.mandeum.dessert39.databinding.FragmentOrderDetailBinding
 import kotlinx.android.synthetic.main.fragment_card_charge.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_order_menu_detail.*
 import kotlinx.android.synthetic.main.my39_story_item.*
 import org.json.JSONArray
@@ -691,33 +696,38 @@ class OrderDetailFragment : Fragment() {
             jsonObject.put("img_hot", detailModel.imgHot)
             jsonObject.put("img_ice", detailModel.imgIce)
             jsonObject.put("opt_syrup", detailModel.optSyrup)
-            jsonObject.put("opt_syrup", detailModel.optSyrup)
-            jsonObject.put("opt_syrup", detailModel.optShot)
-            jsonObject.put("opt_syrup", detailModel.optDecaffeine)
-            jsonObject.put("opt_syrup", detailModel.optHard)
-            jsonObject.put("opt_syrup", detailModel.optPearl)
-            jsonObject.put("opt_syrup", detailModel.optNatadcoco)
-            jsonObject.put("opt_syrup", detailModel.optSpecial)
+            jsonObject.put("opt_shot", detailModel.optShot)
+            jsonObject.put("opt_decaffein", detailModel.optDecaffeine)
+            jsonObject.put("opt_pearl", detailModel.optHard)
+            jsonObject.put("opt_pearl", detailModel.optPearl)
+            jsonObject.put("opt_natadcoco", detailModel.optNatadcoco)
+            jsonObject.put("opt_special", detailModel.optSpecial)
             jsonObject.put("total", basketPrice)
             val body = JsonParser.parseString(jsonObject.toString()) as JsonObject
+            Log.d("body", body.toString())
         }
 
-
+        val checkPoint = shared.getBoolean("favorite", false)
 
         binding.favorite1.setOnCheckedChangeListener { checkBox, isChecked ->
-
-            if (isChecked) {
-
-            } else {
-
+            if (!favoriteSelect) {
+                val A : String ?= null
+                bookMark(token.toString(),no, A.toString())
+                editor.putBoolean("favorite", true)
+                Toast.makeText(requireContext(),"A",Toast.LENGTH_SHORT).show()
+            } else if (favoriteSelect) {
+                val D : String ?= null
+                bookMark(token.toString(),no, D.toString())
+                editor.putBoolean("favorite", false)
+                Toast.makeText(requireContext(),"D",Toast.LENGTH_SHORT).show()
             }
-//            if (favoriteSelect) {
-//                binding.favorite1.setImageResource(R.drawable.star)
-//                favoriteSelect = true
-//            } else if (!favoriteSelect) {
-//                binding.favorite1.setImageResource(R.drawable.star_gray)
-//                favoriteSelect = false
-//            }
+
+            if (!checkPoint) {
+                favoriteSelect = true
+            } else if (checkPoint) {
+                favoriteSelect = false
+            }
+
         }
 
         binding.findImage.setOnClickListener {
@@ -763,6 +773,25 @@ class OrderDetailFragment : Fragment() {
             )
         )
     }
+
+    @SuppressLint("HardwareIds")
+    private fun bookMark(token:String, no: Int, part:String) {
+
+        thread(start = true) {
+            val user: MenuBookMarkModel = ServerApi.funMenuMark(token,no, part)
+            val bookMarkModel = MenuBookMarkModel(user.connection, user.errCode)
+            if (bookMarkModel.errCode == "0000") {
+
+                thread.runOnUiThread {
+                    Toast.makeText(requireContext(), "정보 저장", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+            }
+
+        }
+
 
 
     private fun isSelectedBlack(selected: Boolean, button: Button): Boolean {

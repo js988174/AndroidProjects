@@ -31,6 +31,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mandeum.dessert39.Login.ServerApi.Model.Card.CardChoiceModel
+import com.mandeum.dessert39.Login.ServerApi.Model.Info.UserImageModel
 import com.mandeum.dessert39.Login.ServerApi.ServerApi
 import com.mandeum.dessert39.Main.Card.Slide.CardListModel
 import com.mandeum.dessert39.Main.Card.Slide.CardTypeAdapter
@@ -365,6 +366,10 @@ class CardCharge2Fragment : Fragment() {
 
                     if (bitmap != null) {
                         val imageSrc = createImageFile()
+                        val shared = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                        val token = shared.getString("LoginToken", "")
+
+                        setUser(token.toString(), imageSrc)
                         binding.cardImg.setImageBitmap(bitmap)
 
 
@@ -382,31 +387,24 @@ class CardCharge2Fragment : Fragment() {
 
 
 
-//    fun setUser(TOKEN: String, file: File) {
-//
-//        thread(start = true) {
-//            val user: CardChoiceModel = ServerApi.cardChoice(TOKEN, file)
-//            val cardModel = CardChoiceModel(user.connection, user.errCode, user.cardImg)
-//
-//            Log.d("error", user.errCode)
-//            Log.d("image_rute", user.cardImg)
-//
-//            if (cardModel.connection) {
-//                if (cardModel.errCode == "0000") {
-//                    thread.runOnUiThread {
-//                        Toast.makeText(requireContext(), "통신 성공", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            } else {
-//                thread.runOnUiThread {
-//                    Toast.makeText(
-//                        requireContext(), "connection = ${cardModel.connection}\n연결 실패",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//        }
-//
-//    }
+    fun setUser(TOKEN: String, file: File) {
+
+        thread(start = true) {
+            val user: UserImageModel = ServerApi.cardChoice(TOKEN, file)
+            val cardModel = UserImageModel(user.Connection, user.errCode, user.userImg)
+
+            Log.d("error", user.errCode)
+            Log.d("image_rute", user.userImg)
+
+            if (cardModel.Connection) {
+                if (cardModel.errCode == "0000") {
+                    thread.runOnUiThread {
+                        Toast.makeText(requireContext(), "통신 성공", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+    }
 
 }
