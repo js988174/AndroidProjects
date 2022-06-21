@@ -1,0 +1,2 @@
+rootProject.name = "trot_list"
+include ':app'
