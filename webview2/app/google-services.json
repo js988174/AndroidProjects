@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "533082890329",
+    "project_id": "carwashday-ae882",
+    "storage_bucket": "carwashday-ae882.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533082890329:android:073279d6f7cc8cef509148",
+        "android_client_info": {
+          "package_name": "com.mandeum.washcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533082890329-kdk4kl0j1nrc816l3mp29r6i4tqdldv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH9Vfj1U2puGsSzDRYdWvPX9m99jEotZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533082890329-kdk4kl0j1nrc816l3mp29r6i4tqdldv1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "533082890329-6f0u4pm9fitfi5fqt5680i2pf2ud9r6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mandeum.washcar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
