@@ -12,4 +12,4 @@
 ## ⚡ 공부
 * [코틀린](https://github.com/js988174/AndroidProjects/tree/main/kotlin)
 * [토이앱](https://github.com/js988174/AndroidProjects/tree/main/android-app)
-
+* [토이 프로젝트](https://github.com/js988174/AndroidProjects/tree/main/MandeumTalk)
