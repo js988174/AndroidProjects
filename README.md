@@ -1,5 +1,5 @@
 # 📌Android Project(kotlin)
-
+회사 다니면서 작업한것 기록(실제 작업한것과 webview 주소는 다릅니다.)
 
 ## 📣 패키징 작업
 * [패키징작업1](https://github.com/js988174/AndroidProjects/tree/main/webview1)
