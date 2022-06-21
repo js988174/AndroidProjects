@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".Join.JoinActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="회원가입"
+            android:fontFamily="@font/pretendardsemi"
+            android:textColor="@color/black2"
+            android:textSize="24dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/findImage"
+            android:layout_width="70dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:src="@drawable/left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/pretendardsemi"
+        android:text="디저트39 회원가입을 위해\n약관에 동의해 주세요 :)"
+        android:textColor="@color/black2"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+
+
+        <CheckBox
+            android:id="@+id/allCheckBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:button="@null"
+            android:layout_marginLeft="11dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/allText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:fontFamily="@font/pretendardm"
+            android:text="전체동의"
+            android:textColor="@color/black2"
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@+id/allCheckBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/allCheckBtn">
+
+
+            <CheckBox
+                android:id="@+id/firstCheckBtn"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/custom_checkbox1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            android:id="@+id/checkImage1"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:src="@drawable/watch"
+            android:layout_marginRight="17dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+
+        <TextView
+            android:id="@+id/checkText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:layout_marginLeft="11dp"
+            android:text="[필수] 이용약관"
+            android:textColor="@color/check_NoColor"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
+
+            <CheckBox
+                android:id="@+id/secondCheckBtn"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/custom_checkbox1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/checkText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="[필수] 개인정보 수집 및 이용 동의"
+            android:textColor="@color/check_NoColor"
+            android:textSize="16dp"
+            android:layout_marginLeft="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />
+
+        <ImageView
+            android:id="@+id/checkImage2"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/watch"
+            app:layout_constraintBottom_toBottomOf="@+id/checkText2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkText2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout3">
+
+            <CheckBox
+                android:id="@+id/thirdCheckBtn"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/custom_checkbox1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/checkText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="[필수] 선불카드 이용약관"
+            android:textColor="@color/check_NoColor"
+            android:textSize="16dp"
+            android:layout_marginLeft="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
+
+        <ImageView
+            android:id="@+id/checkImage3"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/watch"
+            app:layout_constraintBottom_toBottomOf="@+id/checkText3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkText3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout4">
+
+            <CheckBox
+                android:id="@+id/fourthCheckBtn"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/custom_checkbox1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/checkText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="[필수] 위치기반 서비스 이용약관"
+            android:textColor="@color/check_NoColor"
+            android:textSize="16dp"
+            android:layout_marginLeft="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout5" />
+
+        <ImageView
+            android:id="@+id/checkImage4"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/watch"
+            app:layout_constraintBottom_toBottomOf="@+id/checkText4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkText4" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout5">
+
+            <CheckBox
+                android:id="@+id/fifthCheckBtn"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/custom_checkbox1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/checkText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="[선택] 마케팅 수신 동의"
+            android:textColor="@color/check_NoColor"
+            android:textSize="16dp"
+            android:layout_marginLeft="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout6"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout6" />
+
+        <TextView
+            android:id="@+id/checkText5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="- SMS/이메일/전화"
+            android:textColor="@color/check_NoColor"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/checkText5"
+            app:layout_constraintStart_toEndOf="@+id/checkText5"
+            app:layout_constraintTop_toTopOf="@+id/checkText5" />
+
+        <ImageView
+            android:id="@+id/checkImage5"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/watch"
+            app:layout_constraintBottom_toBottomOf="@+id/checkText5_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkText5_1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/background_radius_default"
+        android:fontFamily="@font/pretendardm"
+        android:text="다음"
+        android:textColor="@color/colorWhite"
+        android:textSize="15dp"
+        android:outlineProvider="none"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="40dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

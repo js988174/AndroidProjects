@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout_Card1"
+    tools:context=".Main.Card.CardFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingBtn"
+            android:layout_gravity="right"
+            android:layout_width="70dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="D-CARD"
+            android:fontFamily="@font/pretendardsemi"
+            android:textColor="@color/black2"
+            android:textSize="24dp" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_layout_choice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_layout_none"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/background_radius_gray3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/plus_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="62dp"
+                        android:src="@drawable/plus"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/pretendardsemi"
+                        android:text="등록된 카드가 없습니다."
+                        android:textColor="@color/black2"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toEndOf="@+id/plus_icon"
+                        app:layout_constraintStart_toStartOf="@+id/plus_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/plus_icon" />
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendardregular"
+                        android:text="D-Card 를 등록해 주세요."
+                        android:textColor="@color/black4"
+                        android:textSize="14dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView12"
+                        app:layout_constraintStart_toStartOf="@+id/textView12"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text="D-Card를 등록하시면 결제 시"
+                    android:textColor="@color/black4"
+                    android:textSize="14dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_layout" />
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendardregular"
+                        android:text="추가 정보 입력 없이 39 서비스의 결제수단으로"
+                        android:textColor="@color/black4"
+                        android:textSize="14dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView27"
+                        app:layout_constraintStart_toStartOf="@+id/textView27"
+                        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendardregular"
+                        android:text="사용하실 수 있습니다."
+                        android:textColor="@color/black4"
+                        android:textSize="14dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView28"
+                        app:layout_constraintStart_toStartOf="@+id/textView28"
+                        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="visible"
+                android:id="@+id/card_register_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/registered_card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="303dp"
+                    android:background="@drawable/background_radius_white10"
+                    android:elevation="3dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/registered_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="96dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/charged_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20,300"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/pretendard_bold"
+                        android:textColor="@color/black2"
+                        android:layout_marginTop="13dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/registered_card" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="52dp"
+                        android:fontFamily="@font/pretendard_bold"
+                        android:text="원"
+                        android:textColor="@color/black2"
+                        android:textSize="18dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/charged_money"
+                        app:layout_constraintStart_toEndOf="@+id/charged_money"
+                        app:layout_constraintTop_toTopOf="@+id/charged_money" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/auto_charging_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/background_radius_gray5"
+                        app:layout_constraintTop_toBottomOf="@+id/charged_money">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="자동 충전 설정"
+                            android:textSize="14dp"
+                            android:fontFamily="@font/pretendard_bold"
+                            android:textColor="@color/black2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/charging_settings"
+                        android:layout_width="match_parent"
+                        android:visibility="visible"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/background_radius_gray5"
+                        app:layout_constraintTop_toBottomOf="@+id/charged_money">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="카드 충전하기"
+                            android:textSize="14dp"
+                            android:fontFamily="@font/pretendard_bold"
+                            android:textColor="@color/black2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_changeBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="75dp"
+                    android:layout_marginLeft="75dp"
+                    android:background="@drawable/background_radius_maincolor3"
+                    app:layout_constraintTop_toBottomOf="@+id/registered_card_layout">
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendard_bold"
+                        android:text="카드 디자인 변경"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/right_white"
+                        android:layout_marginRight="18dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/order_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/order_icon"
+            android:layout_marginRight="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/background_tab1"
+            android:layout_width="37dp"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/tab_bar1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/background_tab1_gray"
+            android:layout_width="37dp"
+            android:layout_height="64dp"
+            android:src="@drawable/tab_bar_gray"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <View
+            android:id="@+id/background_tab2"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/white2"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/background_tab4"
+            app:layout_constraintStart_toEndOf="@id/background_tab1"/>
+
+        <View
+            android:id="@+id/background_tab2.1"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="111dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/background_tab4"
+            app:layout_constraintStart_toEndOf="@id/background_tab1"/>
+
+
+        <ImageView
+            android:id="@+id/background_tab3"
+            android:layout_width="112dp"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/tab_bar_gray_deco"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/background_tab4"
+            android:layout_width="112dp"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="1dp"
+            android:src="@drawable/tab_bar_gray_deco"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nav_home"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/home_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/home_default"
+                    app:layout_constraintEnd_toEndOf="@id/nav_home"
+                    app:layout_constraintStart_toStartOf="@id/nav_home"
+                    app:layout_constraintTop_toTopOf="@id/nav_home" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lexenddeca_regular"
+                    android:text="Home"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@id/nav_home"
+                    app:layout_constraintStart_toStartOf="@id/nav_home"
+                    app:layout_constraintTop_toBottomOf="@+id/home_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nav_card"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toStartOf="@+id/nav_home"
+                app:layout_constraintStart_toEndOf="@+id/nav_alarm">
+
+                <ImageView
+                    android:id="@+id/card_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/card"
+                    app:layout_constraintEnd_toEndOf="@+id/nav_card"
+                    app:layout_constraintStart_toStartOf="@+id/nav_card"
+                    app:layout_constraintTop_toTopOf="@+id/nav_card" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lexenddeca_regular"
+                    android:text="39카드"
+                    android:textColor="@color/black2"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/nav_card"
+                    app:layout_constraintStart_toStartOf="@+id/nav_card"
+                    app:layout_constraintTop_toBottomOf="@+id/card_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nav_alarm"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toStartOf="@+id/nav_my39"
+                app:layout_constraintStart_toEndOf="@+id/nav_card">
+
+                <ImageView
+                    android:id="@+id/alarm_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/alarm_default"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lexenddeca_regular"
+                    android:text="Alarm"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/alarm_icon" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nav_my39"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="75dp"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/my39_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/person_default"
+                    app:layout_constraintEnd_toEndOf="@+id/nav_my39"
+                    app:layout_constraintStart_toStartOf="@+id/nav_my39"
+                    app:layout_constraintTop_toTopOf="@+id/nav_my39" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lexenddeca_regular"
+                    android:text="My39"
+                    android:textColor="@color/check_NoColor"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/nav_my39"
+                    app:layout_constraintStart_toStartOf="@+id/nav_my39"
+                    app:layout_constraintTop_toBottomOf="@+id/my39_icon" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/order_background"
+        app:layout_constraintTop_toTopOf="@+id/view1">
+
+        <ImageView
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="22dp"
+            android:src="@drawable/close_black"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_layout"
+            app:layout_constraintTop_toTopOf="@+id/dialog_layout" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="57dp"
+            android:fontFamily="@font/pretendardsemi"
+            android:text="장바구니에 메뉴가 추가되었습니다 :)"
+            android:textColor="@color/black2"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_layout"
+            app:layout_constraintStart_toStartOf="@+id/dialog_layout"
+            app:layout_constraintTop_toTopOf="@+id/dialog_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_layout"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_layout"
+            app:layout_constraintStart_toStartOf="@+id/dialog_layout"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_go"
+                android:layout_width="160dp"
+                android:layout_height="42dp"
+                android:background="@drawable/background_radius_maincolor2"
+                app:layout_constraintEnd_toStartOf="@+id/order_ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="장바구니 바로 가기"
+                android:fontFamily="@font/pretendard_bold"
+                android:textColor="@color/black2"
+                android:textSize="14dp"
+                android:outlineProvider="none"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="4dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_ok"
+                android:layout_width="160dp"
+                android:layout_height="42dp"
+                android:background="@drawable/background_radius_maincolor3"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="20dp"
+                android:text="다른 메뉴 더 보기"
+                android:textColor="@color/white"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="14dp"
+                android:outlineProvider="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/order_go" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bottomsheet_dialog2"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_layout"
+        app:layout_constraintStart_toStartOf="@+id/dialog_layout"
+        app:layout_constraintTop_toTopOf="@+id/dialog_layout" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/shop_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/view1"
+        app:layout_constraintEnd_toEndOf="@+id/view1"
+        app:layout_constraintStart_toStartOf="@+id/view1"
+        app:layout_constraintTop_toTopOf="@+id/view1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

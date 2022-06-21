@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405244510290",
+    "project_id": "dessert39-d93ac",
+    "storage_bucket": "dessert39-d93ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405244510290:android:1ce1e27cc184b3b21a5f8b",
+        "android_client_info": {
+          "package_name": "com.mandeum.dessert39"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405244510290-8d2on3ad2n6sv4njukr0qcqe5mdnb4ef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mandeum.dessert39",
+            "certificate_hash": "ea99077a5b0bcabc094658e14af1fe66e0305769"
+          }
+        },
+        {
+          "client_id": "405244510290-eod66jvjsrjo6c4sqqgehqbp25f5qli0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRwC38s7mxMtZfgyI1mJDiJohgWLd8LJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405244510290-eod66jvjsrjo6c4sqqgehqbp25f5qli0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

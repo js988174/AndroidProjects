@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="268dp"
+    android:layout_height="247dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout14"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:background="@drawable/card_background2"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="자동 충전을 설정하시겠습니까?"
+            android:textColor="@color/black2"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/card_background"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout14">
+
+        <TextView
+            android:id="@+id/base_balance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="기준 잔액"
+            android:textColor="@color/black3"
+            android:textSize="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/base_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="10,000"
+            android:textColor="@color/black4"
+            app:layout_constraintBottom_toBottomOf="@+id/textView32"
+            app:layout_constraintEnd_toStartOf="@+id/textView32"
+            app:layout_constraintTop_toTopOf="@+id/textView32" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/pretendardregular"
+            android:text="원"
+            android:textColor="@color/black4"
+            app:layout_constraintBottom_toBottomOf="@+id/base_balance_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/base_balance_text" />
+
+
+        <TextView
+            android:id="@+id/auto_charge_balance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="자동 충전 금액"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/black3"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/base_balance_text" />
+
+
+        <TextView
+            android:id="@+id/auto_charge_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="50,000"
+            android:textColor="@color/black4"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_charge_balance_text2"
+            app:layout_constraintEnd_toStartOf="@+id/auto_charge_balance_text2"
+            app:layout_constraintTop_toTopOf="@+id/auto_charge_balance_text2" />
+
+        <TextView
+            android:id="@+id/auto_charge_balance_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/pretendardregular"
+            android:text="원"
+            android:textColor="@color/black4"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_charge_balance_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/auto_charge_balance_text" />
+
+
+        <TextView
+            android:id="@+id/payment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:layout_marginTop="10dp"
+            android:text="결제 수단"
+            android:textColor="@color/black3"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auto_charge_balance_text" />
+
+
+        <TextView
+            android:id="@+id/payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardregular"
+            android:text="신용카드"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black4"
+            app:layout_constraintBottom_toBottomOf="@+id/payment_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/payment_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/no"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:background="@drawable/background_radius_maincolor2"
+            app:layout_constraintEnd_toStartOf="@+id/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="취소"
+            android:fontFamily="@font/pretendard_bold"
+            android:textColor="@color/black2"
+            android:textSize="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ok"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:background="@drawable/background_radius_maincolor3"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="20dp"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:fontFamily="@font/pretendard_bold"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/no" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="material_yellow">#52ff00</color>
+    <color name="white2">#f0f0f0</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorOrange">#F44336</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlue">#2196F3</color>
+    <color name="mainColor">#1BCCD2</color>
+    <color name="light_black">#484848</color>
+    <color name="blue">#283FB1</color>
+    <color name="red">#740F0F</color>
+    <color name="red2">#F61D0D</color>
+    <color name="red3">#B80F0F</color>
+    <color name="red4">#E33030</color>
+
+    <color name="colorGray3">#E1E1E1</color>
+    <color name="colorGray">#F8F8F8</color>
+    <color name="colorGray2">#BFBFBF</color>
+    <color name="colorGray4">#9F9F9F</color>
+    <color name="colorGray5">#7B7B7B</color>
+    <color name="colorGray6">#707070</color>
+    <color name="colorGray7">#F5F5F5</color>
+    <color name="colorGray8">#757575</color>
+    <color name="colorGray9">#D5D5D5</color>
+    <color name="colorGray10">#8E8E8E</color>
+    <color name="colorGray11">#E6E6E6</color>
+    <color name="colorGray12">#CCCCCC</color>
+    <color name="colorGray13">#FBFBFB</color>
+
+    <color name="check_NoColor">#AEAEAE</color>
+    <color name="under">#BEBCBC</color>
+    <color name="colorBlackPrimary">#222222</color>
+    <color name="colorWhitePrimary">#FFFFFF</color>
+    <color name="black2">#1C1C1C</color>
+    <color name="black3">#484848</color>
+    <color name="black4">#202020</color>
+    <color name="black5">#4B4B4B</color>
+    <color name="black6">#3B3B3B</color>
+    <color name="red_light">#743C3A</color>
+
+    <!-- Dessert 39 Black -->
+    <color name="dessert39_black_001">#1C1C1C</color>
+    <color name="dessert39_black_002">#202020</color>
+    <color name="dessert39_black_003">#4B4B4B</color>
+    <color name="dessert39_black_004">#484848</color>
+    <color name="dessert39_black_005">#3B3B3B</color>
+    <color name="dessert_39_gray_020">#7B7B7B</color>
+    <color name="dessert_39_gray_001">#AEAEAE</color>
+
+
+</resources>
+

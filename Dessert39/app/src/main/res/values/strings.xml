@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">dessert39</string>
+    <string name="terms_title_required_true">(필수) %s</string>
+    <string name="terms_title_required_false">(선택) %s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- kakao_native_app_key는 네이티브 앱키가 '12345'라면 'kakao12345'로 설정 -->
+    <string name="kakao_native_app_key">2b54b9d295e0e233ac3c2ea41dd6128d</string>
+    <!-- 얘는 그냥 네이티브 앱키 그대로 입력하면 된다 -->
+    <string name="kakao_app_key">2b54b9d295e0e233ac3c2ea41dd6128d</string>
+
+    <string name="naver_client_id">gonQ_zmB9NTtNfXpEIi_</string>
+    <string name="naver_client_secret">bToV9pVN9W</string>
+    <string name="naver_client_name">dessert39</string>
+
+    <string name="special_char1">&amp;</string>
+    <string name="imp_key">IAMPORT 관리자 페이지에 있는 imp_key</string>
+    <string name="imp_secret">IAMPORT 관리자 페이지에 있는 imp_secret</string>
+    <string name="title_activity_image">ImageActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="channel_name">dessert39</string>
+    <string name="channel_description">dessert39 notifications</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="str2">LoG!R$hFr$AHw7yY></string>
+    <string name="watch"><u>보기</u></string>
+    <string name="title_activity_join5">Join5Activity</string>
+    <string name="formatted_time">%02d:%02d</string>
+    <string name="firebase_notification_channel_id">channel_dessert39</string>
+
+
+    <string-array name="coupon_spinner">
+        <item>쿠폰을 선택하세요.</item>
+        <item>쿠폰1</item>
+        <item>쿠폰2</item>
+        <item>쿠폰3</item>
+        <item>쿠폰4</item>
+        <item>쿠폰5</item>
+        <item>쿠폰6</item>
+        <item>쿠폰7</item>
+    </string-array>
+
+
+</resources>

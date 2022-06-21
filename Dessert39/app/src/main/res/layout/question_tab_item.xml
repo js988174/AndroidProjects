@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:paddingTop="9dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tab_menu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:fontFamily="@font/pretendardregular"
+            android:text="전체"
+            android:textColor="@color/colorGray8"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tab_menu"
+            app:layout_constraintEnd_toEndOf="@+id/tab_menu"
+            app:layout_constraintStart_toStartOf="@+id/tab_menu"
+            app:layout_constraintTop_toTopOf="@+id/tab_menu" />
+
+        <View
+            android:id="@+id/tab_view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/black2"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tab_menu"
+            app:layout_constraintEnd_toEndOf="@+id/tab_menu_text"
+            app:layout_constraintStart_toStartOf="@+id/tab_menu_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
