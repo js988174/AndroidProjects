@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "392954043738",
+    "project_id": "dessert39admin",
+    "storage_bucket": "dessert39admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392954043738:android:3f0c68307cbabf46ce6763",
+        "android_client_info": {
+          "package_name": "com.mandeum.dessert39admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392954043738-mr94uvc2aq6mfofivki9u87he8t4frt0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mandeum.dessert39admin",
+            "certificate_hash": "ea99077a5b0bcabc094658e14af1fe66e0305769"
+          }
+        },
+        {
+          "client_id": "392954043738-hmvhh39q7lp5drpo1bilej66e2o2djkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCSIx30-LEjDZWz3VxTg2AsSKstGi_kP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392954043738-hmvhh39q7lp5drpo1bilej66e2o2djkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

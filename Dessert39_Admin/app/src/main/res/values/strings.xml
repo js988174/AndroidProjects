@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">dessert39admin</string>
+    <string name="firebase_notification_channel_id">channel1</string>
+</resources>
